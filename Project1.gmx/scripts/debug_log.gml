@@ -18,4 +18,3 @@ for (var i = string_length(text) div 78; i>=0; i--)
     //dodanie mapy do listy logow w debugerze
     ds_list_add(obj_DebugController.log, mapLog);
 }
-

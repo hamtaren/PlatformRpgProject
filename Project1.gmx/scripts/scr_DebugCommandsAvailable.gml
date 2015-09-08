@@ -5,7 +5,7 @@ var list = ds_list_create();
 //sprawdzac z scr_DebugCommands, wszelkie zmiany w nazwach tu i tam
 //po dodaniu tutaj jakiejs komendy dodaj takze do switcha w scr_DebugCommands
 
-ds_list_add(list,"log ");           //piszemy "log <tu jakis tekst ktory ma sie wyswietlic w logu>
+ds_list_add(list,"log ");           //zapisuje do pliku log.txt to co napisze po "log "
 ds_list_add(list,"comm -l");        //wyswietla ostatnio uzywane komendy
 ds_list_add(list,"comm");           //to co nizej
 ds_list_add(list,"comm -a");        //wyswietla dostepne komendy

@@ -18,7 +18,8 @@ else if (keyboard_check(KEY_RIGHT) && !place_meeting_solid(x+16,y-2) && !place_m
 //DOL
 if (keyboard_check(KEY_DOWN))
 {
-    if (place_meeting(x,y+1,obj_LeaderTop)  || !place_meeting_solid(x,y+cspd))
+/*
+    if (place_meeting(x,y+1,obj_LeaderTop) || !place_meeting_solid(x,y+cspd))
     {
         y+=cspd;
     }
@@ -29,7 +30,19 @@ if (keyboard_check(KEY_DOWN))
         scr_HeroChageState(STATE_MOVE);
         vspd = cspd;
     }
-
+*/
+//  jezeli dotyka drabiny           i   nie będzie dotykal drabiny po ruchu     ani   solid obiektow             lub  bedzie dotykal solid        ale nie Leader Topa
+if ( place_meeting(x,y,obj_Leader) && (!place_meeting(x,y+cspd,obj_Leader) && !place_meeting_solid(x,y+cspd)) || (place_meeting_solid(x,y+cspd) && !place_meeting(x,y+cspd,obj_LeaderTop)) )
+{
+    scr_HeroChageState(STATE_MOVE);
+    vspd = cspd;
+}
+else if (place_meeting(x,y+1,obj_LeaderTop)  || !place_meeting_solid(x,y+cspd))
+{
+    y+=cspd;
+}
+    
+    
 }//GORA //TODO: poprawic
 else if (keyboard_check(KEY_UP))
 {

@@ -17,4 +17,3 @@ if (textBackground)
 //rysowanie textu
 draw_set_font(font_debug);
 draw_text_colour(xx,yy,text,color,color,color,color,1);
-

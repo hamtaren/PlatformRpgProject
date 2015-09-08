@@ -23,4 +23,3 @@ else
     KEY_ATTACK = (ord('V'));
     KEY_CANCEL = (ord('Z')); 
 }
-

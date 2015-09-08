@@ -23,6 +23,7 @@ if (keyboard_check_pressed(vk_enter))
                 case "teleport": scr_DebugCommandTeleport(); break;
                 case "cam": scr_DebugCommandCam(); break;
                 case "keys": scr_DebugCommandKeys(); break;
+                
                 default: debug_log("Nie dodano do switcha w scr_DebugCommands",DEBUG_ERROR); break;
             }
             break;
