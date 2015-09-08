@@ -1,0 +1,10 @@
+Sprawdz ten warunek
+if ( place_meeting(x,y,obj_Leader) && (!place_meeting(x,y+cspd,obj_Leader) && !place_meeting_solid(x,y+cspd)) )
+{
+    scr_HeroChageState(STATE_MOVE);
+    vspd = cspd;
+}
+else if (place_meeting(x,y+1,obj_LeaderTop)  || !place_meeting_solid(x,y+cspd))
+{
+    y+=cspd;
+}
