@@ -33,10 +33,12 @@
     <sprite>sprites\spr_Door</sprite>
     <sprite>sprites\spr_Barrel</sprite>
     <sprites name="Icons">
+      <sprite>sprites\spr_ParentMark</sprite>
       <sprite>sprites\spr_DebugController</sprite>
       <sprite>sprites\spr_GameController</sprite>
       <sprite>sprites\spr_Ini</sprite>
       <sprite>sprites\spr_Camera</sprite>
+      <sprite>sprites\spr_BinderController</sprite>
     </sprites>
     <sprites name="HeroSprites">
       <sprite>sprites\spr_HeroMask</sprite>
@@ -44,6 +46,7 @@
       <sprite>sprites\spr_HeroWallSlide</sprite>
     </sprites>
     <sprite>sprites\spr_Elevator</sprite>
+    <sprite>sprites\scr_Leaver</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -61,6 +64,7 @@
       <scripts name="Actions">
         <script>scripts\scr_HeroActionDoorOpen.gml</script>
         <script>scripts\scr_HeroActionItemPickUp.gml</script>
+        <script>scripts\scr_HeroActionTurnLeaver.gml</script>
         <script>scripts\scr_HeroActionHideouts.gml</script>
         <scripts name="Hideouts">
           <script>scripts\scr_HeroActionHideoutBarrel.gml</script>
@@ -80,6 +84,9 @@
         <script>scripts\scr_DebugCommands.gml</script>
         <scripts name="DebugCommands">
           <script>scripts\scr_DebugCommandLog.gml</script>
+          <scripts name="DebugCommandLog">
+            <script>scripts\scr_DebugLogToFileSave.gml</script>
+          </scripts>
           <script>scripts\scr_DebugCommandComm.gml</script>
           <script>scripts\scr_DebugCommandReset.gml</script>
           <script>scripts\scr_DebugCommandHelp.gml</script>
@@ -87,23 +94,36 @@
           <script>scripts\scr_DebugCommandGodMode.gml</script>
           <script>scripts\scr_DebugCommandTeleport.gml</script>
           <script>scripts\scr_DebugCommandCam.gml</script>
+          <script>scripts\scr_DebugCommandId.gml</script>
+          <script>scripts\scr_DebugCommandDel.gml</script>
         </scripts>
       </scripts>
       <script>scripts\scr_GameController.gml</script>
       <script>scripts\scr_Ini.gml</script>
+      <scripts name="BinderController">
+        <script>scripts\scr_BinderVariablesInit.gml</script>
+        <script>scripts\scr_BinderDisposeBindings.gml</script>
+        <script>scripts\scr_BinderBinds.gml</script>
+        <scripts name="AddingBindingTypes">
+          <script>scripts\scr_BinderAddBindingPair.gml</script>
+          <script>scripts\scr_BinderAddBindingList.gml</script>
+        </scripts>
+        <scripts name="BinderBinds">
+          <script>scripts\scr_BinderBindDoorToLeaver.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
-    <script>scripts\scr_DebugLogToFileSave.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_Hero</object>
     <object>objects\obj_Solid</object>
     <object>objects\obj_Item</object>
     <object>objects\obj_Door</object>
     <objects name="Controllers">
       <object>objects\obj_GameController</object>
+      <object>objects\obj_BinderController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
     </objects>
@@ -118,12 +138,19 @@
     <object>objects\obj_Camera</object>
     <object>objects\obj_Elevator</object>
     <object>objects\obj_WaypointElevator</object>
+    <objects name="Actors">
+      <object>objects\obj_Hero</object>
+      <object>objects\obj_Actor</object>
+      <object>objects\obj_Npc</object>
+    </objects>
+    <object>objects\obj_Leaver</object>
+    <object>objects\obj_LeaverDoor</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
   </rooms>
-  <constants number="26">
+  <constants number="30">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
@@ -150,6 +177,10 @@
     <constant name="STATE_CLIMB">1</constant>
     <constant name="STATE_HIDE">2</constant>
     <constant name="STATE_MOVE">0</constant>
+    <constant name="STATE_NONE">-1</constant>
+    <constant name="BIND_ELEVATOR_TO_WAYPOINT">1</constant>
+    <constant name="BIND_DOOR_TO_LEAVER">2</constant>
+    <constant name="BIND_NOTHING">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

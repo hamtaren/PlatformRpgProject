@@ -11,3 +11,5 @@ else
     camTarget = noone;
     debug_log("Kamera podąża za poprzednim celem",DEBUG_SUCCESS);
 }
+
+//TODO: dorobic mozliwosc sledzenia obiektu o podanym po "cam " id

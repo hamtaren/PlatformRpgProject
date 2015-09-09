@@ -15,6 +15,8 @@ ds_list_add(list,"god mode");       //wlacza wylacza god mode
 ds_list_add(list,"teleport");       //teleportuje do myszki jezeli moze
 ds_list_add(list,"cam");            //kamera podaza za myszka
 ds_list_add(list,"keys");           //wyswietla klawisze debugera F6 itp...
+ds_list_add(list,"id");             //wyswietla w logu id wskazanego przez mysz obiektu
+ds_list_add(list,"del ");           //niszczy obiekt podany jako id po "del "
 
 return list;
 

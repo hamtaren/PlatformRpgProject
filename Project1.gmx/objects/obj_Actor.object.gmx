@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Obiekt po ktorym dziedziczyc beda przedmioty
-type = ITEM_NONE; //typ przedmiotu
+            <string>//Glowny obiekt po ktorym dziedzicza wszystkie postaci, stwory, npc itp
+state = STATE_NONE; //stany postaci, STATE_NONE jest przypisany tylko do parenta, normalny obiekt dziedziczacy nie powinien z niego korzystac
+dead = false;       //czy postac jest martwa czy zywa
 </string>
           </argument>
         </arguments>

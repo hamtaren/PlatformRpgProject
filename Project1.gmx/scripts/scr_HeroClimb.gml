@@ -43,7 +43,7 @@ else if (place_meeting(x,y+1,obj_LeaderTop)  || !place_meeting_solid(x,y+cspd))
 }
     
     
-}//GORA //TODO: poprawic
+}//GORA
 else if (keyboard_check(KEY_UP))
 {
     //wejscie na gore drabiny

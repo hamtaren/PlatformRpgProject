@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obj_Actor</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,8 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Obiekt po ktorym dziedziczyc beda przedmioty
-type = ITEM_NONE; //typ przedmiotu
+            <string>//obiekt po ktorym beda dziedziczyc wszystkie npc, czyli zazwyczaj istoty ludzkie, z ktorymi mozna bedzie porozmawiac i nie beda wrogo nastawione
+event_inherited(); //state,dead;
+dialogs = ds_map_create(); //lista/mapa z dialogami
 </string>
           </argument>
         </arguments>
