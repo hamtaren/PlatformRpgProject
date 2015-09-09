@@ -75,11 +75,6 @@
     <instance objName="obj_Leader" x="80" y="288" name="inst_A2FEAB22" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="80" y="256" name="inst_87CA9781" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="80" y="224" name="inst_F61403B3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_LeaderTop" x="400" y="192" name="inst_9218D530" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Leader" x="400" y="224" name="inst_CBECB9DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Leader" x="400" y="256" name="inst_08F44152" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Leader" x="400" y="288" name="inst_BC85E898" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Leader" x="400" y="320" name="inst_2DB21842" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_LeaderTop" x="80" y="192" name="inst_C6D05C82" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="32" y="160" name="inst_2511D7D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="416" y="160" name="inst_C0728D74" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -88,6 +83,10 @@
     <instance objName="obj_Door" x="112" y="288" name="inst_1D29D63E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="464" y="320" name="inst_CE3AA812" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Camera" x="16" y="0" name="inst_90988FE4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Elevator" x="400" y="272" name="inst_77F1A3F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_WaypointElevator" x="400" y="176" name="inst_D79785F0" locked="0" code="" scaleX="0.100000001490116" scaleY="0.100000001490116" colour="4294967295" rotation="0"/>
+    <instance objName="obj_WaypointElevator" x="400" y="304" name="inst_13211A8D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_WaypointElevator" x="400" y="176" name="inst_7C0A315C" locked="0" code="dir = ELEVATOR_DOWN;&#xA;obj_Elevator.waypoint = id;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

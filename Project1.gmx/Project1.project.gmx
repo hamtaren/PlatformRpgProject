@@ -43,6 +43,7 @@
       <sprite>sprites\spr_HeroClimb</sprite>
       <sprite>sprites\spr_HeroWallSlide</sprite>
     </sprites>
+    <sprite>sprites\spr_Elevator</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -115,32 +116,40 @@
       <object>objects\obj_Leader</object>
     </objects>
     <object>objects\obj_Camera</object>
+    <object>objects\obj_Elevator</object>
+    <object>objects\obj_WaypointElevator</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
   </rooms>
-  <constants number="20">
+  <constants number="26">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
     <constant name="DEBUG_WARN">-101</constant>
-    <constant name="LOG_TINY">3</constant>
-    <constant name="LOG_SMALL">10</constant>
-    <constant name="LOG_MED">20</constant>
-    <constant name="LOG_FULL">46</constant>
+    <constant name="ELEVATOR_DOWN">270</constant>
+    <constant name="ELEVATOR_MOVE">1</constant>
+    <constant name="ELEVATOR_STAY">0</constant>
+    <constant name="ELEVATOR_STOP">3</constant>
+    <constant name="ELEVATOR_UP">90</constant>
+    <constant name="ELEVATOR_WAIT">2</constant>
     <constant name="HIDEOUT_BARREL">1</constant>
-    <constant name="HIDEOUT_HOLEINWALL">2</constant>
+    <constant name="HIDEOUT_HOLEINWALL">5</constant>
     <constant name="HIDEOUT_NONE">0</constant>
-    <constant name="ITEM_ARMOR">202</constant>
-    <constant name="ITEM_GOLD">205</constant>
-    <constant name="ITEM_KEY">203</constant>
-    <constant name="ITEM_NONE">200</constant>
-    <constant name="ITEM_QUEST">204</constant>
-    <constant name="ITEM_WEAPON">201</constant>
-    <constant name="STATE_CLIMB">101</constant>
-    <constant name="STATE_HIDE">102</constant>
-    <constant name="STATE_MOVE">100</constant>
+    <constant name="ITEM_ARMOR">2</constant>
+    <constant name="ITEM_GOLD">5</constant>
+    <constant name="ITEM_KEY">3</constant>
+    <constant name="ITEM_NONE">0</constant>
+    <constant name="ITEM_QUEST">4</constant>
+    <constant name="ITEM_WEAPON">1</constant>
+    <constant name="LOG_FULL">46</constant>
+    <constant name="LOG_MED">20</constant>
+    <constant name="LOG_SMALL">10</constant>
+    <constant name="LOG_TINY">3</constant>
+    <constant name="STATE_CLIMB">1</constant>
+    <constant name="STATE_HIDE">2</constant>
+    <constant name="STATE_MOVE">0</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
