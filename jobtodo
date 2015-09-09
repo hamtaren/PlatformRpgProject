@@ -1,10 +1,106 @@
-Sprawdz ten warunek
-if ( place_meeting(x,y,obj_Leader) && (!place_meeting(x,y+cspd,obj_Leader) && !place_meeting_solid(x,y+cspd)) )
+//ctrl+f//TODO:  pokombinowac co zrobic zeby nie wtopil sie w sufit/róg
+//TODO: zrobic zeby kazda postac dziedziczyla po obiekcie obj_Actor, czy cos w tym stylu; wtedy przeciwnicy  (obj_NameOfTheEnemy) beda dzidziczyc w nastepujacy sposob:  obj_NameOfTheEnemy:obj_Enemy:obj_Actor
+
+par_Actor //parent po ktorym beda dziedziczyc wszystkie postaci, potwory, npc itp.
 {
-    scr_HeroChageState(STATE_MOVE);
-    vspd = cspd;
+	CREATE()
+	{
+		state = STATE_NONE;
+		dead = false;
+	}	
 }
-else if (place_meeting(x,y+1,obj_LeaderTop)  || !place_meeting_solid(x,y+cspd))
+par_NPC //parent po ktorym beda dziedziczyc wszystkie NPCe
 {
-    y+=cspd;
+	CREATE()
+	{
+		var dialogs = ds_map_create(); // lista (mapa) z dialogami
+	}
+}
+
+//pulling leaver
+if (place_meeting(x,y,obj_Leaver) && place_meeting_solid(x,y+1) && !place_meeting(x,y+1,obj_Elevator))
+{
+	//call elevator
+}
+
+obj_Elevator : obj_Solid
+{
+	CREATE()
+	{
+		//binding the waypoints to the elevator
+		scr_ElevatorBindWaypoints();
+	}
+	
+	STEP()
+	{
+		if (state == ELEVATOR_MOVE)
+		{
+			if (waypoint!=noone)
+			{
+				var smoothSpd = distance_to_point(waypoint.x,waypoint.y) / smooth;
+				smoothSpd = clamp(smoothSpd,-spd,spd);
+				y += lengthdir_y(smoothSpd,dir);//sprawdzic czy dziala w przeciwnym razie speed = smoothSpd; direction = dir;
+				
+			}
+			else //nie ma waypointa
+			{
+				debug_log("Winda nie ma waypointa",DEBUG_ERROR);
+				state == ELEVATOR_STOP;
+			}
+			
+			if (place_meeting(x,y-spd,obj_Hero))
+			{
+				var hero = obj_Hero;
+				hero.y = y - offsetY; //sprawdz czy bedzie mogl podskoczyc
+				//TODO: pokombinowac co zrobic zeby nie wtopil sie w sufit/róg
+			}
+		}
+	}	
+}
+
+scr_ElevatorBindWaypoints()
+{
+	//under elevator
+	for(var i = y; i < room_height; i+=16)
+	{
+		var waypoint = instance_place(x,i,obj_WaypointElevator);
+		//if there is a waypoint and is not bound
+		if (waypoint != noone && waypoint.bind == noone)		
+			waypoint.bind = id;//(this)?
+	}
+	//above elevator
+	for(var i = y; i>0; i+=16)
+	{
+		var waypoint = instance_place(x,i,obj_WaypointElevator);
+		if (waypoint != noone && waypoint.bind == noone)
+			waypoint.bind = id;//this?
+	}
+}
+
+scr_ElevatorFindNextWapoint()
+{	
+	//under elevator
+	if (dir == ELEVATOR_DOWN)
+		for(var i = y; i < room_height; i+=16)
+		{
+			var waypoint = instance_place(x,i,obj_WaypointElevator);
+			//if there is a waypoint
+			if (waypoint != noone)
+			{
+				this.waypoint = waypoint; //sprawdzic czy nie bedzie sie pieprzyc, w przeciwnym wpadku zmienic w elevatorze zmienna waypoint na nextWaypoint i te linijke na: nextWaypoint = waypoint;
+				exit;
+			}
+		}
+		//above elevator
+	else if (dir == ELEVATOR_UP)
+		for(var i = y; i < room_height; i+=16)
+		{
+			var waypoint = instance_place(x,i,obj_WaypointElevator);
+			if (waypoint != noone)
+			{
+				this.waypoint = waypoint; //sprawdzic czy nie bedzie sie pieprzyc...
+				exit;
+			}
+		}
+	debug_log("nie znaleziono zadnego waypointu",DEBUG_WARN);
 }
