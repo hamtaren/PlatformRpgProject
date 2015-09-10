@@ -215,3 +215,92 @@ scr_BinderDoorToLeaver(binding)
 		debug_log("Nie udalo sie przypisac dzwigni do drzwi");
 	}
 }
+
+
+//TODO: obj_HeroStats (albo jakos tak), ktory bedzie przechowywał informacje o satystykach bohatera z pokoju do pokoju
+obj_HeroStats
+{
+	Persistent = true;
+	CREATE()
+	{
+	//scr_HeroStatsVariablesInit():
+		Health = 0;
+		MaxHealth =0;
+	}
+}
+
+
+obj_Diagonal : obj_Solid
+{
+	CREATE()
+	{
+		event_inherited(); //isSolid;
+	}
+}
+place_meeting_diagonal(x,y)
+{
+///place_meeting_diagonal(x,y)
+var xx = argument0;
+var yy = argument1;
+
+	if (place_meeting(xx,yy,obj_Diagonal) && isSolid)
+		return true;
+		
+	return false;
+}
+//wbiegaie po pochylym
+if (place_meeting_diagonal(x+hspd,y)
+{
+	for (var i=0; i<8; i++)
+	{
+		if (!place_meeting_diagonal(x+hspd,y+i))
+		{
+			y+=i;
+			break;
+		}
+	}
+	hspd = 0;
+}//zbieganie po pochylym
+else if(place_meeting_diagonal(x+hspd,y+8))
+{
+	for (var i = 0; i<8;i++)
+	{
+		if !(place_meeting_diagonal(x+hspd,y+8-i)
+		{
+			y+=8-i;
+			break;
+		}
+	}
+}
+
+//spadanie
+if (vspd == _maxFallSpeed && !deathFall)
+{
+	if (deathFallCounter>=deathFallCounterCount)
+	{
+			debug_log("Przy upadku bedzie dead",DEBUG_INFO);
+			deathFall = true;
+	}
+	else
+		deathFallCounter++;
+}
+else
+	deathFallCounter = 0;
+
+//upadek
+if (place_meeting_solid(x,y+vspd) && deathFall)
+{
+	scr_HeroDeath();	//smierc
+	deathFall = false;	//juz nie spada
+}
+
+//skrypt umierania
+scr_HeroDeath()
+{
+	if (!obj_DebugController.GodMode)
+		dead = true;
+	debug_log("DEATH",DEBUG_ERROR);
+}
+
+
+//TODO: jak juz bedzie drzewko talenow, to trzeba bedzie w debugerContollerze zrobic odpowiedni sposob na wlaczanie i wylaczanie umiejetnosci
