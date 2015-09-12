@@ -27,7 +27,6 @@
     <sound>sound\sound0</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_Solid</sprite>
     <sprite>sprites\spr_Leader</sprite>
     <sprite>sprites\spr_LeaderTop</sprite>
     <sprite>sprites\spr_Door</sprite>
@@ -45,8 +44,13 @@
       <sprite>sprites\spr_HeroClimb</sprite>
       <sprite>sprites\spr_HeroWallSlide</sprite>
     </sprites>
+    <sprite>sprites\spr_Leaver</sprite>
     <sprite>sprites\spr_Elevator</sprite>
-    <sprite>sprites\scr_Leaver</sprite>
+    <sprites name="Solids">
+      <sprite>sprites\spr_DiagonalLeft</sprite>
+      <sprite>sprites\spr_DiagonalRight</sprite>
+      <sprite>sprites\spr_Solid</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -58,8 +62,6 @@
       <script>scripts\scr_HeroChageState.gml</script>
       <script>scripts\scr_HeroAnimator.gml</script>
       <script>scripts\scr_HeroAttack.gml</script>
-      <script>scripts\scr_HeroMove.gml</script>
-      <script>scripts\scr_HeroClimb.gml</script>
       <script>scripts\scr_HeroActions.gml</script>
       <scripts name="Actions">
         <script>scripts\scr_HeroActionDoorOpen.gml</script>
@@ -69,6 +71,10 @@
         <scripts name="Hideouts">
           <script>scripts\scr_HeroActionHideoutBarrel.gml</script>
         </scripts>
+      </scripts>
+      <scripts name="States">
+        <script>scripts\scr_HeroStateClimb.gml</script>
+        <script>scripts\scr_HeroStateMove.gml</script>
       </scripts>
     </scripts>
     <scripts name="Controllers">
@@ -96,10 +102,19 @@
           <script>scripts\scr_DebugCommandCam.gml</script>
           <script>scripts\scr_DebugCommandId.gml</script>
           <script>scripts\scr_DebugCommandDel.gml</script>
+          <script>scripts\scr_DebugCommandDet.gml</script>
+        </scripts>
+        <scripts name="IdDetail">
+          <script>scripts\scr_IdDetailCreate.gml</script>
+          <script>scripts\scr_IdDetailDraw.gml</script>
+          <script>scripts\scr_IdDetailVarsList.gml</script>
+          <script>scripts\scr_IdDetailVarsMapCreate.gml</script>
+          <scripts name="VarsListObjectsSpec">
+            <script>scripts\scr_IdDetailobj_Door.gml</script>
+            <script>scripts\scr_IdDetailobj_LeaverDoor.gml</script>
+          </scripts>
         </scripts>
       </scripts>
-      <script>scripts\scr_GameController.gml</script>
-      <script>scripts\scr_Ini.gml</script>
       <scripts name="BinderController">
         <script>scripts\scr_BinderVariablesInit.gml</script>
         <script>scripts\scr_BinderDisposeBindings.gml</script>
@@ -112,39 +127,58 @@
           <script>scripts\scr_BinderBindDoorToLeaver.gml</script>
         </scripts>
       </scripts>
+      <script>scripts\scr_GameController.gml</script>
+      <script>scripts\scr_Ini.gml</script>
+    </scripts>
+    <scripts name="Doors">
+      <script>scripts\scr_DoorOpen.gml</script>
+      <script>scripts\scr_DoorVariablesInit.gml</script>
+      <script>scripts\scr_DoorController.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
   </fonts>
   <objects name="objects">
-    <object>objects\obj_Solid</object>
-    <object>objects\obj_Item</object>
-    <object>objects\obj_Door</object>
     <objects name="Controllers">
       <object>objects\obj_GameController</object>
       <object>objects\obj_BinderController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
     </objects>
-    <objects name="Hideouts">
-      <object>objects\obj_Barrel</object>
-      <object>objects\obj_Hideout</object>
-    </objects>
-    <objects name="Leaders">
-      <object>objects\obj_LeaderTop</object>
-      <object>objects\obj_Leader</object>
-    </objects>
     <object>objects\obj_Camera</object>
-    <object>objects\obj_Elevator</object>
-    <object>objects\obj_WaypointElevator</object>
     <objects name="Actors">
       <object>objects\obj_Hero</object>
       <object>objects\obj_Actor</object>
       <object>objects\obj_Npc</object>
     </objects>
-    <object>objects\obj_Leaver</object>
-    <object>objects\obj_LeaverDoor</object>
+    <objects name="Interactionable">
+      <objects name="Elevator">
+        <object>objects\obj_WaypointElevator</object>
+        <object>objects\obj_Elevator</object>
+      </objects>
+      <object>objects\obj_Door</object>
+      <object>objects\obj_Item</object>
+      <objects name="Hideouts">
+        <object>objects\obj_Barrel</object>
+        <object>objects\obj_Hideout</object>
+      </objects>
+      <objects name="Leaders">
+        <object>objects\obj_LeaderTop</object>
+        <object>objects\obj_Leader</object>
+      </objects>
+      <objects name="Leavers">
+        <object>objects\obj_LeaverDoor</object>
+        <object>objects\obj_Leaver</object>
+      </objects>
+    </objects>
+    <objects name="Solids">
+      <object>objects\obj_Solid</object>
+      <object>objects\obj_Diagonal</object>
+      <object>objects\obj_DiagonalLeft</object>
+      <object>objects\obj_DiagonalRight</object>
+    </objects>
+    <object>objects\obj_IdDetail</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>

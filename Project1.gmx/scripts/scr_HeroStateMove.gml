@@ -1,4 +1,4 @@
-///scr_HeroMove
+///scr_HeroStateMove()
 
 //wykrywanie podloza/grawitacja/tarcie
 if (!place_meeting_solid(x,y+vspd+1))

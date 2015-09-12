@@ -1,4 +1,4 @@
-///scr_HeroClimb
+///scr_HeroStateClimb()
 //schodzenie na boki
 //LEWO
 if (keyboard_check(KEY_LEFT) && !place_meeting_solid(x-16,y-2) && !place_meeting(x,y,obj_LeaderTop))

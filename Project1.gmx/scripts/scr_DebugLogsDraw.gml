@@ -6,8 +6,9 @@ var vy = argument1;
 for (var i = 0; i< ds_list_size(log) && i< logShowLen; i++)
 {
     //pobieramy mape z listy
-    var map = ds_list_find_index(log,ds_list_size(log) - i-1);
-    
+    var json = ds_list_find_value(log,ds_list_size(log) - i-1);
+    var map =  json_decode(json);
+
     //pobieramy wartosci z mapy
     var logText = ds_map_find_value(map,'log');
     var logType = ds_map_find_value(map,'type');

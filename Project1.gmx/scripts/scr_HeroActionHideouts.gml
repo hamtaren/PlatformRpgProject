@@ -5,6 +5,6 @@ if (place_meeting(x,y,obj_Hideout) && grav=0) //nie mozna sie chowac nie dotykaj
     switch (hideout.type)
     {
         case HIDEOUT_BARREL: scr_HeroActionHideoutBarrel(); break;
-        default: show_message("default hideout"); break;
+        default: debug_log("Nie przypisana kryjowka",DEBUG_ERROR); break;
     }
 }

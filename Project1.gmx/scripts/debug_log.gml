@@ -10,11 +10,16 @@ for (var i = string_length(text) div 78; i>=0; i--)
 {
     //bierzemy kawalki tekstu od konca, zeby wywolujac sprawic wrazenie ze to jeden dlugi log, ktory zawija sie na koncu ekranu
     txt = string_copy(text,i*78 +1,78);        
-    
-    var mapLog = ds_map_create();
+            
+    var mapLog = ds_map_create(); 
+       
     //stworzenie mapy logow
     ds_map_add(mapLog,"log",txt);
     ds_map_add(mapLog,"type",type);
-    //dodanie mapy do listy logow w debugerze
-    ds_list_add(obj_DebugController.log, mapLog);
+    
+
+    //dodanie mapy do listy logow w debugerze (zakodowujemy w jsonie zeby nie bylo problemu ze strukturami)
+    var json = json_encode(mapLog);
+    ds_list_add(obj_DebugController.log, json);
+    
 }

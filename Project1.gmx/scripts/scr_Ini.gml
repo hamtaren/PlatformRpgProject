@@ -1,4 +1,4 @@
-///scr_Ini
+///scr_Ini()
 //inicjalizacja zmiennych globalnych i innych rzeczy
 
 //PRZYCISKI DO STEROWANIA

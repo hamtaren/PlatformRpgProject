@@ -1,4 +1,8 @@
-///scr_GameController
+///scr_GameController()
+
+//TWORZENIE BINDERA, wszystko przez kolejnosc tworzenia obiektow, co psuje dzialanie.
+if (!instance_exists(obj_BinderController))
+    instance_create(x+16,y,obj_BinderController);
 
 //FULLSCREEN
 if (keyboard_check_pressed(vk_f4))

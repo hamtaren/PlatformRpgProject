@@ -21,11 +21,15 @@ if (keyboard_check_pressed(vk_enter))
                 case "reset": scr_DebugCommandReset(); break;
                 case "god mode": scr_DebugCommandGodMode(); break;
                 case "teleport": scr_DebugCommandTeleport(); break;
-                case "cam": scr_DebugCommandCam(); break;
+                case "cam -m": scr_DebugCommandCam(false); break;
+                case "cam ": scr_DebugCommandCam(true); break;
                 case "keys": scr_DebugCommandKeys(); break;
                 case "id": scr_DebugCommandId(); break;
-                case "del ": scr_DebugCommandDel(); break;
-                
+                case "del -m" : scr_DebugCommandDel(false); break;
+                case "del ": scr_DebugCommandDel(true); break;
+                case "det -c": scr_DebugCommandDet("c"); break;
+                case "det -s": scr_DebugCommandDet("s"); break;
+                case "det -d": scr_DebugCommandDet("d"); break;
                 default: debug_log("Nie dodano do switcha w scr_DebugCommands",DEBUG_ERROR); break;
             }
             break;
