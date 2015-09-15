@@ -1,0 +1,63 @@
+
+//przemyslec wszystkie mozliwe efekty wystepujace przy atakowaniu i sposob ich przeliczania i aplikowania
+//uwspolnic dmg i res, tak zeby nie dublowac funkcji (dodac jakis typ i przekazywac go jako dodatkowy argument?)
+//dmgBonus => mapa C listy C tablica[2] (0 - uniqueName, 1 - value, 2 - timer)
+getDmgBonus(DMG_TYPE)
+{
+	var type = argument0;
+	//lista z wszystkimi bonusami zwiazanymi z tym typem obrazen
+	var dmgBonusList = ds_map_find(dmgBonusMap, type);
+	//sumowanie wszstkich elementow tej listy
+	var dmg = 0;
+	for (var i=0; i<ds_list_size(dmgBonusList);i++)	
+		dmg+=ds_list_find_value(dmgBonusList,i);
+	
+	return dmg;
+}
+
+createDamage()
+{
+//dmgBlunt = dmgBaseBlunt + getDmgBonus(DMG_BLUNT);
+//dmgBase - wynikajace z poziomu/siły itp
+//getDmgBonus(DMG_TYPE) - wszystkie dodatkowe wpolczynniki takie jak obrazenia broni, buff i debuffy
+		var dmgMap = ds_map_create();
+		//normal
+		dmgMap[# "pierce"] = dmgPierce;
+		dmgMap[# "slash"] = dmgSlash;
+		dmgMap[# "blunt"] = dmgBlunt;
+		//elemental
+		dmgMap[# "fire"] = dmgFire;
+		dmgMap[# "poison"] = dmgPoison;
+		dmgMap[# "electro"] = dmgElectro;
+		//magical
+		dmgMap[# "holy"] = dmgHoly;
+		dmgMap[# "death"] = dmgDeath;
+		//true
+		dmgMap[# "true"] = dmgTrue;
+		return jsonEncoder(dmg);
+		//blokowanie 100%normal, 50%elemental, 0%magical
+}
+
+recieveDamge(dmgJSON)
+{
+	var dmgMap = JSONDecode(argument0);	
+	var dmg = 0;
+	dmg += dmgMap[# "pierce"] * resPierce;
+	dmg += dmgMap[# "blunt"] * resBlunt;
+	//...
+	dmg += dmgMap[# "true"];
+	return dmg;
+}
+
+setResistances(p,s,b,f,ps,e,h,d)
+{
+	//neutral = 1, resistant <1,  unvunereable = 0, absorbtion <0, vunereable >1
+	
+}
+
+getResistancePercent(res)
+{
+	var res = argument0;
+	//przedstawienie odpornosci w procentach
+	return string(-1*(res-1)*-100) + "%";
+}

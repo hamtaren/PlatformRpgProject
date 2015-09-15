@@ -1,0 +1,27 @@
+///Poprawki
+//Przed implementacja przetestowac
+
+//Slizganie sie przy scianie podczas spadania
+if ( (place_meeting(x+5,y,obj_SlideableSolid) || place_meeting(x-5,y,obj_SlideableSolid)) && grav!=0 && hspd==0)
+	slide = true;
+else
+	slide = false;
+
+//Odbijanie sie od scian podczas slizgania
+if (slide)
+{
+    if (keyboard_check_pressed(KEY_LEFT))
+    {
+        hspd=-5;
+        vspd=-3;
+    }
+    else if (keyboard_check_pressed(KEY_RIGHT))
+    {
+        hspd=5;
+        vspd=-3;
+    }
+}
+
+//Zatrzymywanie
+if ( abs(hsp!=0))
+	hspd = (abs(hspd) - friction * sign(hspd),0) * sign(hspd);
