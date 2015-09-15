@@ -4,37 +4,37 @@
 //Animacje poruszania sie
 if (state = STATE_MOVE)
 {
-    if (grav==0) //jezeli jest na ziemi
+    if (grav==0) 
     {
-        if (abs(hspd)>0) //jezeli sie porusza
+        if (abs(hspd)>0) //rusza sie
         {
-            image_xscale = sign(hspd); //odwraca sie w strone w ktora jest skierowana predkosc
+            image_xscale = sign(hspd);
             sprite_index = spr_HeroMask;
         }
-        else
+        else //stoi w miejscu
         {
             sprite_index = spr_HeroMask;
         }
     }
     else //jezeli jest w powietrzu
-    {
-        //Animacja spadania przy scianie (taki niby slide), nie wlacza sie na drzwiach
-        if (place_meeting_solid(x+1,y) && !place_meeting(x+1,y,obj_Door))
-        {
-            sprite_index = spr_HeroWallSlide; //rysowane tak ze sciana jest z prawej
-            image_xscale = 1;
-        }
-        else if (place_meeting_solid(x-1,y) && !place_meeting(x-1,y,obj_Door))
+    {        
+        if (slide) //Animacja spadania przy scianie (taki niby slide), nie wlacza sie na drzwiach
         {
             sprite_index = spr_HeroWallSlide;
-            image_xscale = -1;
+            
+            //ustalanie w ktora strone odwrocony jest obrazek
+            if (place_meeting(x-5,y,obj_SlideableSolid))
+                image_xscale = 1;
+            else if (place_meeting(x+5,y,obj_SlideableSolid))
+                image_xscale = -1;            
         }
-        else
+        else //Zwykle spadanie
         {
             sprite_index = spr_HeroMask;
             if (abs(hspd)>0)
             {
-                image_xscale = sign(hspd); //odwraca sie w strone w ktora jest skierowana predkosc
+                //odwraca sie w strone w ktora jest skierowana predkosc
+                image_xscale = sign(hspd); 
             }
         }
     }

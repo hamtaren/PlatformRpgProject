@@ -50,11 +50,16 @@
       <sprite>sprites\spr_DiagonalLeft</sprite>
       <sprite>sprites\spr_DiagonalRight</sprite>
       <sprite>sprites\spr_Solid</sprite>
+      <sprite>sprites\spr_SlideableSolid</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\tile_ground</background>
+    <background>background\background1</background>
+  </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\place_meeting_diagonal.gml</script>
     <script>scripts\place_meeting_solid.gml</script>
     <scripts name="Hero">
       <script>scripts\scr_HeroVariablesInit.gml</script>
@@ -111,6 +116,7 @@
           <script>scripts\scr_IdDetailVarsMapCreate.gml</script>
           <scripts name="VarsListObjectsSpec">
             <script>scripts\scr_IdDetailobj_Door.gml</script>
+            <script>scripts\scr_IdDetailobj_Hero.gml</script>
             <script>scripts\scr_IdDetailobj_LeaverDoor.gml</script>
           </scripts>
         </scripts>
@@ -174,6 +180,7 @@
     </objects>
     <objects name="Solids">
       <object>objects\obj_Solid</object>
+      <object>objects\obj_SlideableSolid</object>
       <object>objects\obj_Diagonal</object>
       <object>objects\obj_DiagonalLeft</object>
       <object>objects\obj_DiagonalRight</object>

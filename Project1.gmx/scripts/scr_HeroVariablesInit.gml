@@ -12,5 +12,5 @@ vspd = 0;           //kontrolka szybkosci poruszania sie w pionie
 cspd = 4;           //szybkosc wspinaczki, wchodzenia po linie/drabinie
 
 hidden = false;     //czy ukryty
-
+slide = false;      //czy zjezdza/slizga sie po sciane
 state = STATE_MOVE; //STATE_MOVE, STATE_CLIMB, STATE_HIDE
