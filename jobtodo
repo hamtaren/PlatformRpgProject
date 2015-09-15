@@ -304,3 +304,36 @@ scr_HeroDeath()
 
 
 //TODO: jak juz bedzie drzewko talenow, to trzeba bedzie w debugerContollerze zrobic odpowiedni sposob na wlaczanie i wylaczanie umiejetnosci
+
+///TODO: zaimplementowac te dwie funkcje o ktorych jest mowa w jednym z DoZrobienia w scr_HeroStateMove
+//scr_keyboard_check_sides()
+{
+	if (keyboard_check(KEY_RIGHT) && !keyboard_check(KEY_LEFT))
+	{
+	 side = 1;
+	 return true;
+	}
+	else if (keyboard_check(KEY_LEFT) && !keyboard_check(KEY_RIGHT))
+	{
+		side = -1;
+		return true;
+	}
+
+	return false;
+}
+
+//scr_keyboard_check_pressed_sides()
+{
+	if (keyboard_check_pressed(KEY_RIGHT) && !keyboard_check(KEY_LEFT))
+	{
+	 side = 1;
+	 return true;
+	}
+	else if (keyboard_check_pressed(KEY_LEFT) && !keyboard_check(KEY_RIGHT))
+	{
+		side = -1;
+		return true;
+	}
+
+	return false;
+}
