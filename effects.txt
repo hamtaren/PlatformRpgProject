@@ -1,0 +1,42 @@
+///Pomysly
+obj_Effect //parent dla wszystkich efektow
+{
+	caster = noone;//obiekt wywolujacy efekt
+}
+
+//parent dla efektow oddzialujacych na wywolujacego
+obj_EffectSelf : obj_Effect 
+{
+	event_inherited(); //caster
+}
+
+//parent dla efektow odzialujacych na cel
+obj_EffectOther : obj_Effect
+{
+	event_inherited(); //caser
+	target = noone; //obiekt ktory przyjmuje efekt na klate
+}
+
+ //parent dla efektow odzialujacych na obszarze
+obj_EffectAoE : obj_Effect
+{
+	event_inherited(); //caster
+}
+
+
+///scr_EffectKnockBack(from,to)
+{
+	var from = argument0;	//caster
+	var to = argument1;		//target
+
+	dir = sign(form.x - to.x);		//w ktora strone bedzie odpychac
+
+	if (!place_meeting_solid( to.x+strenght*dir, to.y))
+		to.x += strenght*dir;
+	else
+	{
+		for (var i = 0; i<strenght; i++)
+			if (place_meeting_solid(to.x+(strenght-i)*dir, to.y))
+				to.x += (strenght-i)*dir;
+	}
+}
