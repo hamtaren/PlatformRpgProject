@@ -81,6 +81,8 @@
         <script>scripts\scr_HeroStateClimb.gml</script>
         <script>scripts\scr_HeroStateMove.gml</script>
       </scripts>
+      <script>scripts\keyboard_check_sides.gml</script>
+      <script>scripts\keyboard_check_pressed_sides.gml</script>
     </scripts>
     <scripts name="Controllers">
       <scripts name="DebugController">

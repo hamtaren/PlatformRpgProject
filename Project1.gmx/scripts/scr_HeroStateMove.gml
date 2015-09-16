@@ -99,12 +99,11 @@ if (slide)
 }
 
 //Zatrzymywanie
-if !(keyboard_check(KEY_LEFT) or keyboard_check(KEY_RIGHT))
+if (!keyboard_check_sides()) //dziala
 {
     if ( abs(hspd!=0))
-        	hspd =max (abs(hspd) - friction ,0) * sign(hspd);
+        hspd =max (abs(hspd) - friction ,0) * sign(hspd); 
 }
-
 
 //Graniczenie predkosci pionowej
 vspd = clamp(vspd, -10, 10); 
