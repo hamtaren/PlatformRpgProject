@@ -1,0 +1,38 @@
+				//elevator
+				//kontakt z jakas postacia i przesuwanie jej
+				if (place_meeting(x+hspd,y+vspd,obj_Actor))
+				{
+					var actor = instance_place(x+hspd,y+vspd,obj_Actor);
+					with(actor)
+					{
+					//ktoras z ponizszych wersji jest poprawniejsza, trzeba wytestowac ktora
+						if (!place_meeting_solid(x+hspd+other.hspd,y+vspd+other.vspd))
+						if (!place_meeting_solid(x+other.hspd, y+other.vspd))
+						{
+							x+=other.hspd;
+							y+=other.vspd;
+						}
+						else
+						{
+							debug_log("DEATH",DEBUG_WARN);
+							dead = true;
+						}
+					}					
+				}
+								
+				if (keySide=1 && grav==0)
+				{
+				//schodzenie po stromym, jezeli to nie zadziala to rezygnujemy z pochylosci w tej grze
+					if (place_meeting_diagonal(x-4,y) && !place_meeting_solid(x+hspd+moveAcc,y))
+					{
+						for (var i =0; i<8; i++)
+						{
+							if (!place_meeting_diagonal(x,y+8-i))
+							{
+								y+=8-i;
+								hspd = max(abs(hspd)+moveAcc)*keySide;
+								break;
+							}
+						}
+					}					
+				}
