@@ -24,9 +24,9 @@ if (state = STATE_MOVE)
             
             //ustalanie w ktora strone odwrocony jest obrazek
             if (place_meeting(x-5,y,obj_SlideableSolid))
-                image_xscale = 1;
+                image_xscale = -1;
             else if (place_meeting(x+5,y,obj_SlideableSolid))
-                image_xscale = -1;            
+                image_xscale = 1;            
         }
         else //Zwykle spadanie
         {

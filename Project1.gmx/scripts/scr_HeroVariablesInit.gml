@@ -16,4 +16,3 @@ keySide = 1;        //okresla ktory przycisk jest wcisniety (lewo -1, prawo 1)
 hidden = false;     //czy ukryty
 slide = false;      //czy zjezdza/slizga sie po sciane
 state = STATE_MOVE; //STATE_MOVE, STATE_CLIMB, STATE_HIDE
-

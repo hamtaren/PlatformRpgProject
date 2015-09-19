@@ -1,9 +1,4 @@
 ///scr_IdDetailVarsList()
-//TODO: dodawanie zmiennych do wyswietlania
-/*
-sprawdzanie ktory obiekt w refie i czy istnieje
-dodawnie konkretnych zmiennych do listy i czy istnieja (jezeli sie da?)
-*/
 
 if (instance_exists(ref))
 {

@@ -1,5 +1,5 @@
 ///scr_HeroStateMove()
-//TODO: pomysl: ujednolicic dla prawo/lewo wszystkie skrypty, dodajac zmienna side, ktora okresla w ktora strone wciskany jest przycisk, funkcje ustalajaca ta zmienną oraz funkcje skracajaca zapis "if (keyboard_check(key_right) || keyboard_check(key_left)" np. keyboard_check_sides i keyboard_check_pressed_sides(jezeli bedzie potrzba rozroznic, ale chyba bedzie)
+
 //wykrywanie podloza/grawitacja/tarcie
 if (!place_meeting_solid(x,y+vspd+1))
 {
@@ -21,60 +21,49 @@ if (keyboard_check_pressed(KEY_UP))
         vspd = jumpPower + (1 - (abs(hspd) / moveSpeed))*3        
 }
 
-//Chodzenie na boki
-//LEWO
-if (!place_meeting_solid(x+hspd-moveAcc, y))
+//Wcisniecie i trzymanie przycisku na boki
+if (keyboard_check_sides())
 {
-    if (keyboard_check(KEY_LEFT) && !keyboard_check(KEY_RIGHT) && grav==0)
-    {
-        var multi = 1;
-        //jezeli chce biec w przeciwna strone do aktualnego kierunku poruszania sie to latwiej wyhamowac
-        if (hspd>0)
-            multi=5;
-
-        hspd -= multi*moveAcc; 
-    }
-}
-
-//PRAWO
-//TODO: przerobic tak, zeby mozna bylo ta pozniej zaaplikowac do AI wrogow (czyli zrobic super-uber funkcje)
-if (keyboard_check(KEY_RIGHT) && !keyboard_check(KEY_LEFT) && grav == 0)
-{
-    if (!place_meeting_solid(x+hspd+moveAcc, y))
-    {
-        var multi = 1;
-        
-        if (hspd<0)
+//Jezeli jest na ziemi
+    if (grav==0)
+    {    
+        //Chodzenie na boki na plaskim
+        if (!place_meeting_solid(x+hspd+moveAcc*keySide,y))
+        {
+            var multi = 1;
+            if (sign(hspd)!=keySide) //szybsze wyhamowanie jezeli biegnie wciskamy przycisk w przeciwnym kierunku do aktualnego kierunku poruszania sie
             multi = 5;
-        
-        hspd += multi*moveAcc;
-    }
-    else if (place_meeting_diagonal(x+hspd+moveAcc, y) && !place_meeting_diagonal(x-4,y) )
-    {
-        for (var i = 0; i<8; i++)
+            
+            hspd += multi*moveAcc*keySide;
+        }
+        /*TYMCZASOWO WYLACZONE. DZIALA, ALE NIE ZAWSZE PLYNNIE.
+        //Wchodzenie pod gorke        
+        if (place_meeting_diagonal(x+hspd+(moveAcc*keySide), y) && !place_meeting_diagonal(x-(4*keySide),y) )
         {
-            if (!place_meeting_diagonal(x+hspd+moveAcc,y-i))
+            for (var i = 0; i<8; i++)
             {
-                y-=i;
-                hspd = max(hspd+moveAcc, 1);
-                break;
+                if (!place_meeting_diagonal(x+hspd+(moveAcc*keySide),y-i))
+                {                   
+                    y-=i;
+                    hspd = max(abs(hspd)+moveAcc, 1)*keySide;
+                    break;
+                }
             }
         }
-    }
-    //TODO: gladkie schodznie
-    /*
-    else if (place_meeting_diagonal(x+hspd+moveAcc, y+8) && !place_meeting_diagonal(x+hspd+moveAcc,y))
-    {
-        for (var i = 0; i<8; i++)
+        //Schodzenie
+        if (place_meeting_diagonal(x-(4*keySide),y) && !place_meeting_solid(x+hspd+moveAcc*keySide,y))
         {
-            if (!place_meeting_diagonal(x+hspd+moveAcc,y+8-i))
+            for (var i =0; i < 8; i ++)
             {
-                y+=8-i;
-                hspd = 0;//max(hspd+moveAcc,1);
-                break;
+                if (!place_meeting_solid(x,y+8-i))
+                {
+                    y += 8-i;
+                    hspd = max(3, 1)*keySide;
+                    break;
+                }
             }
-        }
-    }*/
+        }*/
+    }   
 }
 
 //Slizganie sie przy scianie podczas spadania
@@ -83,23 +72,19 @@ if ( (place_meeting(x+5,y,obj_SlideableSolid) || place_meeting(x-5,y,obj_Slideab
 else
     slide = false;
 
-//Odbijanie sie od scian podczas slizgania
-if (slide)
+//Wcisniecie przysku na boki
+if (keyboard_check_pressed_sides())
 {
-    if (keyboard_check_pressed(KEY_LEFT))
+    //Odbijanie sie od scian podczas slizgania
+    if (slide)
     {
-        hspd=-5;
-        vspd=-3;
-    }
-    else if (keyboard_check_pressed(KEY_RIGHT))
-    {
-        hspd=5;
+        hspd=5*keySide;
         vspd=-3;
     }
 }
 
 //Zatrzymywanie
-if (!keyboard_check_sides()) //dziala
+if (!keyboard_check_sides())
 {
     if ( abs(hspd!=0))
         hspd =max (abs(hspd) - friction ,0) * sign(hspd); 

@@ -9,5 +9,4 @@ else if (keyboard_check(KEY_LEFT) && !keyboard_check(KEY_RIGHT))
     keySide = -1;
     return true;
 }
-debug_log("ZATRZYMANIE",DEBUG_SUCCESS);
 return false;
