@@ -1,5 +1,4 @@
 ///scr_DoorVariablesInit()
-//TODO: poprawic otwieranie
 image_speed=0
 
 opened = false;     //czy drzwi maja otwarte drzwi ;p

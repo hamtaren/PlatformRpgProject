@@ -4,7 +4,7 @@ var door = argument0;
 
 if (instance_exists(door) && door!=noone)
 {
-    if (!door.opening)
+    if (!door.opening && !door.bashed)
     {
         door.opened = !door.opened;   //zmiana
         door.opening = true;          //poniewaz zmienilismy to dzwignia nie jest jeszcze przeciagnieta na miejsce docelowe

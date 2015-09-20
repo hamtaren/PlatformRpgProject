@@ -1,29 +1,4 @@
 //ctrl+f TODO
-//TODO: zrobic zeby kazda postac dziedziczyla po obiekcie obj_Actor, czy cos w tym stylu; wtedy przeciwnicy  (obj_NameOfTheEnemy) beda dzidziczyc w nastepujacy sposob:  obj_NameOfTheEnemy:obj_Enemy:obj_Actor
-//TODO: przerobic ds_list_find_value na [#,list] czy jakos tak
-
-par_Actor //parent po ktorym beda dziedziczyc wszystkie postaci, potwory, npc itp.
-{
-	CREATE()
-	{
-		state = STATE_NONE;
-		dead = false;
-	}	
-}
-par_NPC : par_Actor //parent po ktorym beda dziedziczyc wszystkie NPCe
-{
-	CREATE()
-	{
-		event_inherited();
-		var dialogs = ds_map_create(); // lista (mapa) z dialogami
-	}
-}
-
-//pulling leaver
-if (place_meeting(x,y,obj_LeaverElevator) && place_meeting_solid(x,y+1) && !place_meeting(x,y+1,obj_Elevator))
-{
-	//call elevator
-}
 
 obj_Elevator : obj_Solid
 {
@@ -107,116 +82,6 @@ scr_ElevatorFindNextWapoint()
 	debug_log("nie znaleziono zadnego waypointu",DEBUG_WARN);
 }
 
-par_Leaver
-{
-	CREATE()
-	{
-		turnOn = false;			//czy pociagnieta
-		turned = true;			//czy jest juz na swoim miejscu (przeciagnieta do konca)
-	}
-	STEP()
-	{
-	//TODO:
-		if (!turned)		
-			if (turnOn)
-			{
-				//animacja "wlaczenia dzwigni"
-			}			
-			else
-			{
-				//animacja przeciwna
-			}
-	}
-}
-scr_LeaverTurn()
-{
-	if (turned)
-	{
-		turnOn = !turnOn;
-		turned = false;
-	}
-}
-obj_LeaverElevator : par_Leaver
-{
-	CREATE()
-	{
-		event_inherited();
-	}
-	STEP()
-	{
-		event_inherited();		
-	}
-}
-obj_LeaverDoor : par_Leaver
-{
-	CREATE()
-	{
-		event_inherited(); //turnOn, turned
-		door = noone; //id drzwi ktore sa otwieralne
-		//TODO: wymyslic sposob na przypisywanie ktore drzwi maja byc otwierane przez dzwignie. Omijac rozwiazanie z dodatkowymi obiektami i creation_code
-	}
-	STEP()
-	{
-		event_inherited();
-		if (door!=noone && turned)
-			door.opened = turnOn;
-	}
-}
-
-//TODO: wypróbować poniższy pomysł
-//Pomysł: stworzyć obj_Binder ktory bedzie łączył ze sobą referencje obiektów, np. obj_LeaverDoor z jakimś obj_Door
-
-obj_Binder
-{
-	CRAETE()
-	{
-			bound = false; 								//czy wszystko jest juz polaczone
-			list = scr_BinderGetBindingsList(); 	//lista polaczen
-	}
-	STEP()
-	{
-			if (ds_list_size(list))
-			{
-				for(var i = 0; i<ds_list_size(list);i++)
-				{
-					var binding = ds_list_find_value(list,i);
-					scr_BinderBound(binding);
-				}
-				bound = true;
-			}
-			
-			if (bound)
-				scr_BinderDispose();	//czyszczenie pamieci z wszystkich list i map po zakonczeniu łączenia;
-	}
-}
-
-scr_BinderBound(binding)
-{
-	var type = ds_map_find_value(binding,"type");
-	switch(type)
-	{
-		case BIND_ELEVATOR_TO_WAYPOINT: scr_BinderDoorToLeaver(binding); break;
-		case BIND_ELEVATOR_TO_WAYPOINT: scr_BinderBindElevatorToWaypoints(binding); break;
-		default: debug_log("Nie zaimplementowano binda dla typu: " + type,DEBUG_ERROR);
-	}
-}
-
-scr_BinderDoorToLeaver(binding)
-{
-	var leaver = ds_map_find_value(binding,"leaver");
-	var door = ds_map_find_value(binding,"door");
-	if (instance_exists(leaver) && instance_exists(door))
-	{
-		leaver.door = door;
-		debug_log("Przypisano " + leaver.id + " do "+ door.id,DEBUG_SUCCESS);
-	}
-	else
-	{
-		debug_log("Nie udalo sie przypisac dzwigni do drzwi");
-	}
-}
-
-
 //TODO: obj_HeroStats (albo jakos tak), ktory bedzie przechowywał informacje o satystykach bohatera z pokoju do pokoju
 obj_HeroStats
 {
@@ -226,50 +91,6 @@ obj_HeroStats
 	//scr_HeroStatsVariablesInit():
 		Health = 0;
 		MaxHealth =0;
-	}
-}
-
-
-obj_Diagonal : obj_Solid
-{
-	CREATE()
-	{
-		event_inherited(); //isSolid;
-	}
-}
-place_meeting_diagonal(x,y)
-{
-///place_meeting_diagonal(x,y)
-var xx = argument0;
-var yy = argument1;
-
-	if (place_meeting(xx,yy,obj_Diagonal) && isSolid)
-		return true;
-		
-	return false;
-}
-//wbiegaie po pochylym
-if (place_meeting_diagonal(x+hspd,y)
-{
-	for (var i=0; i<8; i++)
-	{
-		if (!place_meeting_diagonal(x+hspd,y+i))
-		{
-			y+=i;
-			break;
-		}
-	}
-	hspd = 0;
-}//zbieganie po pochylym
-else if(place_meeting_diagonal(x+hspd,y+8))
-{
-	for (var i = 0; i<8;i++)
-	{
-		if !(place_meeting_diagonal(x+hspd,y+8-i)
-		{
-			y+=8-i;
-			break;
-		}
 	}
 }
 
@@ -302,38 +123,48 @@ scr_HeroDeath()
 	debug_log("DEATH",DEBUG_ERROR);
 }
 
-
-//TODO: jak juz bedzie drzewko talenow, to trzeba bedzie w debugerContollerze zrobic odpowiedni sposob na wlaczanie i wylaczanie umiejetnosci
-
-///TODO: zaimplementowac te dwie funkcje o ktorych jest mowa w jednym z DoZrobienia w scr_HeroStateMove
-//scr_keyboard_check_sides()
+//elevator
+//kontakt z jakas postacia i przesuwanie jej
+if (place_meeting(x+hspd,y+vspd,obj_Actor))
 {
-	if (keyboard_check(KEY_RIGHT) && !keyboard_check(KEY_LEFT))
+	var actor = instance_place(x+hspd,y+vspd,obj_Actor);
+	with(actor)
 	{
-	 side = 1;
-	 return true;
-	}
-	else if (keyboard_check(KEY_LEFT) && !keyboard_check(KEY_RIGHT))
-	{
-		side = -1;
-		return true;
-	}
+	//ktoras z ponizszych wersji jest poprawniejsza, trzeba wytestowac ktora
+		if (!place_meeting_solid(x+hspd+other.hspd,y+vspd+other.vspd))
+		if (!place_meeting_solid(x+other.hspd, y+other.vspd))
+		{
+			x+=other.hspd;
+			y+=other.vspd;
+		}
+		else
+		{
+			debug_log("DEATH",DEBUG_WARN);
+			dead = true;
+		}
+	}					
+}	
 
-	return false;
-}
 
-//scr_keyboard_check_pressed_sides()
-{
-	if (keyboard_check_pressed(KEY_RIGHT) && !keyboard_check(KEY_LEFT))
-	{
-	 side = 1;
-	 return true;
-	}
-	else if (keyboard_check_pressed(KEY_LEFT) && !keyboard_check(KEY_RIGHT))
-	{
-		side = -1;
-		return true;
-	}
 
-	return false;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

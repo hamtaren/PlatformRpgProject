@@ -3,7 +3,6 @@ isSolid = !opened;   //wylaczenie i wlaczenie przenikalnosci drzwi,
 
 image_xscale = side; //obracanie obrazka zaleznie od side (zeby dzwi mogly sie otwierac w rozne strony)
 
-//TODO: jezeli sa bashowane to bez animacji, moze tworzenie jakiegos particla i obiektu przedstawiajacego rozjebane drzwi
 ///Animacja i mechanizm przeciagania dzwigni
 if (opening)
 {    

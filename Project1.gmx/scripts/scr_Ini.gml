@@ -29,4 +29,7 @@ else
     KEY_CANCEL = (ord('Z'));   
 }
 
+//STWORZENIE CZASTECZEK
+scr_ParticlesInit();
+
 room_goto_next();

@@ -5,16 +5,10 @@ var door = instance_place(xx,y,obj_Door);
 if (!door.keyClosed && !door.barricaded && !door.bashed)
 {    
     //wywazanie drzwi
-    if (abs(hspd) > moveSpeed && !door.opened)
-    {           
-        //TODO:scr_DoorBash(door);
-        door.bashed = true; //po wywazeniu drzwi sa niezamykalne   
-        
-        if (hspd>0) //wywazenie drzwi otwiera je zgodnie z kierunkiem predkosci bohatera
-            door.side = 1;
-        else if (hspd<0)
-            door.side =-1;          
-    }      
+    if (abs(hspd) >= moveSpeed && !door.opened)              
+    {
+        scr_DoorBash(door);       
+    }   
     //owieranie drzwi
     else if (!door.opened)
     {

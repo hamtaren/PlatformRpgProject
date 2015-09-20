@@ -9,10 +9,10 @@ if (!place_meeting_solid(x,y+vspd+1))
 }
 else
 {
+    //grawitacja i tarcie
     grav = 0;
     friction = moveFriction;
 }
-
 
 //Skakanie
 if (keyboard_check_pressed(KEY_UP))
@@ -30,7 +30,7 @@ if (keyboard_check_sides())
         //Chodzenie na boki na plaskim
         if (!place_meeting_solid(x+hspd+moveAcc*keySide,y))
         {
-            var multi = 1;
+            var multi = 1;           //mnoznik pomocniczy
             if (sign(hspd)!=keySide) //szybsze wyhamowanie jezeli biegnie wciskamy przycisk w przeciwnym kierunku do aktualnego kierunku poruszania sie
             multi = 5;
             
@@ -78,8 +78,12 @@ if (keyboard_check_pressed_sides())
     //Odbijanie sie od scian podczas slizgania
     if (slide)
     {
-        hspd=5*keySide;
-        vspd=-3;
+        if ((place_meeting(x+5,y,obj_SlideableSolid) && keySide=-1) 
+        || (place_meeting(x-5,y,obj_SlideableSolid) && keySide=1))
+        {
+            hspd=5*keySide;
+            vspd=-3;
+        }
     }
 }
 
@@ -91,8 +95,24 @@ if (!keyboard_check_sides())
 }
 
 //Graniczenie predkosci pionowej
-vspd = clamp(vspd, -10, 10); 
+vspd = clamp(vspd, -maxVspd, maxVspd); 
 hspd = clamp(hspd, -moveSpeed, moveSpeed);
+
+//Spadanie
+if (vspd == maxVspd && !deathFall)
+{
+    debug_log("Przy upadku bedzie dead",DEBUG_INFO);
+    deathFall = true;    
+}
+else
+    deathFall = false;
+
+//Smierc od upadku    
+if (deathFall)
+{
+    if (place_meeting_solid(x,y+vspd+1))
+        scr_HeroDeath();
+}
 
 
 //Poziome wykrywanie zblizajacych sie solidow

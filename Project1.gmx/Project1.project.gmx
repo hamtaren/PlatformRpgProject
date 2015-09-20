@@ -81,6 +81,7 @@
         <script>scripts\scr_HeroStateClimb.gml</script>
         <script>scripts\scr_HeroStateMove.gml</script>
       </scripts>
+      <script>scripts\scr_HeroDeath.gml</script>
     </scripts>
     <scripts name="Controllers">
       <scripts name="DebugController">
@@ -136,14 +137,30 @@
       <script>scripts\scr_GameController.gml</script>
       <script>scripts\scr_Ini.gml</script>
     </scripts>
-    <scripts name="Doors">
-      <script>scripts\scr_DoorOpen.gml</script>
-      <script>scripts\scr_DoorVariablesInit.gml</script>
-      <script>scripts\scr_DoorController.gml</script>
-    </scripts>
     <scripts name="Klawiaturowe">
       <script>scripts\keyboard_check_sides.gml</script>
       <script>scripts\keyboard_check_pressed_sides.gml</script>
+    </scripts>
+    <scripts name="Interactionable">
+      <scripts name="Doors">
+        <script>scripts\scr_DoorOpen.gml</script>
+        <script>scripts\scr_DoorVariablesInit.gml</script>
+        <script>scripts\scr_DoorController.gml</script>
+        <script>scripts\scr_DoorBash.gml</script>
+      </scripts>
+      <scripts name="Leavers">
+        <script>scripts\scr_LeaverDoorAction.gml</script>
+        <script>scripts\scr_LeaverDoorVariablesInit.gml</script>
+        <script>scripts\scr_LeaverParentVariableInit.gml</script>
+        <script>scripts\scr_LeaverParentMechanics.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="GFX">
+      <scripts name="Particles">
+        <script>scripts\scr_ParticlesWoodInit.gml</script>
+        <script>scripts\scr_ParticlesWoodCreate.gml</script>
+        <script>scripts\scr_ParticlesInit.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -155,6 +172,7 @@
       <object>objects\obj_BinderController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
+      <object>objects\obj_IdDetail</object>
     </objects>
     <object>objects\obj_Camera</object>
     <objects name="Actors">
@@ -189,7 +207,6 @@
       <object>objects\obj_DiagonalLeft</object>
       <object>objects\obj_DiagonalRight</object>
     </objects>
-    <object>objects\obj_IdDetail</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>
