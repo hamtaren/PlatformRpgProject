@@ -29,12 +29,17 @@
 
 ///ZMIENNE
 state = ELEVATOR_MOVE;  //Stany akcji windy STOP/WAIT/MOVE
-spd = 3;                //szybkosc poruszania sie windy
-waypoint = noone;       //referencja na obiekt, ktory robi za przystanek, zawrotke itp.
-dir = ELEVATOR_UP;    //W ktora strone winda leci UP, DOWN, NONE
-auto = true;            //czy automatycznie jezdzi gora/dol, czy trzeba uruchomic dzwignia lub tym podobnym mechanizmem
-waitTime = 3*room_speed;//ile winda czeka
-smooth = 10;            //wygladzanie zblizania sie do waypointa
+
+maxSpd = 3;                //maksymalna szybkosc poruszania sie windy
+hspd = choose(-3,3);                  //szybkosc pozioma
+vspd = 1;                  //szybkosc pionowa
+
+waypoint = noone;          //referencja na obiekt, ktory robi za przystanek, zawrotke itp.
+
+dir = ELEVATOR_UP;         //W ktora strone winda leci UP, DOWN, NONE
+auto = true;               //czy automatycznie jezdzi gora/dol, czy trzeba uruchomic dzwignia lub tym podobnym mechanizmem
+waitTime = 3*room_speed;   //ile winda czeka
+smooth = 10;               //wygladzanie zblizania sie do waypointa
 </string>
           </argument>
         </arguments>
@@ -57,30 +62,58 @@ smooth = 10;            //wygladzanie zblizania sie do waypointa
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Mechanika windy
-if (state == ELEVATOR_MOVE)
+            <string>//todo: poprawic przy diagonalnych windach sie spada
+
+
+//prezsuwanie postaci ktora jest na windzie
+if (place_meeting(x,y-1,obj_Actor))
 {
-    direction = dir;
+    var actor = instance_place(x,y-1,obj_Actor);
     
-    var _spd = distance_to_point(waypoint.x,waypoint.y) / smooth;
-    _spd = clamp(_spd,-spd,spd);
-    
-    if (distance_to_point(waypoint.x,waypoint.y)&gt; 1)
-        speed = _spd;
-    else
-        state = ELEVATOR_WAIT;
-}
-else if (state == ELEVATOR_WAIT)
-{
-    dir = waypoint.dir;
-    waypoint = noone;
-    for (var i = 32; i&lt;room_height; i++)        
+    with(actor)
     {
-        waypoint = instance_place(x,y+i,obj_WaypointElevator);
-        if (waypoint!=noone)
-            break;
+        if (!place_meeting_solid(x+other.hspd,y))
+            x+=other.hspd;
+        if (!place_meeting_solid(x,y+other.vspd))
+            y+=other.vspd;
     }
 }
+//przesuwanie postaci ktora jest na drodze windy
+else if (place_meeting(x+hspd,y+vspd, obj_Actor))
+{
+    var actor = instance_place(x+hspd,y+vspd,obj_Actor);
+
+    with(actor)
+    {
+        if (!place_meeting_solid(x+hspd+other.hspd,y+vspd+other.vspd))
+        {
+            //przesuwanie
+            x+=other.hspd;
+            y+=other.vspd;
+        }
+        else
+        {
+            //miazdzenie
+            debug_log("DEATH",DEBUG_WARN);
+            dead = true;
+        }
+    }
+}
+
+//odbicie od solida
+if (place_meeting_solid(x+hspd,y+vspd))
+{
+    hspd=-hspd;
+    vspd=-vspd;
+}
+
+//ograniczenie szybkosci
+hspd = clamp(hspd,-maxSpd,maxSpd);
+vspd = clamp(vspd,-maxSpd,maxSpd);
+
+//przemnieszenie windy
+x+=hspd;
+y+=vspd;
 </string>
           </argument>
         </arguments>

@@ -40,6 +40,7 @@
       <sprite>sprites\spr_BinderController</sprite>
     </sprites>
     <sprites name="HeroSprites">
+      <sprite>sprites\spr_HeroRun</sprite>
       <sprite>sprites\spr_HeroMask</sprite>
       <sprite>sprites\spr_HeroClimb</sprite>
       <sprite>sprites\spr_HeroWallSlide</sprite>

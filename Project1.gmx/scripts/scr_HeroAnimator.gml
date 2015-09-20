@@ -9,11 +9,14 @@ if (state = STATE_MOVE)
         if (abs(hspd)>0) //rusza sie
         {
             image_xscale = sign(hspd);
-            sprite_index = spr_HeroMask;
+            sprite_index = spr_HeroRun;
+            image_speed = clamp(abs(hspd/0.25),0.1,0.3);
         }
         else //stoi w miejscu
         {
-            sprite_index = spr_HeroMask;
+            sprite_index = spr_HeroRun;
+            image_index = 0;
+            image_speed = 0;
         }
     }
     else //jezeli jest w powietrzu
@@ -30,7 +33,9 @@ if (state = STATE_MOVE)
         }
         else //Zwykle spadanie
         {
-            sprite_index = spr_HeroMask;
+            sprite_index = spr_HeroRun;
+            image_speed=0; 
+            image_index = 2;
             if (abs(hspd)>0)
             {
                 //odwraca sie w strone w ktora jest skierowana predkosc

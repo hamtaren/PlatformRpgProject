@@ -52,7 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_Solid" x="96" y="288" name="inst_BEC3907D" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Hero" x="224" y="288" name="inst_96A24C9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Hero" x="608" y="448" name="inst_96A24C9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="96" y="160" name="inst_274E0300" locked="0" code="" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="96" y="192" name="inst_77FF525D" locked="0" code="" scaleX="1" scaleY="1.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="352" y="320" name="inst_3892997F" locked="0" code="" scaleX="6" scaleY="1" colour="4294967295" rotation="0"/>
@@ -116,6 +116,7 @@
     <instance objName="obj_SlideableSolid" x="240" y="368" name="inst_9A3EA3C3" locked="0" code="" scaleX="1" scaleY="2.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_SlideableSolid" x="128" y="416" name="inst_3ADE6F89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SlideableSolid" x="688" y="48" name="inst_A5655A36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Elevator" x="368" y="736" name="inst_47E91888" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tile_ground" x="0" y="32" w="32" h="32" xo="32" yo="32" id="10000001" name="inst_805ACD5D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
