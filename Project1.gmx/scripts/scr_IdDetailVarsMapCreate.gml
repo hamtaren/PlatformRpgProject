@@ -9,3 +9,6 @@ varsMap[? "Value"] = argument1;
 json = json_encode(varsMap);
 
 ds_list_add(varsList,json);
+
+//czyszczenie pamieci
+ds_map_destroy(varsMap);

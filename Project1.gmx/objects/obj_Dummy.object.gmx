@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed=0;
+            <string>event_inherited();
+image_speed=0;
 Hp=10;
 </string>
           </argument>
@@ -50,7 +51,10 @@ Hp=10;
           <argument>
             <kind>1</kind>
             <string>if (Hp&lt;=0)
-image_index = 1;
+{
+    dead = true;
+    image_index = 1;
+}
 </string>
           </argument>
         </arguments>
@@ -73,9 +77,15 @@ image_index = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//TODO: upiekszenie, czyli krew leci tylko jak dmg&gt;0;
-Hp -= scr_ActorTakeDamage(other);
-scr_ParticlesBloodCreate(5);
+            <string>if (!dead)
+{
+    var dmgTaken = scr_ActorTakeDamage(other);
+    Hp-=dmgTaken;
+    
+    //upiekszenie, czyli krew leci tylko jak dmg&gt;0;
+    if (dmgTaken&gt;0)
+        scr_ParticlesBloodCreate(5);
+}
 </string>
           </argument>
         </arguments>

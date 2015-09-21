@@ -16,10 +16,11 @@ for (var i = string_length(text) div 78; i>=0; i--)
     //stworzenie mapy logow
     ds_map_add(mapLog,"log",txt);
     ds_map_add(mapLog,"type",type);
-    
 
     //dodanie mapy do listy logow w debugerze (zakodowujemy w jsonie zeby nie bylo problemu ze strukturami)
     var json = json_encode(mapLog);
     ds_list_add(obj_DebugController.log, json);
     
+    //czyszczenie pamieci
+    ds_map_destroy(mapLog);
 }
