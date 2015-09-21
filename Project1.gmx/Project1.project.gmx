@@ -27,8 +27,8 @@
     <sound>sound\sound0</sound>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_Leader</sprite>
-    <sprite>sprites\spr_LeaderTop</sprite>
+    <sprite>sprites\spr_Ladder</sprite>
+    <sprite>sprites\spr_LadderTop</sprite>
     <sprite>sprites\spr_Door</sprite>
     <sprite>sprites\spr_Barrel</sprite>
     <sprites name="Icons">
@@ -38,6 +38,7 @@
       <sprite>sprites\spr_Ini</sprite>
       <sprite>sprites\spr_Camera</sprite>
       <sprite>sprites\spr_BinderController</sprite>
+      <sprite>sprites\spr_MainMenu</sprite>
     </sprites>
     <sprites name="HeroSprites">
       <sprite>sprites\spr_HeroRun</sprite>
@@ -53,10 +54,16 @@
       <sprite>sprites\spr_Solid</sprite>
       <sprite>sprites\spr_SlideableSolid</sprite>
     </sprites>
+    <sprites name="MainMenu">
+      <sprite>sprites\spr_MenuBelka</sprite>
+      <sprite>sprites\spr_MenuNapisy</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
     <background>background\background1</background>
+    <background>background\tile_LadderWooden</background>
+    <background>background\bg_MainMenu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -163,6 +170,10 @@
         <script>scripts\scr_ParticlesInit.gml</script>
       </scripts>
     </scripts>
+    <scripts name="MainMenu">
+      <script>scripts\scr_MainMenuVariablesInit.gml</script>
+      <script>scripts\scr_MainMenuDraw.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
@@ -173,6 +184,7 @@
       <object>objects\obj_BinderController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
+      <object>objects\obj_MainMenu</object>
       <object>objects\obj_IdDetail</object>
     </objects>
     <object>objects\obj_Camera</object>
@@ -192,7 +204,7 @@
         <object>objects\obj_Barrel</object>
         <object>objects\obj_Hideout</object>
       </objects>
-      <objects name="Leaders">
+      <objects name="Ladders">
         <object>objects\obj_LeaderTop</object>
         <object>objects\obj_Leader</object>
       </objects>
@@ -210,6 +222,7 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_Menu</room>
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
   </rooms>
