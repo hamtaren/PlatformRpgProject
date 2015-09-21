@@ -4,7 +4,7 @@
 if (state == STATE_MOVE)
 {
     scr_HeroStateMove();
-    //TODO://scr_HeroAttack();   
+    scr_HeroAttack();   
     scr_HeroActions();
 }
 else if (state == STATE_CLIMB)

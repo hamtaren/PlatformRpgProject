@@ -58,6 +58,8 @@
       <sprite>sprites\spr_MenuBelka</sprite>
       <sprite>sprites\spr_MenuNapisy</sprite>
     </sprites>
+    <sprite>sprites\spr_Dummy</sprite>
+    <sprite>sprites\obj_Slash01</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -67,116 +69,133 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\place_meeting_diagonal.gml</script>
-    <script>scripts\place_meeting_solid.gml</script>
-    <scripts name="Hero">
-      <script>scripts\scr_HeroVariablesInit.gml</script>
-      <script>scripts\scr_HeroStateController.gml</script>
-      <script>scripts\scr_HeroChageState.gml</script>
-      <script>scripts\scr_HeroAnimator.gml</script>
-      <script>scripts\scr_HeroAttack.gml</script>
-      <script>scripts\scr_HeroActions.gml</script>
-      <scripts name="Actions">
-        <script>scripts\scr_HeroActionDoorOpen.gml</script>
-        <script>scripts\scr_HeroActionItemPickUp.gml</script>
-        <script>scripts\scr_HeroActionTurnLeaver.gml</script>
-        <script>scripts\scr_HeroActionHideouts.gml</script>
-        <scripts name="Hideouts">
-          <script>scripts\scr_HeroActionHideoutBarrel.gml</script>
-        </scripts>
+    <scripts name="PseudoGMowe">
+      <scripts name="Klawiaturowe">
+        <script>scripts\keyboard_check_sides.gml</script>
+        <script>scripts\keyboard_check_pressed_sides.gml</script>
       </scripts>
-      <scripts name="States">
-        <script>scripts\scr_HeroStateClimb.gml</script>
-        <script>scripts\scr_HeroStateMove.gml</script>
-      </scripts>
-      <script>scripts\scr_HeroDeath.gml</script>
+      <script>scripts\place_meeting_solid.gml</script>
+      <script>scripts\place_meeting_diagonal.gml</script>
+      <script>scripts\draw_text_bordered.gml</script>
     </scripts>
-    <scripts name="Controllers">
-      <scripts name="DebugController">
-        <script>scripts\draw_debug_text.gml</script>
-        <script>scripts\debug_log.gml</script>
-        <script>scripts\scr_DebugVariablesInit.gml</script>
-        <script>scripts\scr_DebugController.gml</script>
-        <script>scripts\scr_DebugDraw.gml</script>
-        <script>scripts\scr_DebugLogsDraw.gml</script>
-        <script>scripts\scr_DebugCommandsKeyBlock.gml</script>
-        <script>scripts\scr_DebugCommandsAvailable.gml</script>
-        <script>scripts\scr_DebugCommands.gml</script>
-        <scripts name="DebugCommands">
-          <script>scripts\scr_DebugCommandLog.gml</script>
-          <scripts name="DebugCommandLog">
-            <script>scripts\scr_DebugLogToFileSave.gml</script>
+    <scripts name="Moje">
+      <scripts name="Actors">
+        <scripts name="Hero">
+          <script>scripts\scr_HeroVariablesInit.gml</script>
+          <script>scripts\scr_HeroStateController.gml</script>
+          <script>scripts\scr_HeroChageState.gml</script>
+          <script>scripts\scr_HeroAnimator.gml</script>
+          <script>scripts\scr_HeroAttack.gml</script>
+          <script>scripts\scr_HeroActions.gml</script>
+          <scripts name="Actions">
+            <script>scripts\scr_HeroActionDoorOpen.gml</script>
+            <script>scripts\scr_HeroActionItemPickUp.gml</script>
+            <script>scripts\scr_HeroActionTurnLeaver.gml</script>
+            <script>scripts\scr_HeroActionHideouts.gml</script>
+            <scripts name="Hideouts">
+              <script>scripts\scr_HeroActionHideoutBarrel.gml</script>
+            </scripts>
           </scripts>
-          <script>scripts\scr_DebugCommandComm.gml</script>
-          <script>scripts\scr_DebugCommandReset.gml</script>
-          <script>scripts\scr_DebugCommandHelp.gml</script>
-          <script>scripts\scr_DebugCommandKeys.gml</script>
-          <script>scripts\scr_DebugCommandGodMode.gml</script>
-          <script>scripts\scr_DebugCommandTeleport.gml</script>
-          <script>scripts\scr_DebugCommandCam.gml</script>
-          <script>scripts\scr_DebugCommandId.gml</script>
-          <script>scripts\scr_DebugCommandDel.gml</script>
-          <script>scripts\scr_DebugCommandDet.gml</script>
+          <scripts name="States">
+            <script>scripts\scr_HeroStateClimb.gml</script>
+            <script>scripts\scr_HeroStateMove.gml</script>
+          </scripts>
+          <script>scripts\scr_HeroDeath.gml</script>
         </scripts>
-        <scripts name="IdDetail">
-          <script>scripts\scr_IdDetailCreate.gml</script>
-          <script>scripts\scr_IdDetailDraw.gml</script>
-          <script>scripts\scr_IdDetailVarsList.gml</script>
-          <script>scripts\scr_IdDetailVarsMapCreate.gml</script>
-          <scripts name="VarsListObjectsSpec">
-            <script>scripts\scr_IdDetailobj_Door.gml</script>
-            <script>scripts\scr_IdDetailobj_Hero.gml</script>
-            <script>scripts\scr_IdDetailobj_LeaverDoor.gml</script>
+        <script>scripts\scr_ActorTakeDamage.gml</script>
+        <script>scripts\scr_ActorCreateDamage.gml</script>
+        <script>scripts\scr_ActorDamageFigureCreate.gml</script>
+      </scripts>
+      <scripts name="MainMenu">
+        <script>scripts\scr_MainMenuVariablesInit.gml</script>
+        <script>scripts\scr_MainMenuDraw.gml</script>
+      </scripts>
+      <scripts name="GFX">
+        <scripts name="Particles">
+          <script>scripts\scr_ParticlesInit.gml</script>
+          <scripts name="Wood">
+            <script>scripts\scr_ParticlesWoodInit.gml</script>
+            <script>scripts\scr_ParticlesWoodCreate.gml</script>
+          </scripts>
+          <scripts name="Blood">
+            <script>scripts\scr_ParticlesBloodInit.gml</script>
+            <script>scripts\scr_ParticlesBloodCreate.gml</script>
           </scripts>
         </scripts>
       </scripts>
-      <scripts name="BinderController">
-        <script>scripts\scr_BinderVariablesInit.gml</script>
-        <script>scripts\scr_BinderDisposeBindings.gml</script>
-        <script>scripts\scr_BinderBinds.gml</script>
-        <scripts name="AddingBindingTypes">
-          <script>scripts\scr_BinderAddBindingPair.gml</script>
-          <script>scripts\scr_BinderAddBindingList.gml</script>
+      <scripts name="Interactionable">
+        <scripts name="Doors">
+          <script>scripts\scr_DoorOpen.gml</script>
+          <script>scripts\scr_DoorVariablesInit.gml</script>
+          <script>scripts\scr_DoorController.gml</script>
+          <script>scripts\scr_DoorBash.gml</script>
         </scripts>
-        <scripts name="BinderBinds">
-          <script>scripts\scr_BinderBindDoorToLeaver.gml</script>
+        <scripts name="Leavers">
+          <script>scripts\scr_LeaverDoorAction.gml</script>
+          <script>scripts\scr_LeaverDoorVariablesInit.gml</script>
+          <script>scripts\scr_LeaverParentVariableInit.gml</script>
+          <script>scripts\scr_LeaverParentMechanics.gml</script>
         </scripts>
       </scripts>
-      <script>scripts\scr_GameController.gml</script>
-      <script>scripts\scr_Ini.gml</script>
-    </scripts>
-    <scripts name="Klawiaturowe">
-      <script>scripts\keyboard_check_sides.gml</script>
-      <script>scripts\keyboard_check_pressed_sides.gml</script>
-    </scripts>
-    <scripts name="Interactionable">
-      <scripts name="Doors">
-        <script>scripts\scr_DoorOpen.gml</script>
-        <script>scripts\scr_DoorVariablesInit.gml</script>
-        <script>scripts\scr_DoorController.gml</script>
-        <script>scripts\scr_DoorBash.gml</script>
+      <scripts name="Controllers">
+        <scripts name="DebugController">
+          <script>scripts\draw_debug_text.gml</script>
+          <script>scripts\debug_log.gml</script>
+          <script>scripts\scr_DebugVariablesInit.gml</script>
+          <script>scripts\scr_DebugController.gml</script>
+          <script>scripts\scr_DebugDraw.gml</script>
+          <script>scripts\scr_DebugLogsDraw.gml</script>
+          <script>scripts\scr_DebugCommandsKeyBlock.gml</script>
+          <script>scripts\scr_DebugCommandsAvailable.gml</script>
+          <script>scripts\scr_DebugCommands.gml</script>
+          <scripts name="DebugCommands">
+            <script>scripts\scr_DebugCommandLog.gml</script>
+            <scripts name="DebugCommandLog">
+              <script>scripts\scr_DebugLogToFileSave.gml</script>
+            </scripts>
+            <script>scripts\scr_DebugCommandComm.gml</script>
+            <script>scripts\scr_DebugCommandReset.gml</script>
+            <script>scripts\scr_DebugCommandHelp.gml</script>
+            <script>scripts\scr_DebugCommandKeys.gml</script>
+            <script>scripts\scr_DebugCommandGodMode.gml</script>
+            <script>scripts\scr_DebugCommandTeleport.gml</script>
+            <script>scripts\scr_DebugCommandCam.gml</script>
+            <script>scripts\scr_DebugCommandId.gml</script>
+            <script>scripts\scr_DebugCommandDel.gml</script>
+            <script>scripts\scr_DebugCommandDet.gml</script>
+          </scripts>
+          <scripts name="IdDetail">
+            <script>scripts\scr_IdDetailCreate.gml</script>
+            <script>scripts\scr_IdDetailDraw.gml</script>
+            <script>scripts\scr_IdDetailVarsList.gml</script>
+            <script>scripts\scr_IdDetailVarsMapCreate.gml</script>
+            <scripts name="VarsListObjectsSpec">
+              <script>scripts\scr_IdDetailobj_Door.gml</script>
+              <script>scripts\scr_IdDetailobj_Hero.gml</script>
+              <script>scripts\scr_IdDetailobj_LeaverDoor.gml</script>
+            </scripts>
+          </scripts>
+        </scripts>
+        <scripts name="BinderController">
+          <script>scripts\scr_BinderVariablesInit.gml</script>
+          <script>scripts\scr_BinderDisposeBindings.gml</script>
+          <script>scripts\scr_BinderBinds.gml</script>
+          <scripts name="AddingBindingTypes">
+            <script>scripts\scr_BinderAddBindingPair.gml</script>
+            <script>scripts\scr_BinderAddBindingList.gml</script>
+          </scripts>
+          <scripts name="BinderBinds">
+            <script>scripts\scr_BinderBindDoorToLeaver.gml</script>
+          </scripts>
+        </scripts>
+        <script>scripts\scr_GameController.gml</script>
+        <script>scripts\scr_Ini.gml</script>
       </scripts>
-      <scripts name="Leavers">
-        <script>scripts\scr_LeaverDoorAction.gml</script>
-        <script>scripts\scr_LeaverDoorVariablesInit.gml</script>
-        <script>scripts\scr_LeaverParentVariableInit.gml</script>
-        <script>scripts\scr_LeaverParentMechanics.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="GFX">
-      <scripts name="Particles">
-        <script>scripts\scr_ParticlesWoodInit.gml</script>
-        <script>scripts\scr_ParticlesWoodCreate.gml</script>
-        <script>scripts\scr_ParticlesInit.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="MainMenu">
-      <script>scripts\scr_MainMenuVariablesInit.gml</script>
-      <script>scripts\scr_MainMenuDraw.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
+    <font>fonts\font_damage</font>
   </fonts>
   <objects name="objects">
     <objects name="Controllers">
@@ -220,11 +239,17 @@
       <object>objects\obj_DiagonalLeft</object>
       <object>objects\obj_DiagonalRight</object>
     </objects>
+    <object>objects\obj_Dummy</object>
+    <objects name="Damage">
+      <object>objects\obj_DamageSlash</object>
+      <object>objects\obj_DmgFigure</object>
+      <object>objects\obj_Damage</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_Menu</room>
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
+    <room>rooms\room_Menu</room>
   </rooms>
   <constants number="30">
     <constant name="DEBUG_ERROR">-102</constant>
