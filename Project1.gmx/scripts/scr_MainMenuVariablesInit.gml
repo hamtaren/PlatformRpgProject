@@ -11,3 +11,5 @@ chosen = false;  //czy juz wybrano/zatwierdzono opcje
 
 jumpStrenght = 8//sila podskoku po zatwierdzeniu opcji
 vspd = 0;       //predkosc pionowa belki (uzywane tylko przy spadaniu)
+
+go = "";        //w ktora strone ma isc belka

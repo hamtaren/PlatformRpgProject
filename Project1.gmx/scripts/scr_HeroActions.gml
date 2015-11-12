@@ -23,11 +23,7 @@ if (keyboard_check_pressed(KEY_ACTION))
     {
         scr_HeroActionDoorOpen(x-16);
     }
-//Chowanie sie do kryjowek
-    if (place_meeting(x,y,obj_Hideout))
-    {
-        scr_HeroActionHideouts();
-    }
+
 //Podnoszenie przedmiotow
     if (place_meeting(x,y,obj_Item))
     {

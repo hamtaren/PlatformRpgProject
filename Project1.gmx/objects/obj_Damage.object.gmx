@@ -26,21 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>alarm[0]=1; //niszczenie po czasie
-
-//Phisycal
-dmgPierce = 0;
-dmgSlash = 0;
-dmgBlunt = 0;
-//Elemental
-dmgFire = 0;
-dmgCold = 0;
-dmgElectro = 0;
-dmgPoison =0;
-//Magical
-dmgHoly = 0;
-dmgDeath = 0;
-//True
-dmgTrue = 0;
+speedBonus = 1; // modyfikator do fizycznych obrazen wynikajacy z predkosci poruszania
+dmg = noone; // referencja na obiekt obj_DR aktora tworzacego obj_Damage;
 </string>
           </argument>
         </arguments>

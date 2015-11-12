@@ -15,10 +15,13 @@ else
 }
 
 //Skakanie
-if (keyboard_check_pressed(KEY_UP))
+if (keyboard_check_pressed(KEY_JUMP))
 {
-    if (grav==0 && vspd==0) //im szybciej biegnie tym wyzej skacze
-        vspd = jumpPower + (1 - (abs(hspd) / moveSpeed))*3        
+    if (stamina > stamJump && grav==0 && vspd==0) //im szybciej biegnie tym wyzej skacze
+    {
+        vspd = jumpPower + (1 - (abs(hspd) / moveSpeed))*3
+        stamina-=stamJump;
+    }
 }
 
 //Wcisniecie i trzymanie przycisku na boki
@@ -36,33 +39,6 @@ if (keyboard_check_sides())
             
             hspd += multi*moveAcc*keySide;
         }
-        /*TYMCZASOWO WYLACZONE. DZIALA, ALE NIE ZAWSZE PLYNNIE.
-        //Wchodzenie pod gorke        
-        if (place_meeting_diagonal(x+hspd+(moveAcc*keySide), y) && !place_meeting_diagonal(x-(4*keySide),y) )
-        {
-            for (var i = 0; i<8; i++)
-            {
-                if (!place_meeting_diagonal(x+hspd+(moveAcc*keySide),y-i))
-                {                   
-                    y-=i;
-                    hspd = max(abs(hspd)+moveAcc, 1)*keySide;
-                    break;
-                }
-            }
-        }
-        //Schodzenie
-        if (place_meeting_diagonal(x-(4*keySide),y) && !place_meeting_solid(x+hspd+moveAcc*keySide,y))
-        {
-            for (var i =0; i < 8; i ++)
-            {
-                if (!place_meeting_solid(x,y+8-i))
-                {
-                    y += 8-i;
-                    hspd = max(3, 1)*keySide;
-                    break;
-                }
-            }
-        }*/
     }   
 }
 
@@ -72,20 +48,21 @@ if ( (place_meeting(x+5,y,obj_SlideableSolid) || place_meeting(x-5,y,obj_Slideab
 else
     slide = false;
 
-//Wcisniecie przysku na boki
-if (keyboard_check_pressed_sides())
+
+//Odbijanie sie od scian podczas slizgania
+if (slide && keyboard_check_pressed(KEY_JUMP) && stamina>stamJump)
 {
-    //Odbijanie sie od scian podczas slizgania
-    if (slide)
-    {
-        if ((place_meeting(x+5,y,obj_SlideableSolid) && keySide=-1) 
-        || (place_meeting(x-5,y,obj_SlideableSolid) && keySide=1))
-        {
-            hspd=5*keySide;
-            vspd=-3;
-        }
-    }
+    //wybranie strony w ktora ma sie wybic
+    if (place_meeting(x+5,y,obj_SlideableSolid))
+        hspd=-5;
+    else if (place_meeting(x-5,y,obj_SlideableSolid))
+        hspd=5;
+        
+    //lekkie wybicie do gory
+    vspd=-3;
+    stamina-=stamJump;
 }
+
 
 //Zatrzymywanie
 if (!keyboard_check_sides())
@@ -94,7 +71,7 @@ if (!keyboard_check_sides())
         hspd =max (abs(hspd) - friction ,0) * sign(hspd); 
 }
 
-//Graniczenie predkosci pionowej
+//Graniczenie predkosci pionowej/poziomej
 vspd = clamp(vspd, -maxVspd, maxVspd); 
 hspd = clamp(hspd, -moveSpeed, moveSpeed);
 

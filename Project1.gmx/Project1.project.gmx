@@ -24,7 +24,10 @@
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\sound0</sound>
+    <sound>sound\s_doorOpen</sound>
+    <sound>sound\s_doorClose</sound>
+    <sound>sound\s_doorBash</sound>
+    <sound>sound\s_drinkPotion</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\spr_Ladder</sprite>
@@ -37,7 +40,7 @@
       <sprite>sprites\spr_GameController</sprite>
       <sprite>sprites\spr_Ini</sprite>
       <sprite>sprites\spr_Camera</sprite>
-      <sprite>sprites\spr_BinderController</sprite>
+      <sprite>sprites\spr_DmgObject</sprite>
       <sprite>sprites\spr_MainMenu</sprite>
     </sprites>
     <sprites name="HeroSprites">
@@ -60,6 +63,13 @@
     </sprites>
     <sprite>sprites\spr_Dummy</sprite>
     <sprite>sprites\obj_Slash01</sprite>
+    <sprites name="Interface">
+      <sprite>sprites\spr_InterfaceArrows</sprite>
+      <sprite>sprites\spr_InterfaceButtons</sprite>
+      <sprite>sprites\spr_InterfaceSecondaryButtons</sprite>
+      <sprite>sprites\spr_InterfaceBar</sprite>
+    </sprites>
+    <sprite>sprites\spr_SpikesUp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -86,15 +96,14 @@
           <script>scripts\scr_HeroChageState.gml</script>
           <script>scripts\scr_HeroAnimator.gml</script>
           <script>scripts\scr_HeroAttack.gml</script>
+          <script>scripts\scr_HeroDrink.gml</script>
+          <script>scripts\scr_HeroRefreshStatistics.gml</script>
+          <script>scripts\scr_HeroRegeneration.gml</script>
           <script>scripts\scr_HeroActions.gml</script>
           <scripts name="Actions">
             <script>scripts\scr_HeroActionDoorOpen.gml</script>
             <script>scripts\scr_HeroActionItemPickUp.gml</script>
             <script>scripts\scr_HeroActionTurnLeaver.gml</script>
-            <script>scripts\scr_HeroActionHideouts.gml</script>
-            <scripts name="Hideouts">
-              <script>scripts\scr_HeroActionHideoutBarrel.gml</script>
-            </scripts>
           </scripts>
           <scripts name="States">
             <script>scripts\scr_HeroStateClimb.gml</script>
@@ -176,20 +185,16 @@
             </scripts>
           </scripts>
         </scripts>
-        <scripts name="BinderController">
-          <script>scripts\scr_BinderVariablesInit.gml</script>
-          <script>scripts\scr_BinderDisposeBindings.gml</script>
-          <script>scripts\scr_BinderBinds.gml</script>
-          <scripts name="AddingBindingTypes">
-            <script>scripts\scr_BinderAddBindingPair.gml</script>
-            <script>scripts\scr_BinderAddBindingList.gml</script>
-          </scripts>
-          <scripts name="BinderBinds">
-            <script>scripts\scr_BinderBindDoorToLeaver.gml</script>
-          </scripts>
-        </scripts>
         <script>scripts\scr_GameController.gml</script>
         <script>scripts\scr_Ini.gml</script>
+      </scripts>
+      <scripts name="Interface">
+        <script>scripts\scr_InterfaceVariablesInit.gml</script>
+        <script>scripts\scr_InterfaceDraw.gml</script>
+      </scripts>
+      <scripts name="DmgObject">
+        <script>scripts\scr_DRVariablesInit.gml</script>
+        <script>scripts\scr_DRSet.gml</script>
       </scripts>
     </scripts>
   </scripts>
@@ -200,7 +205,6 @@
   <objects name="objects">
     <objects name="Controllers">
       <object>objects\obj_GameController</object>
-      <object>objects\obj_BinderController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
       <object>objects\obj_MainMenu</object>
@@ -213,16 +217,8 @@
       <object>objects\obj_Npc</object>
     </objects>
     <objects name="Interactionable">
-      <objects name="Elevator">
-        <object>objects\obj_WaypointElevator</object>
-        <object>objects\obj_Elevator</object>
-      </objects>
       <object>objects\obj_Door</object>
       <object>objects\obj_Item</object>
-      <objects name="Hideouts">
-        <object>objects\obj_Barrel</object>
-        <object>objects\obj_Hideout</object>
-      </objects>
       <objects name="Ladders">
         <object>objects\obj_LeaderTop</object>
         <object>objects\obj_Leader</object>
@@ -244,7 +240,9 @@
       <object>objects\obj_DamageSlash</object>
       <object>objects\obj_DmgFigure</object>
       <object>objects\obj_Damage</object>
+      <object>objects\obj_DR</object>
     </objects>
+    <object>objects\obj_Spikes</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>
@@ -275,8 +273,8 @@
     <constant name="LOG_MED">20</constant>
     <constant name="LOG_SMALL">10</constant>
     <constant name="LOG_TINY">3</constant>
+    <constant name="STATE_SHOOT">2</constant>
     <constant name="STATE_CLIMB">1</constant>
-    <constant name="STATE_HIDE">2</constant>
     <constant name="STATE_MOVE">0</constant>
     <constant name="STATE_NONE">-1</constant>
     <constant name="BIND_ELEVATOR_TO_WAYPOINT">1</constant>

@@ -1,11 +1,12 @@
 ///scr_GameController()
 
-//TWORZENIE BINDERA, wszystko przez kolejnosc tworzenia obiektow, co psuje dzialanie.
-if (!instance_exists(obj_BinderController))
-    instance_create(x+16,y,obj_BinderController);
+//TWORZENIE DEBUGERA
+if (os_type!= os_android)
+    if (!instance_exists(obj_DebugController))
+        instance_create(x,y,obj_DebugController);
 
-//FULLSCREEN
-if (keyboard_check_pressed(vk_f4))
+//FULLSCREEN (tlylko na pc do testow)
+if (os_type != os_android && keyboard_check_pressed(vk_f4))
     window_set_fullscreen(!window_get_fullscreen());
 //WYCHODZENIE Z GRY
 else if (keyboard_check_pressed(vk_escape))

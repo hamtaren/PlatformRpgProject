@@ -28,6 +28,8 @@
             <string>event_inherited();
 image_speed=0;
 Hp=10;
+
+scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,1);
 </string>
           </argument>
         </arguments>
@@ -50,8 +52,9 @@ Hp=10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (Hp&lt;=0)
+            <string>if (Hp&lt;=0 &amp;&amp; dead = false)
 {
+    obj_Hero.ep+=10;
     dead = true;
     image_index = 1;
 }
@@ -80,11 +83,14 @@ Hp=10;
             <string>if (!dead)
 {
     var dmgTaken = scr_ActorTakeDamage(other);
-    Hp-=dmgTaken;
+    Hp-=dmgTaken;    
     
     //upiekszenie, czyli krew leci tylko jak dmg&gt;0;
     if (dmgTaken&gt;0)
+    {
         scr_ParticlesBloodCreate(5);
+        sound_play(s_doorBash);    
+    }
 }
 </string>
           </argument>

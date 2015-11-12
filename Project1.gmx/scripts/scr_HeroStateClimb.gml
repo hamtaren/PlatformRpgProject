@@ -58,3 +58,9 @@ else if (keyboard_check(KEY_UP))
         y -=cspd;
     }
 }
+
+else if (keyboard_check_pressed(KEY_CANCEL))
+{
+    if (!place_meeting(x,y,obj_LeaderTop))
+        scr_HeroChageState(STATE_MOVE);
+}

@@ -1,7 +1,7 @@
 ///scr_HeroDeath()
-if (!obj_DebugController.godMode)
+if (instance_exists(obj_DebugController) && !obj_DebugController.godMode)
 {
     dead = true;
-    debug_log("DEATH",DEBUG_ERROR);
+    hp = 0;
     debug_log("DEATH",DEBUG_WARN);
 }

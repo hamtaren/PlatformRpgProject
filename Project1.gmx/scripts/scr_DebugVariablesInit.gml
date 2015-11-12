@@ -1,4 +1,5 @@
 ///scr_DebugVariablesInit()
+
 //Obiekt jest persistent i tworzony jest w room_Init
 //TODO: jak juz bedzie drzewko talenow, to trzeba bedzie w debugerContollerze zrobic odpowiedni sposob na wlaczanie i wylaczanie umiejetnosci
 

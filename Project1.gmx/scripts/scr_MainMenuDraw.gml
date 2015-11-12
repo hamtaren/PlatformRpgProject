@@ -11,24 +11,77 @@ if (!chosen)
         yBelka +=belkaGoTo;
     
     //zatwierdzanie
-    if (keyboard_check_pressed(vk_enter) && yBelka > 200)
-    {    
-        chosen = true;
-        vspd -= jumpStrenght;        //lekki podskok
+    if (mouse_check_button_pressed(mb_left) && yBelka > 200)
+    {
+        var dy = device_mouse_y(0);
+        //START
+        if (menuSelected = 0) 
+        {
+            if (dy>240 && dy < 287)
+            {
+            chosen = true;
+            vspd -= jumpStrenght;        //lekki podskok
+            }
+            else if (dy >287)
+                go="DOWN";
+        }
+        //CONTINUE
+        else if (menuSelected = 1) 
+        {
+            if (dy>288 && dy < 330)
+            {
+            chosen = true;
+            vspd -= jumpStrenght;        //lekki podskok
+            }
+            else if (dy >330)
+                go="DOWN";
+            else if (dy <288)
+                go="UP";
+        }
+        //OPTIONS
+        else if (menuSelected = 2) 
+        {
+            if (dy>331 && dy < 373)
+            {
+            chosen = true;
+            vspd -= jumpStrenght;        //lekki podskok
+            }
+            else if (dy >373)
+                go="DOWN";
+            else if (dy <331)
+                go="UP";                
+        }
+        //EXIT
+        else if (menuSelected = 3) 
+        {
+            if (dy>374 && dy < 418)
+            {
+            chosen = true;
+            vspd -= jumpStrenght;        //lekki podskok
+            }
+            else if (dy <374)
+                go="UP";                
+        }
     }
     
     //wybor gora/dol opcji
-    if (keyboard_check_pressed(vk_up))
+    if (go=="UP")
+    {
         menuSelected = max(0,menuSelected-1);
-    else if (keyboard_check_pressed(vk_down))
+        go = "";
+    }
+    else if (go == "DOWN")
+    {
         menuSelected = min(3,menuSelected+1);
+        go = "";
+    }
         
 }
 else //wybrano opcje
 {
     stringAlpha-=0.025;         //rozmycie napisu
     vspd++;                     //przyspieszenie opadania belki
-    yBelka+=vspd;
+    yBelka+=vspd;               //spadanie belki
 }
 
 //rysowanie napisu i belki

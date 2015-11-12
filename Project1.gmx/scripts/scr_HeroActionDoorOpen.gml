@@ -7,7 +7,12 @@ if (!door.keyClosed && !door.barricaded && !door.bashed)
     //wywazanie drzwi
     if (abs(hspd) >= moveSpeed && !door.opened)              
     {
-        scr_DoorBash(door);       
+        if (stamina>stamBashDoor)
+        {
+            stamina-=stamBashDoor;
+            scr_DoorBash(door);
+            sound_play(s_doorBash);
+        }
     }   
     //owieranie drzwi
     else if (!door.opened)

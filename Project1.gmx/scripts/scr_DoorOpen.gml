@@ -6,6 +6,11 @@ if (instance_exists(door) && door!=noone)
 {
     if (!door.opening && !door.bashed)
     {
+        if (door.opened)
+            sound_play(s_doorClose);
+        else
+            sound_play(s_doorOpen);
+            
         door.opened = !door.opened;   //zmiana
         door.opening = true;          //poniewaz zmienilismy to dzwignia nie jest jeszcze przeciagnieta na miejsce docelowe
     }
