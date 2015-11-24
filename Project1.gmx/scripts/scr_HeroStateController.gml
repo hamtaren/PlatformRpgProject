@@ -16,6 +16,12 @@ else if (state == STATE_SHOOT)
 
 }
 
+//Wykrywanie itemow
+if (place_meeting(x,y,obj_Item))
+    itemToPickUp = instance_nearest(x,y,obj_Item);      
+else
+    itemToPickUp = noone;
+
 //Animacje
 scr_HeroAnimator();
 

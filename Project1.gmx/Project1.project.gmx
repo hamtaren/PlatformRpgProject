@@ -28,12 +28,38 @@
     <sound>sound\s_doorClose</sound>
     <sound>sound\s_doorBash</sound>
     <sound>sound\s_drinkPotion</sound>
+    <sound>sound\s_menuMove</sound>
+    <sound>sound\s_menuSelect</sound>
+    <sound>sound\s_eqArm</sound>
+    <sound>sound\s_eqDist</sound>
+    <sound>sound\s_eqMelee</sound>
+    <sounds name="Voices">
+      <sounds name="Hero">
+        <sound>sound\v_HeroUnarmed0</sound>
+        <sound>sound\v_HeroUnarmed1</sound>
+        <sound>sound\v_HeroUnarmed2</sound>
+        <sound>sound\v_HeroUnarmed3</sound>
+      </sounds>
+    </sounds>
   </sounds>
   <sprites name="sprites">
-    <sprite>sprites\spr_Ladder</sprite>
-    <sprite>sprites\spr_LadderTop</sprite>
-    <sprite>sprites\spr_Door</sprite>
-    <sprite>sprites\spr_Barrel</sprite>
+    <sprites name="Actors">
+      <sprite>sprites\spr_elderWalk</sprite>
+      <sprite>sprites\spr_Dummy</sprite>
+      <sprites name="HeroSprites">
+        <sprite>sprites\spr_HeroRun</sprite>
+        <sprite>sprites\spr_HeroHandRun</sprite>
+        <sprite>sprites\spr_HeroHandStand</sprite>
+        <sprite>sprites\spr_HeroStand</sprite>
+        <sprite>sprites\spr_HeroMask</sprite>
+        <sprite>sprites\spr_HeroClimb</sprite>
+        <sprite>sprites\spr_HeroWallSlide</sprite>
+      </sprites>
+    </sprites>
+    <sprites name="CharacterPage">
+      <sprite>sprites\spr_characterPageMain</sprite>
+      <sprite>sprites\spr_characterPages</sprite>
+    </sprites>
     <sprites name="Icons">
       <sprite>sprites\spr_ParentMark</sprite>
       <sprite>sprites\spr_DebugController</sprite>
@@ -43,32 +69,51 @@
       <sprite>sprites\spr_DmgObject</sprite>
       <sprite>sprites\spr_MainMenu</sprite>
     </sprites>
-    <sprites name="HeroSprites">
-      <sprite>sprites\spr_HeroRun</sprite>
-      <sprite>sprites\spr_HeroMask</sprite>
-      <sprite>sprites\spr_HeroClimb</sprite>
-      <sprite>sprites\spr_HeroWallSlide</sprite>
+    <sprites name="Interface">
+      <sprite>sprites\spr_InterfaceArrowsB</sprite>
+      <sprite>sprites\spr_InterfaceArrows</sprite>
+      <sprite>sprites\spr_InterfaceButtonsB</sprite>
+      <sprite>sprites\spr_InterfaceButtons</sprite>
+      <sprite>sprites\spr_InterfaceSecondaryButtonsB</sprite>
+      <sprite>sprites\spr_InterfaceSecondaryButtons</sprite>
+      <sprite>sprites\spr_InterfaceBar</sprite>
     </sprites>
-    <sprite>sprites\spr_Leaver</sprite>
-    <sprite>sprites\spr_Elevator</sprite>
-    <sprites name="Solids">
-      <sprite>sprites\spr_DiagonalLeft</sprite>
-      <sprite>sprites\spr_DiagonalRight</sprite>
-      <sprite>sprites\spr_Solid</sprite>
-      <sprite>sprites\spr_SlideableSolid</sprite>
+    <sprites name="Items">
+      <sprites name="FloorItems">
+        <sprite>sprites\spr_FloorItemsArmor</sprite>
+        <sprites name="Melee">
+          <sprite>sprites\spr_FloorItemsSword</sprite>
+          <sprite>sprites\spr_FloorItemsStick</sprite>
+          <sprite>sprites\spr_FloorItemsHammer</sprite>
+          <sprite>sprites\spr_FloorItemsAxe</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="EqItems">
+        <sprite>sprites\spr_EqItemsArmor</sprite>
+        <sprites name="Melee">
+          <sprite>sprites\spr_EqItemsHammer</sprite>
+          <sprite>sprites\spr_EqItemsAxe</sprite>
+          <sprite>sprites\spr_EqItemsStick</sprite>
+          <sprite>sprites\spr_EqItemsSword</sprite>
+        </sprites>
+      </sprites>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_MenuBelka</sprite>
       <sprite>sprites\spr_MenuNapisy</sprite>
     </sprites>
-    <sprite>sprites\spr_Dummy</sprite>
-    <sprite>sprites\obj_Slash01</sprite>
-    <sprites name="Interface">
-      <sprite>sprites\spr_InterfaceArrows</sprite>
-      <sprite>sprites\spr_InterfaceButtons</sprite>
-      <sprite>sprites\spr_InterfaceSecondaryButtons</sprite>
-      <sprite>sprites\spr_InterfaceBar</sprite>
+    <sprites name="Solids">
+      <sprite>sprites\spr_Solid</sprite>
+      <sprite>sprites\spr_SlideableSolid</sprite>
     </sprites>
+    <sprite>sprites\spr_Door</sprite>
+    <sprite>sprites\spr_Elevator</sprite>
+    <sprite>sprites\spr_HeroHandAttack</sprite>
+    <sprite>sprites\spr_Ladder</sprite>
+    <sprite>sprites\spr_LadderTop</sprite>
+    <sprite>sprites\spr_Leaver</sprite>
+    <sprite>sprites\spr_null</sprite>
+    <sprite>sprites\spr_Slash01</sprite>
     <sprite>sprites\spr_SpikesUp</sprite>
   </sprites>
   <backgrounds name="background">
@@ -76,6 +121,8 @@
     <background>background\background1</background>
     <background>background\tile_LadderWooden</background>
     <background>background\bg_MainMenu</background>
+    <background>background\tile_outdoor</background>
+    <background>background\tile_woodenConstruct</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -87,6 +134,7 @@
       <script>scripts\place_meeting_solid.gml</script>
       <script>scripts\place_meeting_diagonal.gml</script>
       <script>scripts\draw_text_bordered.gml</script>
+      <script>scripts\draw_text_bordered_color.gml</script>
     </scripts>
     <scripts name="Moje">
       <scripts name="Actors">
@@ -104,12 +152,23 @@
             <script>scripts\scr_HeroActionDoorOpen.gml</script>
             <script>scripts\scr_HeroActionItemPickUp.gml</script>
             <script>scripts\scr_HeroActionTurnLeaver.gml</script>
+            <scripts name="PickUps">
+              <script>scripts\scr_HeroActionItemPickUpArmor.gml</script>
+            </scripts>
           </scripts>
           <scripts name="States">
             <script>scripts\scr_HeroStateClimb.gml</script>
             <script>scripts\scr_HeroStateMove.gml</script>
           </scripts>
           <script>scripts\scr_HeroDeath.gml</script>
+          <scripts name="Calcs">
+            <script>scripts\scr_DPSCalc.gml</script>
+            <script>scripts\scr_RESCalc.gml</script>
+          </scripts>
+          <scripts name="Talking">
+            <script>scripts\scr_HeroTalk.gml</script>
+            <script>scripts\scr_HeroTalkForce.gml</script>
+          </scripts>
         </scripts>
         <script>scripts\scr_ActorTakeDamage.gml</script>
         <script>scripts\scr_ActorCreateDamage.gml</script>
@@ -190,11 +249,22 @@
       </scripts>
       <scripts name="Interface">
         <script>scripts\scr_InterfaceVariablesInit.gml</script>
+        <script>scripts\scr_InterfaceStep.gml</script>
         <script>scripts\scr_InterfaceDraw.gml</script>
+        <script>scripts\scr_InterfaceBlock.gml</script>
+        <script>scripts\scr_InterfaceResPercent.gml</script>
       </scripts>
       <scripts name="DmgObject">
         <script>scripts\scr_DRVariablesInit.gml</script>
         <script>scripts\scr_DRSet.gml</script>
+      </scripts>
+      <script>scripts\scr_AttackSpeedToFrames.gml</script>
+      <script>scripts\scr_AttackSpeedToHandImageSpeed.gml</script>
+      <scripts name="Items">
+        <script>scripts\scr_ItemCompareColor.gml</script>
+        <script>scripts\scr_ItemArmorSet.gml</script>
+        <script>scripts\scr_ItemArmorNames.gml</script>
+        <script>scripts\scr_ItemArmorGenerate.gml</script>
       </scripts>
     </scripts>
   </scripts>
@@ -203,22 +273,27 @@
     <font>fonts\font_damage</font>
   </fonts>
   <objects name="objects">
+    <objects name="Items">
+      <object>objects\obj_Item</object>
+      <object>objects\obj_Armor</object>
+    </objects>
     <objects name="Controllers">
       <object>objects\obj_GameController</object>
       <object>objects\obj_Ini</object>
       <object>objects\obj_DebugController</object>
       <object>objects\obj_MainMenu</object>
       <object>objects\obj_IdDetail</object>
+      <object>objects\obj_Camera</object>
     </objects>
-    <object>objects\obj_Camera</object>
     <objects name="Actors">
-      <object>objects\obj_Hero</object>
       <object>objects\obj_Actor</object>
       <object>objects\obj_Npc</object>
+      <object>objects\obj_Hero</object>
+      <object>objects\obj_Elder</object>
+      <object>objects\obj_Dummy</object>
     </objects>
     <objects name="Interactionable">
       <object>objects\obj_Door</object>
-      <object>objects\obj_Item</object>
       <objects name="Ladders">
         <object>objects\obj_LeaderTop</object>
         <object>objects\obj_Leader</object>
@@ -231,38 +306,26 @@
     <objects name="Solids">
       <object>objects\obj_Solid</object>
       <object>objects\obj_SlideableSolid</object>
-      <object>objects\obj_Diagonal</object>
-      <object>objects\obj_DiagonalLeft</object>
-      <object>objects\obj_DiagonalRight</object>
     </objects>
-    <object>objects\obj_Dummy</object>
     <objects name="Damage">
       <object>objects\obj_DamageSlash</object>
       <object>objects\obj_DmgFigure</object>
       <object>objects\obj_Damage</object>
+      <object>objects\obj_Spikes</object>
       <object>objects\obj_DR</object>
     </objects>
-    <object>objects\obj_Spikes</object>
+    <object>objects\obj_Equip</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room_Menu</room>
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
-    <room>rooms\room_Menu</room>
   </rooms>
-  <constants number="30">
+  <constants number="25">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
     <constant name="DEBUG_WARN">-101</constant>
-    <constant name="ELEVATOR_DOWN">270</constant>
-    <constant name="ELEVATOR_MOVE">1</constant>
-    <constant name="ELEVATOR_STAY">0</constant>
-    <constant name="ELEVATOR_STOP">3</constant>
-    <constant name="ELEVATOR_UP">90</constant>
-    <constant name="ELEVATOR_WAIT">2</constant>
-    <constant name="HIDEOUT_BARREL">1</constant>
-    <constant name="HIDEOUT_HOLEINWALL">5</constant>
-    <constant name="HIDEOUT_NONE">0</constant>
     <constant name="ITEM_ARMOR">2</constant>
     <constant name="ITEM_GOLD">5</constant>
     <constant name="ITEM_KEY">3</constant>
@@ -277,9 +340,13 @@
     <constant name="STATE_CLIMB">1</constant>
     <constant name="STATE_MOVE">0</constant>
     <constant name="STATE_NONE">-1</constant>
-    <constant name="BIND_ELEVATOR_TO_WAYPOINT">1</constant>
-    <constant name="BIND_DOOR_TO_LEAVER">2</constant>
-    <constant name="BIND_NOTHING">0</constant>
+    <constant name="PAGE_NONE">0</constant>
+    <constant name="PAGE_ATRYB">1</constant>
+    <constant name="PAGE_STAT">2</constant>
+    <constant name="PAGE_EKWIP">3</constant>
+    <constant name="WPN_NONE">0</constant>
+    <constant name="WPN_MELEE">1</constant>
+    <constant name="WPN_DIST">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

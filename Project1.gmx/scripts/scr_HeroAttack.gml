@@ -3,9 +3,26 @@
 
 if (keyboard_check_pressed(KEY_ATTACK))
 {
-    if (stamina>stamAttack)
+    if (weaponType == WPN_NONE)         //NIE MA BRONI
     {
-    stamina -= stamAttack;
-    scr_ActorCreateDamage(5,0,obj_DamageSlash);
+        //Marudzenie
+        var _talk = choose(v_HeroUnarmed0, v_HeroUnarmed1, v_HeroUnarmed2, v_HeroUnarmed3);
+        scr_HeroTalk(_talk);        
+    }
+    else if (weaponType == WPN_MELEE)   //BRON DO WALKI WRECZ
+    {
+        if (stamina>stamAttack)
+        {
+            if (!attacking)
+            {
+            attacking=true;
+            stamina -= stamAttack;
+            hand_index = 0;        
+            }
+        }
+    }
+    else if (weaponType == WPN_DIST)    //BRON DO STRZELANIA
+    {
+        //TODO: strzelanie
     }
 }

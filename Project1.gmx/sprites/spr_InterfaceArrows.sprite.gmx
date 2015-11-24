@@ -8,17 +8,17 @@
   <sepmasks>0</sepmasks>
   <bboxmode>0</bboxmode>
   <bbox_left>0</bbox_left>
-  <bbox_right>76</bbox_right>
+  <bbox_right>37</bbox_right>
   <bbox_top>0</bbox_top>
-  <bbox_bottom>76</bbox_bottom>
+  <bbox_bottom>37</bbox_bottom>
   <HTile>0</HTile>
   <VTile>0</VTile>
   <TextureGroups>
     <TextureGroup0>0</TextureGroup0>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>77</width>
-  <height>77</height>
+  <width>38</width>
+  <height>38</height>
   <frames>
     <frame index="0">images\spr_InterfaceArrows_0.png</frame>
     <frame index="1">images\spr_InterfaceArrows_1.png</frame>

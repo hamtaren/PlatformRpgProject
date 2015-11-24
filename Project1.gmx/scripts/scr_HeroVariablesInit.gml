@@ -19,24 +19,49 @@ slide = false;      //czy zjezdza/slizga sie po sciane
 
 state = STATE_MOVE; //STATE_MOVE, STATE_CLIMB,
 
-//STATYSTKI
+//ZWIAZANE Z OBRAZENIAMI I ATAKIEM
+attackSpeed = 1;            //oznacza ile atakow mozna zrobic w ciagu sekundy
+attacking = false;          //czy wykonuje atak
+attackCreated = false;      //czy stworzono obiekt reprezentujacy atak
+
+weaponType = WPN_NONE;      //jaki typ broni (wrecz/dystans/rzadna)
+
+//REKA Z BRONIA
+sprite_hand = spr_HeroHandStand; //sprite reki
+hand_image_speed = 0;            //szybkosc wyswietlania ruchu reki (uzywane podczas ataku)
+hand_index = 0;                  //index sprite'a reki
+
+///GADANIE///
+talk = v_HeroUnarmed0;
+
+//STATYSTKI//
 
 //doswiadczenie
 level = 1;
 epMax = 100;
 ep = 0; ///experience points
-sp = 0; //skill points
+sp = 1000; //skill points
 
 //statystyki do rozdawania skill points
 strength = 1;
-vitality = 1;
 dextarity = 1;
 endurance = 1;
+energy = 1;
+vitality = 1;
 
 //zycie
 hpMax = 30;
 hp = hpMax;
 hpReg = 0.005;
+
+//OBLICZANE POTRZEBNE DO KARTY POSTACI - EKWIP
+dps = 0;        //obrazania na sekunde
+resPhy = 0;     //odpornosc na fizyczne
+resElem = 0;    //odpornosc na elemental
+
+//EKWIPUNEK I Z TYM ZWIAZANE RZECZY
+objEq = instance_create(0,0,obj_Equip);
+itemToPickUp = noone; //id obiektu item ktory podniesiemy jak wcisniemy akcje
 
 //zmeczenie
 staminaMax = 100;
@@ -47,14 +72,6 @@ staminaReg = 0.05;
 stamJump = 5; //to bedzie zmieniane w zaleznoscio od uzywanej zbroi i wytrzymalosci i/lub sily
 stamAttack = 1; //to bedzie zmieniane w zaleznosci od uzywanej broni i wytrztmalosci i/lub zrecznosci
 stamBashDoor = 20; //stale
-
-//PRZEDMIOTY
-//mikstury
-brews = 5;
-mixtures = 5;
-
-//ZWIAZANE Z OBRAZENIAMI
-attackSpeed = 1; //oznacza ile atakow mozna zrobic w ciagu sekundy
 
 //USTAWIENIE ZADAWANYCH OBRAZEN
 scr_DRSet(dmgObject,0,4,0,0,0,0,0); //ustawienie tymczasowe

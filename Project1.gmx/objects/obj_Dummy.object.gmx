@@ -57,6 +57,10 @@ scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,1);
     obj_Hero.ep+=10;
     dead = true;
     image_index = 1;
+    
+    //todo: usunac
+    var armor = instance_create(x,y,obj_Armor);
+    scr_ItemArmorGenerate(irandom(102),armor);
 }
 </string>
           </argument>

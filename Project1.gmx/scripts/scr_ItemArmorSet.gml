@@ -1,0 +1,29 @@
+///scr_ItemArmorSet(itemObjRef,name,pierce,slash,fire,cold,electro,weight,hpReg,stamReg,hpMax,stamMax,sprIndex)
+var item = argument0;
+var _name = argument1;
+var _pierce = argument2;
+var _slash = argument3;
+var _blunt = argument4;
+var _fire = argument5;
+var _cold = argument6;
+var _electro = argument7;
+var _weight = argument8;
+var _hpRegBonus = argument9;
+var _staminaRegBonus = argument10;
+var _hpMaxBonus = argument11;
+var _staminaMaxBonus = argument12;
+var _sprIndex = argument13;
+
+item.name = _name;
+item.pierce = _pierce;
+item.slash = _slash;
+item.blunt = _blunt;
+item.fire = _fire;
+item.cold = _cold;
+item.electro = _electro;
+item.weight = _weight;
+item.hpRegBonus = _hpRegBonus;
+item.staminaRegBonus = _staminaRegBonus;
+item.hpMaxBonus = _hpMaxBonus;
+item.staminaMaxBonus = _staminaMaxBonus;
+item.sprIndex = _sprIndex;

@@ -110,7 +110,12 @@
           <argument>
             <kind>1</kind>
             <string>///Rysowanie siebie
+//rysowanie reki
+if (sprite_hand!=spr_null)
+    draw_sprite_ext(sprite_hand,hand_index,round(x),round(y),image_xscale,image_yscale,image_angle,c_white,1);
+//ryswoanie ciala
 draw_sprite_ext(sprite_index,image_index,round(x),round(y),image_xscale, image_yscale, image_angle,c_white,image_alpha);
+
 </string>
           </argument>
         </arguments>

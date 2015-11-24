@@ -19,8 +19,9 @@ if (!chosen)
         {
             if (dy>240 && dy < 287)
             {
-            chosen = true;
-            vspd -= jumpStrenght;        //lekki podskok
+                sound_play(s_menuSelect);
+                chosen = true;
+                vspd -= jumpStrenght;        //lekki podskok
             }
             else if (dy >287)
                 go="DOWN";
@@ -30,8 +31,9 @@ if (!chosen)
         {
             if (dy>288 && dy < 330)
             {
-            chosen = true;
-            vspd -= jumpStrenght;        //lekki podskok
+                sound_play(s_menuSelect);
+                chosen = true;
+                vspd -= jumpStrenght;        //lekki podskok
             }
             else if (dy >330)
                 go="DOWN";
@@ -43,8 +45,9 @@ if (!chosen)
         {
             if (dy>331 && dy < 373)
             {
-            chosen = true;
-            vspd -= jumpStrenght;        //lekki podskok
+                sound_play(s_menuSelect);
+                chosen = true;
+                vspd -= jumpStrenght;        //lekki podskok
             }
             else if (dy >373)
                 go="DOWN";
@@ -56,8 +59,9 @@ if (!chosen)
         {
             if (dy>374 && dy < 418)
             {
-            chosen = true;
-            vspd -= jumpStrenght;        //lekki podskok
+                sound_play(s_menuSelect);
+                chosen = true;
+                vspd -= jumpStrenght;        //lekki podskok
             }
             else if (dy <374)
                 go="UP";                
@@ -68,11 +72,13 @@ if (!chosen)
     if (go=="UP")
     {
         menuSelected = max(0,menuSelected-1);
+        sound_play(s_menuMove);
         go = "";
     }
     else if (go == "DOWN")
     {
         menuSelected = min(3,menuSelected+1);
+        sound_play(s_menuMove);
         go = "";
     }
         

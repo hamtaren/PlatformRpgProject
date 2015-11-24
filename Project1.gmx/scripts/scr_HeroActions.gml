@@ -26,9 +26,9 @@ if (keyboard_check_pressed(KEY_ACTION))
 
 //Podnoszenie przedmiotow
     if (place_meeting(x,y,obj_Item))
-    {
-        var item = instance_place(x,y,obj_Item);        
-        scr_HeroActionItemPickUp(item);
+    {  
+        scr_HeroActionItemPickUp(itemToPickUp);
+        itempToPickUp = noone;
     }
 //Ciagniecie dzwigni
     if (place_meeting(x,y,obj_Leaver))

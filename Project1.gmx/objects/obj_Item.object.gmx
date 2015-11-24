@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>//Obiekt po ktorym dziedziczyc beda przedmioty
 type = ITEM_NONE; //typ przedmiotu
+image_speed = 0;
 </string>
           </argument>
         </arguments>

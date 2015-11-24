@@ -11,6 +11,11 @@ if (bool) //blokowanie
     KEY_JUMP = (block);
     KEY_ATTACK = (block);
     KEY_CANCEL = (block);
+    KEY_CHARACTER = (block);
+    KEY_MENU = (block);
+    KEY_SWAP = (block);
+    KEY_BREW = (block);
+    KEY_MIXTURE = (block);  
 }
 else
 {
@@ -22,4 +27,9 @@ else
     KEY_JUMP = (ord('C'));
     KEY_ATTACK = (ord('V'));
     KEY_CANCEL = (ord('Z')); 
+    KEY_CHARACTER = (ord('Q'));
+    KEY_MENU = (ord('W'));
+    KEY_SWAP = (ord('E'));
+    KEY_BREW = (ord('R'));
+    KEY_MIXTURE = (ord('T'));
 }
