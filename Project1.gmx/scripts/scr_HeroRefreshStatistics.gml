@@ -17,8 +17,29 @@ if (ep >= epMax)
 
 ////AKTUALIZOWANIE OBRAZEN////
     //todo: pobierac to z aktualnie wybranej broni!
-    var wpnPierce = 0, wpnSlash = 2, wpnBlunt = 0, wpnFire = 0, wpnCold = 0, wpnElectro = 0, wpnDmgTrue = 0;
+    var wpnPierce = 0, wpnSlash = 0, wpnBlunt = 0, wpnFire = 0, wpnCold = 0, wpnElectro = 0, wpnDmgTrue = 0;
+    var wpnAttackSpeed = 1, wpnWeight = 0;
+    
     var _pierce = wpnPierce, _slash = wpnSlash, _blunt = wpnBlunt, _fire = wpnFire, _cold = wpnCold, _electro = wpnElectro, _dmgTrue = wpnDmgTrue;
+    
+    if (instance_exists(objEq.melee[objEq.mSel]))
+    {
+        var wpn = objEq.melee[objEq.mSel];
+        //obrazenia
+        wpnPierce = wpn.pierce;
+        wpnSlash = wpn.slash;
+        wpnBlunt = wpn.blunt;
+        
+        wpnFire = wpn.fire;
+        wpnCold = wpn.cold;
+        wpnElectro = wpn.electro;  
+        
+        wpnDmgTrue = wpn.dmgTrue;
+        //ciezar broni
+        wpnWeight = wpn.weight;
+        //szybkosc
+        wpnAttackSpeed = wpn.attackSpeed;
+    }
     
     if (wpnPierce>0)
         _pierce = (strength div 3) + (dextarity div 4) + wpnPierce;
@@ -32,21 +53,23 @@ if (ep >= epMax)
     if (wpnCold>0)
         _cold = (energy div 10) + wpnCold;
     if (wpnElectro>0)
-        _electro = (endurance div 10) + spnElectro;
+        _electro = (endurance div 10) + wpnElectro;
     
+    //stamina -= 1 + wpn.weight
+    stamAttack = 1 + wpnWeight;    
+    
+    //szybkosc ataku    
+    var aSpd = ((dextarity div 2) * 0.08  + 0.5)*wpnAttackSpeed;     //bonus ze zrecznosci (przy maxie (50) daje 2.5 ataku/sek)
+    attackSpeed = clamp(aSpd, 0.25, 3);             //najwolniej mozemy atakowac 1raz na 4sek, a najszybciej 3razy na 1sek    
+        
     //OBLICZANIE OBRAZEN NA SEKUNDE (wykorzystywana w Karcie postaci - ekwip)
-    scr_DPSCalc(_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue);
+    scr_DPSCalc(_pierce,_slash,_blunt,_fire,_cold,_electro,wpnDmgTrue);
     
     //ODSWIEZENIE WSZYSTKICH WARTOSCI
-    scr_DRSet(dmgObject,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue);
+    scr_DRSet(dmgObject,_pierce,_slash,_blunt,_fire,_cold,_electro,wpnDmgTrue);
     
-    //todo: stamAttack = wpnStamAttack;    
-    //todo: attackSpeed = wpnAttackSpeed + (dextarity div 2) * 0.08  + 0.5;
-    var aSpd = (dextarity div 2) * 0.08  + 0.5;     //bonus ze zrecznosci (przy maxie (50) daje 2.5 ataku/sek)
-    attackSpeed = clamp(aSpd, 0.25, 3);             //najwolniej mozemy atakowac 1raz na 4sek, a najszybciej 3razy na 1sek
-
+    
 ////AKTUALIZOWANIE ODPORNOSCI ORAZ STATYSTYK////
-
     //Odpornosci
     var armPierce = 0, armSlash = 0, armBlunt = 0, armFire = 0, armCold = 0, armElectro = 0;
     //Statystyki

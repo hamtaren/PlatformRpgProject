@@ -5,8 +5,8 @@ var item = argument0;
 
 switch(item.type)
 {
-    case ITEM_WEAPON: break;
-    case ITEM_ARMOR: scr_HeroActionItemPickUpArmor(item) break;
+    case ITEM_WEAPON: scr_HeroActionItemPickUpWeapon(item); break;
+    case ITEM_ARMOR: scr_HeroActionItemPickUpArmor(item); break;
     case ITEM_KEY: break;
     case ITEM_QUEST: break;
     case ITEM_GOLD: break;

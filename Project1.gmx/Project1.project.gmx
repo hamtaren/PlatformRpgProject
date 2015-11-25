@@ -24,15 +24,16 @@
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\s_doorOpen</sound>
-    <sound>sound\s_doorClose</sound>
     <sound>sound\s_doorBash</sound>
+    <sound>sound\s_doorClose</sound>
+    <sound>sound\s_doorOpen</sound>
     <sound>sound\s_drinkPotion</sound>
-    <sound>sound\s_menuMove</sound>
-    <sound>sound\s_menuSelect</sound>
     <sound>sound\s_eqArm</sound>
     <sound>sound\s_eqDist</sound>
     <sound>sound\s_eqMelee</sound>
+    <sound>sound\s_itemPickup</sound>
+    <sound>sound\s_menuMove</sound>
+    <sound>sound\s_menuSelect</sound>
     <sounds name="Voices">
       <sounds name="Hero">
         <sound>sound\v_HeroUnarmed0</sound>
@@ -41,6 +42,7 @@
         <sound>sound\v_HeroUnarmed3</sound>
       </sounds>
     </sounds>
+    <sound>sound\m_music</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Actors">
@@ -54,6 +56,11 @@
         <sprite>sprites\spr_HeroMask</sprite>
         <sprite>sprites\spr_HeroClimb</sprite>
         <sprite>sprites\spr_HeroWallSlide</sprite>
+        <sprite>sprites\spr_HeroHandAttackSmash</sprite>
+        <sprite>sprites\spr_HeroAttackSword1</sprite>
+        <sprite>sprites\spr_HeroAttackHammer1</sprite>
+        <sprite>sprites\spr_HeroAttackAxe1</sprite>
+        <sprite>sprites\spr_HeroAttackStick1</sprite>
       </sprites>
     </sprites>
     <sprites name="CharacterPage">
@@ -87,6 +94,12 @@
           <sprite>sprites\spr_FloorItemsHammer</sprite>
           <sprite>sprites\spr_FloorItemsAxe</sprite>
         </sprites>
+        <sprites name="Pickable">
+          <sprite>sprites\spr_FloorItemsMixture</sprite>
+          <sprite>sprites\spr_FloorItemsBrew</sprite>
+          <sprite>sprites\spr_FloorItemsArrows</sprite>
+          <sprite>sprites\spr_FloorItemsAmmo</sprite>
+        </sprites>
       </sprites>
       <sprites name="EqItems">
         <sprite>sprites\spr_EqItemsArmor</sprite>
@@ -108,13 +121,13 @@
     </sprites>
     <sprite>sprites\spr_Door</sprite>
     <sprite>sprites\spr_Elevator</sprite>
-    <sprite>sprites\spr_HeroHandAttack</sprite>
     <sprite>sprites\spr_Ladder</sprite>
     <sprite>sprites\spr_LadderTop</sprite>
     <sprite>sprites\spr_Leaver</sprite>
     <sprite>sprites\spr_null</sprite>
     <sprite>sprites\spr_Slash01</sprite>
     <sprite>sprites\spr_SpikesUp</sprite>
+    <sprite>sprites\spr_Box</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -154,6 +167,7 @@
             <script>scripts\scr_HeroActionTurnLeaver.gml</script>
             <scripts name="PickUps">
               <script>scripts\scr_HeroActionItemPickUpArmor.gml</script>
+              <script>scripts\scr_HeroActionItemPickUpWeapon.gml</script>
             </scripts>
           </scripts>
           <scripts name="States">
@@ -164,6 +178,7 @@
           <scripts name="Calcs">
             <script>scripts\scr_DPSCalc.gml</script>
             <script>scripts\scr_RESCalc.gml</script>
+            <script>scripts\scr_HeroAnimatorHandSpriteCalc.gml</script>
           </scripts>
           <scripts name="Talking">
             <script>scripts\scr_HeroTalk.gml</script>
@@ -262,9 +277,19 @@
       <script>scripts\scr_AttackSpeedToHandImageSpeed.gml</script>
       <scripts name="Items">
         <script>scripts\scr_ItemCompareColor.gml</script>
-        <script>scripts\scr_ItemArmorSet.gml</script>
-        <script>scripts\scr_ItemArmorNames.gml</script>
-        <script>scripts\scr_ItemArmorGenerate.gml</script>
+        <scripts name="Armor">
+          <script>scripts\scr_ItemArmorGenerate.gml</script>
+          <script>scripts\scr_ItemArmorNames.gml</script>
+          <script>scripts\scr_ItemArmorSet.gml</script>
+        </scripts>
+        <scripts name="Weapons">
+          <script>scripts\scr_ItemStickNames.gml</script>
+          <script>scripts\scr_ItemAxeNames.gml</script>
+          <script>scripts\scr_ItemHammerNames.gml</script>
+          <script>scripts\scr_ItemSwordNames.gml</script>
+          <script>scripts\scr_ItemWeaponSet.gml</script>
+          <script>scripts\scr_ItemWeaponGetName.gml</script>
+        </scripts>
       </scripts>
     </scripts>
   </scripts>
@@ -276,6 +301,13 @@
     <objects name="Items">
       <object>objects\obj_Item</object>
       <object>objects\obj_Armor</object>
+      <object>objects\obj_Weapon</object>
+      <objects name="Pickable">
+        <object>objects\obj_Mixture</object>
+        <object>objects\obj_Ammo</object>
+        <object>objects\obj_Arrows</object>
+        <object>objects\obj_Brew</object>
+      </objects>
     </objects>
     <objects name="Controllers">
       <object>objects\obj_GameController</object>
@@ -315,13 +347,14 @@
       <object>objects\obj_DR</object>
     </objects>
     <object>objects\obj_Equip</object>
+    <object>objects\obj_Box</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Menu</room>
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
   </rooms>
-  <constants number="25">
+  <constants number="27">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
@@ -331,6 +364,8 @@
     <constant name="ITEM_KEY">3</constant>
     <constant name="ITEM_NONE">0</constant>
     <constant name="ITEM_QUEST">4</constant>
+    <constant name="ITEM_AMMO">6</constant>
+    <constant name="ITEM_MIXTURE">5</constant>
     <constant name="ITEM_WEAPON">1</constant>
     <constant name="LOG_FULL">46</constant>
     <constant name="LOG_MED">20</constant>

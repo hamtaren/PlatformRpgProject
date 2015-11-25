@@ -4,12 +4,14 @@
 //Animacje poruszania sie
 if (attacking)
 {
-    sprite_hand = spr_HeroHandAttack;    
+    var selWpn = objEq.melee[objEq.mSel];
+    
+    sprite_hand = scr_HeroAnimatorHandSpriteCalc(selWpn);    
     hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand));
     
     hand_index+=hand_image_speed;
 
-    if (abs(hand_index) >=sprite_get_number(sprite_hand)-2)
+    if (hand_index >=sprite_get_number(sprite_hand)-2)
     {
         if (!attackCreated)
         {
@@ -18,7 +20,7 @@ if (attacking)
         }
     }
     
-    if (abs(hand_index) >= sprite_get_number(sprite_hand)-1)
+    if (round(hand_index) >= sprite_get_number(sprite_hand))
     {
         attacking = false;
         attackCreated = false;

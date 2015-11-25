@@ -9,16 +9,25 @@ if (keyboard_check_pressed(KEY_ATTACK))
         var _talk = choose(v_HeroUnarmed0, v_HeroUnarmed1, v_HeroUnarmed2, v_HeroUnarmed3);
         scr_HeroTalk(_talk);        
     }
-    else if (weaponType == WPN_MELEE)   //BRON DO WALKI WRECZ
+    if (weaponType == WPN_MELEE)   //BRON DO WALKI WRECZ
     {
-        if (stamina>stamAttack)
+        if (instance_exists(objEq.melee[objEq.mSel]))
         {
-            if (!attacking)
+            if (stamina>stamAttack)
             {
-            attacking=true;
-            stamina -= stamAttack;
-            hand_index = 0;        
+                if (!attacking)
+                {
+                attacking=true;
+                stamina -= stamAttack;
+                hand_index = 0;        
+                }
             }
+        }
+        else
+        {
+            //Marudzenie
+            var _talk = choose(v_HeroUnarmed0, v_HeroUnarmed1, v_HeroUnarmed2, v_HeroUnarmed3);
+            scr_HeroTalk(_talk); 
         }
     }
     else if (weaponType == WPN_DIST)    //BRON DO STRZELANIA

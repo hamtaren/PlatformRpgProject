@@ -50,19 +50,6 @@ switch(_sprIndex)
 //TODO: zrobic modyfikatory do generowanego obiektu: http://diablo2.diablowiki.net/Item_Generation_Tutorial
 if (rest!=0)
 {
-    if (_sprIndex == 0) //szaty
-    {
-
-    }
-    else if (_sprIndex == 1) // plaszcz
-    {
-    
-    }
-    else if (_sprIndex == 2) // kurtka
-    {
-    
-    }
-    
     _pierce += rest*choose(0.01, 0.02, 0.03, 0.04, 0.05, 0.75, 0.1)*choose(-1,1,0,0,0);
     _slash += rest*choose(0.01, 0.02, 0.03, 0.04, 0.05, 0.75, 0.1)*choose(-1,1,0,0,0);
     _blunt += rest*choose(0.01, 0.02, 0.03, 0.04, 0.05, 0.75, 0.1)*choose(-1,1,0,0,0);
@@ -73,8 +60,7 @@ if (rest!=0)
     _hpReg += rest*choose(1,2,3,4,5)*choose(-1,1,0,0,0) * 0.001; 
     _stamReg += rest*choose(1,2,3,4,5)*choose(-1,1,0,0,0) * 0.01; 
     _hpMax += rest*choose(5,6,7,8,9,10)*choose(-1,1,0,0,0)*0.5;
-    _stamMax += rest*choose(5,6,7,8,9,10)*choose(-1,1,0,0,0);
-    
+    _stamMax += rest*choose(5,6,7,8,9,10)*choose(-1,1,0,0,0);  
 }
 
 _weight = clamp(_weight, -2, 50);
