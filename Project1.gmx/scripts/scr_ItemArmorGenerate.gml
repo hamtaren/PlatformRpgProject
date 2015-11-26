@@ -1,5 +1,5 @@
-///scr_ItemArmorGenerate(value,item)
-
+///scr_ItemArmorGenerate(DEPRECATED@value,item)  
+//                                         
 //0-9      -szaty
 //10-19    -plaszcz
 //20-29    -kurtka

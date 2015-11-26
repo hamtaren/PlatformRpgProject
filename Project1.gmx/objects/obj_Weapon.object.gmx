@@ -146,13 +146,13 @@ if (alpha&gt;0)
     }
     draw_set_halign(fa_left);
     //ODPORNOSCI FIZYCZNE
-    draw_text_bordered_color(200,14,'Kł. '+string(pierce),scr_ItemCompareColor(eqPierce,pierce));
-    draw_text_bordered_color(200,26,'Si. '+string(slash),scr_ItemCompareColor(eqSlash,slash));
-    draw_text_bordered_color(200,38,'Ob. '+string(blunt),scr_ItemCompareColor(eqBlunt,blunt));
+    draw_text_bordered_color(200,14,'Kł. '+string(round(pierce)),scr_ItemCompareColor(eqPierce,pierce));
+    draw_text_bordered_color(200,26,'Si. '+string(round(slash)),scr_ItemCompareColor(eqSlash,slash));
+    draw_text_bordered_color(200,38,'Ob. '+string(round(blunt)),scr_ItemCompareColor(eqBlunt,blunt));
     //ODPORNOSCI ELEMENTALNE
-    draw_text_bordered_color(280,14,'Og. '+string(fire),scr_ItemCompareColor(eqFire,fire));
-    draw_text_bordered_color(280,26,'Zi. '+string(cold),scr_ItemCompareColor(eqCold,cold));
-    draw_text_bordered_color(280,38,'El. '+string(electro),scr_ItemCompareColor(eqElectro,electro));
+    draw_text_bordered_color(280,14,'Og. '+string(round(fire)),scr_ItemCompareColor(eqFire,fire));
+    draw_text_bordered_color(280,26,'Zi. '+string(round(cold)),scr_ItemCompareColor(eqCold,cold));
+    draw_text_bordered_color(280,38,'El. '+string(round(electro)),scr_ItemCompareColor(eqElectro,electro));
     //CIEZAR BRONI
     draw_text_bordered_color(200,50,'Waga '+string(weight*2)+'kg',scr_ItemCompareColor(-eqWeight,-weight));
     draw_text_bordered_color(280,50,'Szyb '+string(attackSpeed),scr_ItemCompareColor(eqAttackSpeed,attackSpeed));

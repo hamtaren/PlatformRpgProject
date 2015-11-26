@@ -65,8 +65,8 @@ else
     //WARTOSCI ZYCIA, STAMINY I EXPA
     draw_set_halign(fa_center);
     draw_set_font(font_debug);
-    draw_text_bordered(268,2,string(round((obj_Hero.hp))) + "/" + string(obj_Hero.hpMax)  );
-    draw_text_bordered(268,18,string(round((obj_Hero.stamina))) + "/" + string(obj_Hero.staminaMax) );
+    draw_text_bordered(268,2,string(round((obj_Hero.hp))) + "/" + string(round(obj_Hero.hpMax))  );
+    draw_text_bordered(268,18,string(round((obj_Hero.stamina))) + "/" + string(round(obj_Hero.staminaMax)) );
     draw_text_bordered(268,34,string(round((obj_Hero.ep))) + " / " + string(obj_Hero.epMax) );
     
     //POZIOM
@@ -174,8 +174,6 @@ else
             break;
         }
     }   
-    
- 
 }
 
 //PRZYCISK KARTY POSTACI

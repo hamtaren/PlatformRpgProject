@@ -111,7 +111,71 @@ if (type = ITEM_WEAPON)
 
 if (type = ITEM_ARMOR)
 {
-    show_message("Stworzono zbroje :P... pst... ni chuja, zbroi nie ma :D");
-    instance_destroy(); exit;
+    
+    var _sprIndex = 0;
+    
+    //losowanie klasy zbroi poprzez podobrazki
+    if (level == 1)    
+        _sprIndex = choose(0,0,0,0,1,1,1,2,3);    
+    else if (level == 2)    
+        _sprIndex = choose(0,0,1,1,1,2,2,3,4,5);    
+    else if (level == 3)    
+        _sprIndex = choose(0,1,1,2,2,3,3,4,4,5,6,7,8,9);    
+    else if (level >= 4)        
+        _sprIndex = irandom(sprite_get_number(spr_FloorItemsArmor)-3);
+        
+    //Generowanie zbroi z bazowymi wartosciami
+    var arm = scr_ItemArmorGetBase(_sprIndex);
+
+    //Na poziomie trzecim generuje zwyklaka
+    if (level == 3) 
+    {
+        instance_destroy(); 
+        exit;
+    }
+    
+    //Zakres wartosci dodatkowych odpornosci
+    var range, rangeMin, rangeMax;
+    switch(level)
+    {
+        case  1: rangeMin = -25; rangeMax = 5; break;
+        case  2: rangeMin = -25; rangeMax = 5; break;
+        case  3: break; //i tak nie moze tu wejsc ale zeby bylo widac ze reszta to wieksze od 4
+        case  4: rangeMin = -25; rangeMax = 5; break;        
+        default: rangeMin = 0; rangeMax = 5 * (level-1);
+    }       
+   
+    
+    //Okreslamy maksymalny dodatek do wartosci
+    //var phyMax =  random_range(rangeMin,rangeMax) * 0.01 * -(phyElemRatio-0.5); 
+    //var elemMax = random_range(rangeMin,rangeMax) * 0.01 * (phyElemRatio+0.5); 
+
+    //losujemy wartosc
+    var _pierce = random_range(rangeMin,rangeMax) * 0.01 * -(phyElemRatio-0.5);
+    var _slash = random_range(rangeMin,rangeMax) * 0.01 * -(phyElemRatio-0.5);
+    var _blunt = random_range(rangeMin,rangeMax) * 0.01 * -(phyElemRatio-0.5);
+    
+    //losujemy wartosc
+    var _fire = random_range(rangeMin,rangeMax) * 0.01 * (phyElemRatio+0.5);
+    var _cold = random_range(rangeMin,rangeMax) * 0.01 * (phyElemRatio+0.5);
+    var _electro = random_range(rangeMin,rangeMax) * 0.01 * (phyElemRatio+0.5);
+        
+    
+    //Okreslamy zmiane wagi
+    var _weight = -level+(3+ sign(-level+3)*irandom(5));
+    
+    //Zmienne bonusowe
+    random_range(level*0.1,level*0.3)
+    
+    var _hpReg = random_range(level*0.1,level*0.3)*choose(-1,1,0,0,0,0, sign(level-4), sign(level-5)) * 0.0005; 
+    var _stamReg = random_range(level*0.1,level*0.3)*choose(-1,1,0,0,0,0, sign(level-4), sign(level-5)) * 0.005; 
+    var _hpMax = random_range(level,level*2)*choose(-1,1,0,0,0,0, sign(level-4), sign(level-5));
+    var _stamMax = random_range(level,level*2)*choose(-1,1,0,0,0,0, sign(level-4), sign(level-5)); 
+    
+    //WYKONCZENIE ZBROI
+    scr_ItemArmorSet(arm, arm.name, arm.pierce + _pierce,arm.slash + _slash, arm.blunt + _blunt, arm.fire + _fire, arm.cold + _cold,arm.electro + _electro, clamp(arm.weight+_weight, -2, 50), _hpReg, _stamReg, _hpMax, _stamMax, _sprIndex);
+    
+    instance_destroy(); 
+    exit;
 }
 

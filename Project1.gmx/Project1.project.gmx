@@ -281,6 +281,7 @@
           <script>scripts\scr_ItemArmorGenerate.gml</script>
           <script>scripts\scr_ItemArmorNames.gml</script>
           <script>scripts\scr_ItemArmorSet.gml</script>
+          <script>scripts\scr_ItemArmorGetBase.gml</script>
         </scripts>
         <scripts name="Weapons">
           <script>scripts\scr_ItemWeaponSet.gml</script>

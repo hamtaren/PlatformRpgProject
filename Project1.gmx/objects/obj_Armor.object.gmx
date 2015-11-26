@@ -133,20 +133,20 @@ if (alpha&gt;0)
     }
     draw_set_halign(fa_left);
     //ODPORNOSCI FIZYCZNE
-    draw_text_bordered_color(200,14,'Kł. '+string(pierce*100)+'%',scr_ItemCompareColor(eqPierce,pierce));
-    draw_text_bordered_color(200,26,'Si. '+string(slash*100)+'%',scr_ItemCompareColor(eqSlash,slash));
-    draw_text_bordered_color(200,38,'Ob. '+string(blunt*100)+'%',scr_ItemCompareColor(eqBlunt,blunt));
+    draw_text_bordered_color(200,14,'Kł. '+string(round(pierce*100))+'%',scr_ItemCompareColor(eqPierce,pierce));
+    draw_text_bordered_color(200,26,'Si. '+string(round(slash*100))+'%',scr_ItemCompareColor(eqSlash,slash));
+    draw_text_bordered_color(200,38,'Ob. '+string(round(blunt*100))+'%',scr_ItemCompareColor(eqBlunt,blunt));
     //ODPORNOSCI ELEMENTALNE
-    draw_text_bordered_color(280,14,'Og. '+string(fire*100)+'%',scr_ItemCompareColor(eqFire,fire));
-    draw_text_bordered_color(280,26,'Zi. '+string(cold*100)+'%',scr_ItemCompareColor(eqCold,cold));
-    draw_text_bordered_color(280,38,'El. '+string(electro*100)+'%',scr_ItemCompareColor(eqElectro,electro));
+    draw_text_bordered_color(280,14,'Og. '+string(round(fire*100))+'%',scr_ItemCompareColor(eqFire,fire));
+    draw_text_bordered_color(280,26,'Zi. '+string(round(cold*100))+'%',scr_ItemCompareColor(eqCold,cold));
+    draw_text_bordered_color(280,38,'El. '+string(round(electro*100))+'%',scr_ItemCompareColor(eqElectro,electro));
     //CIEZAR ZBROI
     draw_text_bordered_color(200,50,'Waga '+string(weight*2)+'kg',scr_ItemCompareColor(-eqWeight,-weight));
     //BUNUSY
-    draw_text_bordered_color(200,62,"pżMax " + string(hpMaxBonus),scr_ItemCompareColor(eqHpMaxBonus,hpMaxBonus));
-    draw_text_bordered_color(280,62,"pżReg " + string(hpRegBonus*1000),scr_ItemCompareColor(eqHpRegBonus,hpRegBonus));
-    draw_text_bordered_color(200,74,"enMax " + string(staminaMaxBonus),scr_ItemCompareColor(eqStaminaMaxBonus,staminaMaxBonus));
-    draw_text_bordered_color(280,74,"enReg " + string(staminaRegBonus*100),scr_ItemCompareColor(eqStaminaRegBonus,staminaRegBonus));
+    draw_text_bordered_color(200,62,"pżMax " + string(round(hpMaxBonus)),scr_ItemCompareColor(eqHpMaxBonus,hpMaxBonus));
+    draw_text_bordered_color(280,62,"pżReg " + string((hpRegBonus*1000)),scr_ItemCompareColor(eqHpRegBonus,hpRegBonus));
+    draw_text_bordered_color(200,74,"enMax " + string(round(staminaMaxBonus)),scr_ItemCompareColor(eqStaminaMaxBonus,staminaMaxBonus));
+    draw_text_bordered_color(280,74,"enReg " + string((staminaRegBonus*100)),scr_ItemCompareColor(eqStaminaRegBonus,staminaRegBonus));
 }
 draw_set_alpha(1);
 </string>

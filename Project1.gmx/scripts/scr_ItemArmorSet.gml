@@ -1,4 +1,4 @@
-///scr_ItemArmorSet(itemObjRef,name,pierce,slash,fire,cold,electro,weight,hpReg,stamReg,hpMax,stamMax,sprIndex)
+///scr_ItemArmorSet(itemObjRef,name,pierce,slash,blunt,fire,cold,electro,weight,hpReg,stamReg,hpMax,stamMax,sprIndex)
 var item = argument0;
 var _name = argument1;
 var _pierce = argument2;

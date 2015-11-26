@@ -58,7 +58,7 @@ scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,0.5);
     dead = true;
     image_index = 1;
     
-    scr_TreasureClassVariablesSet(7,0,1,0,10,1,10,1);
+    scr_TreasureClassVariablesSet(irandom(3)+1,20,2,10,10,5,5,0);
 }
 </string>
           </argument>
