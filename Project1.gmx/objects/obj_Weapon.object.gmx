@@ -130,7 +130,7 @@ if (alpha&gt;0)
     var eqPierce = 0, eqSlash = 0, eqBlunt = 0, eqFire = 0, eqCold = 0, eqElectro = 0;
     var eqWeight = 0,  eqAttackSpeed =0;
     
-    var eqWpn = obj_Hero.objEq.melee[obj_Hero.objEq.aSel];  //noszona bron
+    var eqWpn = obj_Hero.objEq.melee[obj_Hero.objEq.mSel];  //noszona bron
     if (instance_exists(eqWpn))                             //czy nosi bron
     {
         eqPierce = eqWpn.pierce;

@@ -25,3 +25,14 @@ item.weight = _weight;
 item.attackSpeed = _attackSpeed;
 item.sprite_index = _sprite_index;
 item.sprIndex = _sprIndex;
+
+//dobieranie odpowiedniego EQUIP spritea
+if (_sprite_index == spr_FloorItemsAxe)
+    item.sprEq = spr_EqItemsAxe;
+else if (_sprite_index == spr_FloorItemsSword)
+    item.sprEq = spr_EqItemsSword;
+else if (_sprite_index == spr_FloorItemsStick)
+    item.sprEq = spr_EqItemsStick;
+else if (_sprite_index == spr_FloorItemsHammer)
+    item.sprEq = spr_EqItemsHammer;
+

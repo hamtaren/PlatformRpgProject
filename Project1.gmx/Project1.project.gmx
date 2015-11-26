@@ -283,12 +283,21 @@
           <script>scripts\scr_ItemArmorSet.gml</script>
         </scripts>
         <scripts name="Weapons">
-          <script>scripts\scr_ItemStickNames.gml</script>
-          <script>scripts\scr_ItemAxeNames.gml</script>
-          <script>scripts\scr_ItemHammerNames.gml</script>
-          <script>scripts\scr_ItemSwordNames.gml</script>
           <script>scripts\scr_ItemWeaponSet.gml</script>
-          <script>scripts\scr_ItemWeaponGetName.gml</script>
+          <script>scripts\scr_ItemWeaponGenerateBase.gml</script>
+          <script>scripts\scr_ItemWeaponGetBase.gml</script>
+          <scripts name="Naming">
+            <script>scripts\scr_ItemWeaponGetName.gml</script>
+            <script>scripts\scr_ItemSwordNames.gml</script>
+            <script>scripts\scr_ItemHammerNames.gml</script>
+            <script>scripts\scr_ItemAxeNames.gml</script>
+            <script>scripts\scr_ItemStickNames.gml</script>
+          </scripts>
+        </scripts>
+        <scripts name="TreasureClass">
+          <script>scripts\scr_TreasureClassVariablesSet.gml</script>
+          <script>scripts\scr_TreasureClassDrop.gml</script>
+          <script>scripts\scr_TreasureClassGenerateItem.gml</script>
         </scripts>
       </scripts>
     </scripts>
@@ -348,11 +357,12 @@
     </objects>
     <object>objects\obj_Equip</object>
     <object>objects\obj_Box</object>
+    <object>objects\obj_TreasureClass</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_Menu</room>
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
+    <room>rooms\room_Menu</room>
   </rooms>
   <constants number="27">
     <constant name="DEBUG_ERROR">-102</constant>
@@ -365,7 +375,7 @@
     <constant name="ITEM_NONE">0</constant>
     <constant name="ITEM_QUEST">4</constant>
     <constant name="ITEM_AMMO">6</constant>
-    <constant name="ITEM_MIXTURE">5</constant>
+    <constant name="ITEM_MIXTURE">7</constant>
     <constant name="ITEM_WEAPON">1</constant>
     <constant name="LOG_FULL">46</constant>
     <constant name="LOG_MED">20</constant>

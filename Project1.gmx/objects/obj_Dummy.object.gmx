@@ -3,7 +3,7 @@
   <spriteName>spr_Dummy</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>99</depth>
   <persistent>0</persistent>
   <parentName>obj_Actor</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -29,7 +29,7 @@
 image_speed=0;
 Hp=10;
 
-scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,1);
+scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,0.5);
 </string>
           </argument>
         </arguments>
@@ -58,9 +58,7 @@ scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,1);
     dead = true;
     image_index = 1;
     
-    //todo: usunac
-    var armor = instance_create(x,y,obj_Armor);
-    scr_ItemArmorGenerate(irandom(102),armor);
+    scr_TreasureClassVariablesSet(7,0,1,0,10,1,10,1);
 }
 </string>
           </argument>

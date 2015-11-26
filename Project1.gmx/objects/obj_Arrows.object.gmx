@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 type = ITEM_AMMO;
+arrows = 2 + irandom(5);
 </string>
           </argument>
         </arguments>
@@ -53,7 +54,7 @@ type = ITEM_AMMO;
 
 if (eq.arrows&lt;999)
 {
-    eq.arrows+=5+irandom(5);
+    eq.arrows+=arrows;
     sound_play(s_itemPickup);
     instance_destroy();
 }
