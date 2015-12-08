@@ -30,6 +30,8 @@ mSel = 0;   //meleeSelected
 dSel = 0;   //distanceSelected
 aSel = 0;   //armorSelected
 
+weaponType = WPN_MELEE; //jaki typ broni (wrecz/dystans/rzadna)
+
 //SLOTY BRONI DO WALKI WRECZ (REF NA OBIEKTY)
 melee[0] = noone;
 melee[1] = noone;
@@ -42,8 +44,8 @@ armor[0] = noone;
 armor[1] = noone;
 
 //AMUNICJA I STRZALY
-ammo = 0;
-arrows = 0;
+ammo = 1000;
+arrows = 1000;
 
 //MIKSTURY
 brews = 3;

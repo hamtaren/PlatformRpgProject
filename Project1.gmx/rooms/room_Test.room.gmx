@@ -3,7 +3,7 @@
   <caption></caption>
   <width>1280</width>
   <height>600</height>
-  <vsnap>32</vsnap>
+  <vsnap>16</vsnap>
   <hsnap>16</hsnap>
   <isometric>0</isometric>
   <speed>30</speed>
@@ -138,9 +138,7 @@
     <instance objName="obj_Brew" x="304" y="192" name="inst_0C59621D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Brew" x="320" y="160" name="inst_53144BE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Brew" x="320" y="192" name="inst_1089CB3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Weapon" x="848" y="160" name="inst_0BCD457A" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 0; _slash = 0; _blunt = 10;&#xA;var _fire = 5; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 10; _attackSpeed = 0.5;&#xA;var _sprite_index = spr_FloorItemsHammer; _sprInd = 5;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Weapon" x="816" y="160" name="inst_24BAC0D7" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 0; _slash = 5; _blunt = 1;&#xA;var _fire = 0; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 5; _attackSpeed = 0.75;&#xA;var _sprite_index = spr_FloorItemsAxe; _sprInd = 4;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Weapon" x="787" y="160" name="inst_2838F2EA" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 3; _slash = 0; _blunt = 0;&#xA;var _fire = 0; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 1; _attackSpeed = 2;&#xA;var _sprite_index = spr_FloorItemsStick; _sprInd = 0;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Weapon" x="768" y="160" name="inst_0BCD457A" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 0; _slash = 0; _blunt = 10;&#xA;var _fire = 5; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 10; _attackSpeed = 0.5;&#xA;var _sprite_index = spr_FloorItemsHammer; _sprInd = 5;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dummy" x="960" y="288" name="inst_4A7EB16D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dummy" x="752" y="288" name="inst_5569099C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Dummy" x="1008" y="288" name="inst_B0120D9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -477,6 +475,31 @@
     <tile bgName="tile_woodenConstruct" x="224" y="352" w="32" h="32" xo="160" yo="224" id="10001480" name="inst_11722830" depth="100000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_woodenConstruct" x="224" y="384" w="32" h="32" xo="160" yo="224" id="10001481" name="inst_6B0CD677" depth="100000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_woodenConstruct" x="224" y="416" w="32" h="32" xo="160" yo="224" id="10001482" name="inst_4E40EA8D" depth="100000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="656" y="96" w="32" h="32" xo="64" yo="64" id="10001484" name="inst_AE0EDC04" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="640" y="32" w="32" h="32" xo="128" yo="64" id="10001485" name="inst_641D90B3" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="832" y="32" w="32" h="32" xo="128" yo="64" id="10001486" name="inst_562C03A8" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="736" y="32" w="32" h="32" xo="128" yo="64" id="10001488" name="inst_4F0627D1" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="832" y="128" w="32" h="32" xo="0" yo="64" id="10001489" name="inst_F56A5A6F" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="720" y="128" w="32" h="32" xo="0" yo="32" id="10001490" name="inst_B81F9BDF" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="688" y="128" w="32" h="32" xo="64" yo="0" id="10001491" name="inst_2E76D467" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="736" y="96" w="32" h="32" xo="96" yo="32" id="10001493" name="inst_11EC3320" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="800" y="96" w="32" h="32" xo="64" yo="32" id="10001494" name="inst_1F5B12FF" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="832" y="96" w="32" h="32" xo="64" yo="64" id="10001495" name="inst_E32D2508" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="688" y="48" w="32" h="32" xo="128" yo="32" id="10001496" name="inst_C9C52A9E" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="784" y="48" w="32" h="32" xo="160" yo="0" id="10001497" name="inst_AEE87C0B" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="800" y="128" w="32" h="32" xo="192" yo="0" id="10001499" name="inst_C93F7D80" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="768" y="128" w="32" h="32" xo="224" yo="0" id="10001501" name="inst_3EA86D2A" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="672" y="128" w="32" h="32" xo="224" yo="64" id="10001502" name="inst_6F548C0D" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="656" y="128" w="32" h="32" xo="224" yo="64" id="10001503" name="inst_0DC4BEA7" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="640" y="128" w="32" h="32" xo="32" yo="64" id="10001505" name="inst_CC82A581" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="672" y="192" w="32" h="32" xo="160" yo="64" id="10001506" name="inst_4AD39302" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="608" y="192" w="32" h="32" xo="128" yo="64" id="10001507" name="inst_6DCA564F" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="672" y="256" w="32" h="32" xo="192" yo="64" id="10001508" name="inst_AE3A524C" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="608" y="256" w="32" h="32" xo="192" yo="32" id="10001509" name="inst_A3E9BE86" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="784" y="256" w="32" h="32" xo="192" yo="0" id="10001511" name="inst_EC1E4DCA" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="912" y="256" w="32" h="32" xo="192" yo="0" id="10001512" name="inst_6AC40EF5" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="944" y="256" w="32" h="32" xo="192" yo="32" id="10001513" name="inst_153A5F05" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
+    <tile bgName="tile_indoor" x="880" y="256" w="32" h="32" xo="192" yo="32" id="10001514" name="inst_321435A3" depth="10000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
   </tiles>
   <PhysicsWorld>0</PhysicsWorld>
   <PhysicsWorldTop>0</PhysicsWorldTop>

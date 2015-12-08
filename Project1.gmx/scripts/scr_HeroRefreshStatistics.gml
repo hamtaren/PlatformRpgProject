@@ -22,12 +22,22 @@ if (ep >= epMax)
     
     var _pierce = wpnPierce, _slash = wpnSlash, _blunt = wpnBlunt, _fire = wpnFire, _cold = wpnCold, _electro = wpnElectro, _dmgTrue = wpnDmgTrue;
     
-    if (instance_exists(objEq.melee[objEq.mSel]))
+    var wpn;
+    
+    //BRON DO WALKI WRECZ CZY DYSTANSOWA
+    if (objEq.weaponType == WPN_MELEE)
+        wpn = objEq.melee[objEq.mSel];
+    else
+        wpn = objEq.distance[objEq.dSel];
+    
+    if (instance_exists(wpn))
     {
-        var wpn = objEq.melee[objEq.mSel];
+        
         //obrazenia
         wpnPierce = wpn.pierce;
-        wpnSlash = wpn.slash;
+        //(tylko melee)
+        if (objEq.weaponType == WPN_MELEE)
+            wpnSlash = wpn.slash;
         wpnBlunt = wpn.blunt;
         
         wpnFire = wpn.fire;
@@ -35,28 +45,30 @@ if (ep >= epMax)
         wpnElectro = wpn.electro;  
         
         wpnDmgTrue = wpn.dmgTrue;
-        //ciezar broni
-        wpnWeight = wpn.weight;
+        //ciezar broni (tylko dla melee)
+        if (objEq.weaponType == WPN_MELEE)
+          wpnWeight = wpn.weight;
         //szybkosc
         wpnAttackSpeed = wpn.attackSpeed;
     }
     
     if (wpnPierce>0)
-        _pierce = (strength div 3) + (dextarity div 4) + wpnPierce;
+        _pierce = (strength div 3) + wpnPierce;
     if (wpnSlash>0)
-        _slash = (strength div 4) + (dextarity div 3) + wpnSlash;
+        _slash = (strength div 4) + wpnSlash;
     if (wpnBlunt>0)
-        _blunt = (strength div 2) + wpnBlunt;
+        _blunt = (strength div 3) + wpnBlunt;
     
     if (wpnFire>0)
-        _fire = (vitality div 10) + wpnFire;
+        _fire = (vitality div 5) + wpnFire;
     if (wpnCold>0)
-        _cold = (energy div 10) + wpnCold;
+        _cold = (energy div 5) + wpnCold;
     if (wpnElectro>0)
-        _electro = (endurance div 10) + wpnElectro;
+        _electro = (endurance div 5) + wpnElectro;
     
-    //stamina -= 1 + wpn.weight
-    stamAttack = 1 + wpnWeight;    
+    //stamina -= 1 + wpn.weight (tylko dla melee
+    if (objEq.weaponType == WPN_MELEE)
+        stamAttack = 1 + wpnWeight;    
     
     //szybkosc ataku    
     var aSpd = ((dextarity div 2) * 0.08  + 0.5)*wpnAttackSpeed;     //bonus ze zrecznosci (przy maxie (50) daje 2.5 ataku/sek)

@@ -1,32 +1,63 @@
 ///scr_HeroAnimator()
 //skrypt odopwiadajacy za animacje postaci w zaleznosci od jego stanow, akcji i zmiennych
 
-//Animacje poruszania sie
-if (attacking)
+//Atakowanie
+if (attacking && state!=STATE_SHOOT)
 {
-    var selWpn = objEq.melee[objEq.mSel];
+    var selWpn;
+    if (!objEq.weaponType) //melee
+        selWpn = objEq.melee[objEq.mSel];
+    else                  //distance
+        selWpn = objEq.distance[objEq.dSel];
     
     sprite_hand = scr_HeroAnimatorHandSpriteCalc(selWpn);    
     hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand));
     
     hand_index+=hand_image_speed;
 
-    if (hand_index >=sprite_get_number(sprite_hand)-2)
+    
+    if (!objEq.weaponType) // dla meleesow
     {
-        if (!attackCreated)
+        if (hand_index >=sprite_get_number(sprite_hand)-2)
         {
-            attackCreated = true;
-            scr_ActorCreateDamage(5,0,obj_DamageSlash);
+            if (!attackCreated)
+            {
+                attackCreated = true;
+                scr_ActorCreateDamage(5,0,obj_DamageSlash);
+            }
+        }
+        
+        if (round(hand_index) >= sprite_get_number(sprite_hand))
+        {
+            attacking = false;
+            attackCreated = false;
+            hand_index = 0;        
         }
     }
-    
-    if (round(hand_index) >= sprite_get_number(sprite_hand))
+    else    //dla distanceow
     {
-        attacking = false;
-        attackCreated = false;
-        hand_index = 0;        
+        if (hand_index >=1)
+        {
+            if (!attackCreated)
+            {
+                attackCreated = true;
+                var bullet = scr_HeroPrepareProjectile();
+                
+                shootingDir = 2;
+                scr_ActorCreateDamage(10,-14,bullet);
+                sound_play(s_doorBash);
+            }
+        }
+        
+        if (round(hand_index) >= sprite_get_number(sprite_hand))
+        {
+            attacking = false;
+            attackCreated = false;
+            hand_index = 0;        
+        }
     }
 }
+
 
 
 if (state = STATE_MOVE)
@@ -97,5 +128,31 @@ else if (state == STATE_CLIMB)
     else
     {
         image_speed = 0;        
+    }
+}
+else if (state == STATE_SHOOT)
+{
+    var selWpn;
+    selWpn = objEq.distance[objEq.dSel];
+    if (instance_exists(selWpn))
+    {
+        sprite_hand = scr_ItemDistGetSpriteForHero(selWpn,false);
+        
+        sprite_index = spr_HeroShoot;
+        if (shootingSequence == SHOOT_TARGET)
+        {
+            hand_image_speed = 0;
+            hand_index = shootingDir;
+        }
+        else if (shootingSequence == SHOOT_RELOAD)
+        {
+            sprite_hand = scr_ItemDistGetSpriteForHero(selWpn,true);
+            hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand));
+            
+            hand_index+=hand_image_speed;
+            
+            if (round(hand_index) >= sprite_get_number(sprite_hand))        
+                attacking = false;                  
+        }
     }
 }

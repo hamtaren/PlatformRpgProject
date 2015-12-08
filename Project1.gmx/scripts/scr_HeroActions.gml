@@ -1,5 +1,5 @@
 ///scr_Action
-if (keyboard_check_pressed(KEY_ACTION))
+if (keyboard_check_pressed(KEY_ACTION) && !attacking)
 {
 //Wchodzenie na drabine od gory
     if (place_meeting(x,y+1,obj_LeaderTop) && keyboard_check(KEY_DOWN))

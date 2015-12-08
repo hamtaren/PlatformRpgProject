@@ -1,5 +1,5 @@
 ///scr_InterfaceDraw()
-
+var _eq = obj_Hero.objEq;
 if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
 {    
     //Wyswietlanie przyciskow tylko na androidzie
@@ -27,17 +27,19 @@ if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
         draw_sprite(spr_InterfaceButtons,cancelPress,guiW-(40*2),guiH - (40*3));
         draw_sprite(spr_InterfaceButtons,atackPress,guiW-(40*3),guiH - (40*2));
         draw_sprite(spr_InterfaceButtons,jumpPress,guiW-(40*2),guiH - (40)); 
-    }
+    }    
     
     //SECONDARY BUTTONS    
+    var swapPos = _eq.weaponType;
+    
     var menuPress = keyboard_check(KEY_MENU) + 2;
-    var swapPress = keyboard_check(KEY_SWAP) + 4;
+    var swapPress = keyboard_check(KEY_SWAP) + 4 + 7*swapPos;
     var brewPress = keyboard_check(KEY_BREW) + 6;
     var mixturePress = keyboard_check(KEY_MIXTURE) + 8;
     
     //POBIERANIE ILOSCI BREWS I MIXTURES
-    var brewCount = obj_Hero.objEq.brews;   
-    var mixtureCount = obj_Hero.objEq.mixtures;
+    var brewCount = _eq.brews;   
+    var mixtureCount = _eq.mixtures;
     
     //Pusta flacha brew
     if (brewCount==0)
@@ -52,8 +54,13 @@ if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
     draw_sprite(spr_InterfaceSecondaryButtons,brewPress,guiW*0.5 - 20,guiH-40);
     draw_sprite(spr_InterfaceSecondaryButtons,mixturePress,guiW*0.5 + 25,guiH-40);
     
-    //NAPISY PRZEDSTAWIAJACE ILE POSIADAMY BREW I MIXTURE
+
+    
+    //NAPISY PRZEDSTAWIAJACE ILE POSIADAMY AMUNICJI, BREW I MIXTURE
     draw_set_font(font_debug);
+    draw_set_halign(fa_center);
+    if (_eq.weaponType == WPN_DIST)
+        draw_text_bordered(guiW*0.5 - 40 - 25, guiH-13,string(_eq.ammo) + " | " + string(_eq.arrows));
     draw_text_bordered(guiW*0.5 +10,guiH-15,string(brewCount));
     draw_text_bordered(guiW*0.5 +45 +10,guiH-15,string(mixtureCount));
 }
@@ -135,9 +142,9 @@ else
             //DPS
             draw_text_bordered(264,90,obj_Hero.dps);
             //AMUNICJA
-            draw_text_bordered(264,134,obj_Hero.objEq.ammo);
+            draw_text_bordered(264,134,_eq.ammo);
             //STRZALY            
-            draw_text_bordered(264,158,obj_Hero.objEq.arrows);
+            draw_text_bordered(264,158,_eq.arrows);
             //OBRONA FIZYCZNA
             draw_text_bordered(264,192,obj_Hero.resPhy);
             //OBRONA ZYWIOLOW
@@ -145,31 +152,31 @@ else
             
             //RAMKI (ZAZNACZENIA) WYBRANYCH PRZEDMIOTOW
             draw_set_color(c_white) 
-            draw_rectangle(3 + (56*obj_Hero.objEq.mSel),65,55 + (56*obj_Hero.objEq.mSel),117,1);
-            draw_rectangle(3 + (56*obj_Hero.objEq.dSel),123,55 + (56*obj_Hero.objEq.dSel),175,1);
-            draw_rectangle(3 + (56*obj_Hero.objEq.aSel),181,55 + (56*obj_Hero.objEq.aSel),233,1);                        
+            draw_rectangle(3 + (56*_eq.mSel),65,55 + (56*_eq.mSel),117,1);
+            draw_rectangle(3 + (56*_eq.dSel),123,55 + (56*_eq.dSel),175,1);
+            draw_rectangle(3 + (56*_eq.aSel),181,55 + (56*_eq.aSel),233,1);                        
             
             //PRZEDMIOTY
                         
             //MELEE
-            if (instance_exists(obj_Hero.objEq.melee[0]))
-                draw_sprite_ext(obj_Hero.objEq.melee[0].sprEq, obj_Hero.objEq.melee[0].sprIndex, 6,68,2,2,0,c_white,1);                
-            if (instance_exists(obj_Hero.objEq.melee[1]))
-                draw_sprite_ext(obj_Hero.objEq.melee[1].sprEq, obj_Hero.objEq.melee[1].sprIndex, 62,68,2,2,0,c_white,1);                
-            if (instance_exists(obj_Hero.objEq.melee[2]))
-                draw_sprite_ext(obj_Hero.objEq.melee[2].sprEq, obj_Hero.objEq.melee[2].sprIndex, 118,68,2,2,0,c_white,1);                
+            if (instance_exists(_eq.melee[0]))
+                draw_sprite_ext(_eq.melee[0].sprEq, _eq.melee[0].sprIndex, 6,68,2,2,0,c_white,1);                
+            if (instance_exists(_eq.melee[1]))
+                draw_sprite_ext(_eq.melee[1].sprEq, _eq.melee[1].sprIndex, 62,68,2,2,0,c_white,1);                
+            if (instance_exists(_eq.melee[2]))
+                draw_sprite_ext(_eq.melee[2].sprEq, _eq.melee[2].sprIndex, 118,68,2,2,0,c_white,1);                
             
             //DISTANCE
-            if (instance_exists(obj_Hero.objEq.distance[0]))
-                draw_sprite_ext(obj_Hero.objEq.distance[0].sprEq, obj_Hero.objEq.distance[0].sprIndex, 6,126,2,2,0,c_white,1);                
-            if (instance_exists(obj_Hero.objEq.distance[1]))
-                draw_sprite_ext(obj_Hero.objEq.distance[1].sprEq, obj_Hero.objEq.distance[1].sprIndex, 62,126,2,2,0,c_white,1);
+            if (instance_exists(_eq.distance[0]))
+                draw_sprite_ext(_eq.distance[0].sprEq, _eq.distance[0].sprIndex, 6,126,2,2,0,c_white,1);                
+            if (instance_exists(_eq.distance[1]))
+                draw_sprite_ext(_eq.distance[1].sprEq, _eq.distance[1].sprIndex, 62,126,2,2,0,c_white,1);
             
             //ARMOR
-            if (instance_exists(obj_Hero.objEq.armor[0]))
-                draw_sprite_ext(obj_Hero.objEq.armor[0].sprEq, obj_Hero.objEq.armor[0].sprIndex, 6,184,2,2,0,c_white,1);                
-            if (instance_exists(obj_Hero.objEq.armor[1]))
-                draw_sprite_ext(obj_Hero.objEq.armor[1].sprEq, obj_Hero.objEq.armor[1].sprIndex, 62,184,2,2,0,c_white,1);
+            if (instance_exists(_eq.armor[0]))
+                draw_sprite_ext(_eq.armor[0].sprEq, _eq.armor[0].sprIndex, 6,184,2,2,0,c_white,1);                
+            if (instance_exists(_eq.armor[1]))
+                draw_sprite_ext(_eq.armor[1].sprEq, _eq.armor[1].sprIndex, 62,184,2,2,0,c_white,1);
             
             break;
         }

@@ -65,7 +65,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var wpn = instance_create(-20,-20,obj_Weapon);
+            <string>///NADANIE POCZATKOWEJ BRONI
+var wpn = instance_create(-20,-20,obj_Weapon);
 
 var _pierce = 0; _slash = 2; _blunt = 0;
 var _fire = 0; _cold = 0; _electro = 0; _dmgTrue = 0;
@@ -167,11 +168,13 @@ if (keyboard_check_pressed(KEY_MENU))
             <kind>1</kind>
             <string>///Rysowanie siebie
 //rysowanie reki
-if (sprite_hand!=spr_null)
+if (sprite_hand!=spr_null &amp;&amp; state!=STATE_SHOOT)
     draw_sprite_ext(sprite_hand,hand_index,round(x),round(y),image_xscale,image_yscale,image_angle,c_white,1);
 //ryswoanie ciala
 draw_sprite_ext(sprite_index,image_index,round(x),round(y),image_xscale, image_yscale, image_angle,c_white,image_alpha);
 
+if (state=STATE_SHOOT)
+    draw_sprite_ext(sprite_hand,hand_index,round(x),round(y),image_xscale,image_yscale,image_angle,c_white,1);
 </string>
           </argument>
         </arguments>

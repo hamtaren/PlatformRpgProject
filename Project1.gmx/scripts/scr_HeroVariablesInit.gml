@@ -24,7 +24,10 @@ attackSpeed = 1;            //oznacza ile atakow mozna zrobic w ciagu sekundy
 attacking = false;          //czy wykonuje atak
 attackCreated = false;      //czy stworzono obiekt reprezentujacy atak
 
-weaponType = WPN_MELEE;      //jaki typ broni (wrecz/dystans/rzadna)
+//STRZELANIE Z BRONI DYSTATNSOWEJ
+shootingSequence = SHOOT_TARGET;
+shootingDir = 2; // 0 - dol, 1 - dolny skos, 2 - na wprost, 3 - gorny skos, 4 - gora
+
 
 //REKA Z BRONIA
 sprite_hand = spr_HeroHandStand; //sprite reki

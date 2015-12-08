@@ -50,22 +50,6 @@ attackSpeed = 1;
 
 //alpha
 alpha = 0;
-
-
-pierce += irandom(3);
-slash +=irandom(3);
-blunt +=irandom(3);
-
-fire +=irandom(5);
-cold +=irandom(5);
-electro +=irandom(5);
-dmgTrue += irandom(10);
-
-weight += random(1)+0.1;
-
-attackSpeed = random(1)+0.5;
-sprIndex = irandom(5);
-name = scr_ItemWeaponGetName(sprite_index,sprIndex);
 </string>
           </argument>
         </arguments>

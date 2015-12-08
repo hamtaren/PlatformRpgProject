@@ -1,4 +1,4 @@
-///scr_HeroChangeStateTo(stateType)
+///scr_HeroChangeState(stateType)
 var stateType = argument0;
       
 //jezeli wychodzimy ze stanu poruszania sie

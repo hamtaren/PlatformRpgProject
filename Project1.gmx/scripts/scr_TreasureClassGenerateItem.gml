@@ -109,6 +109,16 @@ if (type = ITEM_WEAPON)
     instance_destroy(); exit;
 }
 
+if (type = ITEM_DIST)
+{
+    var _sprite_index = choose(spr_FloorItemsGun,spr_FloorItemsBow);
+    var _sprIndex = irandom(sprite_get_number(_sprite_index)-1);
+    
+    var dist = scr_ItemDistGenerateBase(_sprite_index, _sprIndex);
+    
+    instance_destroy(); exit;
+}
+
 if (type = ITEM_ARMOR)
 {
     
@@ -178,4 +188,5 @@ if (type = ITEM_ARMOR)
     instance_destroy(); 
     exit;
 }
+
 

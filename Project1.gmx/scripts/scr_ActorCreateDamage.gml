@@ -10,6 +10,15 @@ var dmgObj = argument2;
 var refDmg = instance_create(x + xOffset,y + yOffset, dmgObj);
 refDmg.image_xscale = image_xscale;
 
+//sprawdzamy czy tworzony obiekt jest uderzeniem czy pociskiem
+if (object_get_name((object_get_parent(dmgObj))) == "obj_Projectile")
+{ 
+    refDmg.speed = 8;
+    refDmg.direction =  -90*(image_xscale-1) + (22.5 * shootingDir -45)*image_xscale;
+    refDmg.image_index = shootingDir;
+}
+
+
 //Nadanie obrazen od obiektu dmgObject, ktory przechowuje takie dla kazdego Actora
 refDmg.dmg = dmgObject;
 

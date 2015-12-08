@@ -49,23 +49,60 @@
       <sprite>sprites\spr_elderWalk</sprite>
       <sprite>sprites\spr_Dummy</sprite>
       <sprites name="HeroSprites">
-        <sprite>sprites\spr_HeroRun</sprite>
-        <sprite>sprites\spr_HeroHandRun</sprite>
-        <sprite>sprites\spr_HeroHandStand</sprite>
-        <sprite>sprites\spr_HeroStand</sprite>
         <sprite>sprites\spr_HeroMask</sprite>
-        <sprite>sprites\spr_HeroClimb</sprite>
-        <sprite>sprites\spr_HeroWallSlide</sprite>
-        <sprite>sprites\spr_HeroHandAttackSmash</sprite>
-        <sprite>sprites\spr_HeroAttackSword1</sprite>
-        <sprite>sprites\spr_HeroAttackHammer1</sprite>
-        <sprite>sprites\spr_HeroAttackAxe1</sprite>
-        <sprite>sprites\spr_HeroAttackStick1</sprite>
+        <sprites name="States">
+          <sprite>sprites\spr_HeroClimb</sprite>
+          <sprite>sprites\spr_HeroWallSlide</sprite>
+          <sprite>sprites\spr_HeroRun</sprite>
+          <sprite>sprites\spr_HeroStand</sprite>
+          <sprite>sprites\spr_HeroShoot</sprite>
+        </sprites>
+        <sprites name="Hands">
+          <sprites name="HeroAttackHandy">
+            <sprites name="Dist">
+              <sprites name="OneHand">
+                <sprite>sprites\spr_HeroAttackGunOneHand1</sprite>
+                <sprite>sprites\spr_HeroAttackGunOneHand2</sprite>
+                <sprite>sprites\spr_HeroAttackBowOneHand1</sprite>
+                <sprite>sprites\spr_HeroAttackBowOneHand2</sprite>
+              </sprites>
+              <sprites name="TwoHand">
+                <sprite>sprites\spr_HeroAttackDistTwoHand1</sprite>
+                <sprite>sprites\spr_HeroReloadDistTwo1</sprite>
+                <sprites name="Guns">
+                  <sprite>sprites\spr_HeroAttackGunTwoHand1</sprite>
+                  <sprite>sprites\spr_HeroAttackGunTwoHand2</sprite>
+                  <sprite>sprites\spr_HeroAttackGunTwoHand3</sprite>
+                  <sprite>sprites\spr_HeroAttackGunTwoHand4</sprite>
+                  <sprite>sprites\spr_HeroReloadGunTwoHand1</sprite>
+                  <sprite>sprites\spr_HeroReloadGunTwoHand2</sprite>
+                  <sprite>sprites\spr_HeroReloadGunTwoHand3</sprite>
+                  <sprite>sprites\spr_HeroReloadGunTwoHand4</sprite>
+                </sprites>
+                <sprites name="Bows">
+                  <sprite>sprites\spr_HeroAttackBowTwoHand1</sprite>
+                  <sprite>sprites\spr_HeroAttackBowTwoHand2</sprite>
+                  <sprite>sprites\spr_HeroAttackBowTwoHand3</sprite>
+                  <sprite>sprites\spr_HeroAttackBowTwoHand4</sprite>
+                  <sprite>sprites\spr_HeroReloadBowTwoHand1</sprite>
+                  <sprite>sprites\spr_HeroReloadBowTwoHand2</sprite>
+                  <sprite>sprites\spr_HeroReloadBowTwoHand3</sprite>
+                  <sprite>sprites\spr_HeroReloadBowTwoHand4</sprite>
+                </sprites>
+              </sprites>
+            </sprites>
+            <sprites name="Melee">
+              <sprite>sprites\spr_HeroAttackSword1</sprite>
+              <sprite>sprites\spr_HeroAttackHammer1</sprite>
+              <sprite>sprites\spr_HeroAttackAxe1</sprite>
+              <sprite>sprites\spr_HeroAttackStick1</sprite>
+            </sprites>
+          </sprites>
+          <sprite>sprites\spr_HeroHandRun</sprite>
+          <sprite>sprites\spr_HeroHandStand</sprite>
+          <sprite>sprites\spr_HeroHandAttackSmash</sprite>
+        </sprites>
       </sprites>
-    </sprites>
-    <sprites name="CharacterPage">
-      <sprite>sprites\spr_characterPageMain</sprite>
-      <sprite>sprites\spr_characterPages</sprite>
     </sprites>
     <sprites name="Icons">
       <sprite>sprites\spr_ParentMark</sprite>
@@ -84,6 +121,10 @@
       <sprite>sprites\spr_InterfaceSecondaryButtonsB</sprite>
       <sprite>sprites\spr_InterfaceSecondaryButtons</sprite>
       <sprite>sprites\spr_InterfaceBar</sprite>
+      <sprites name="CharacterPage">
+        <sprite>sprites\spr_characterPageMain</sprite>
+        <sprite>sprites\spr_characterPages</sprite>
+      </sprites>
     </sprites>
     <sprites name="Items">
       <sprites name="FloorItems">
@@ -100,6 +141,10 @@
           <sprite>sprites\spr_FloorItemsArrows</sprite>
           <sprite>sprites\spr_FloorItemsAmmo</sprite>
         </sprites>
+        <sprites name="Dist">
+          <sprite>sprites\spr_FloorItemsGun</sprite>
+          <sprite>sprites\spr_FloorItemsBow</sprite>
+        </sprites>
       </sprites>
       <sprites name="EqItems">
         <sprite>sprites\spr_EqItemsArmor</sprite>
@@ -108,6 +153,10 @@
           <sprite>sprites\spr_EqItemsAxe</sprite>
           <sprite>sprites\spr_EqItemsStick</sprite>
           <sprite>sprites\spr_EqItemsSword</sprite>
+        </sprites>
+        <sprites name="Dist">
+          <sprite>sprites\spr_EqItemsGun</sprite>
+          <sprite>sprites\spr_EqItemsBow</sprite>
         </sprites>
       </sprites>
     </sprites>
@@ -119,15 +168,20 @@
       <sprite>sprites\spr_Solid</sprite>
       <sprite>sprites\spr_SlideableSolid</sprite>
     </sprites>
-    <sprite>sprites\spr_Door</sprite>
-    <sprite>sprites\spr_Elevator</sprite>
-    <sprite>sprites\spr_Ladder</sprite>
-    <sprite>sprites\spr_LadderTop</sprite>
-    <sprite>sprites\spr_Leaver</sprite>
     <sprite>sprites\spr_null</sprite>
     <sprite>sprites\spr_Slash01</sprite>
     <sprite>sprites\spr_SpikesUp</sprite>
-    <sprite>sprites\spr_Box</sprite>
+    <sprites name="Projectiles">
+      <sprite>sprites\spr_Arrow</sprite>
+      <sprite>sprites\spr_Bullet</sprite>
+    </sprites>
+    <sprites name="Interactionable">
+      <sprite>sprites\spr_Box</sprite>
+      <sprite>sprites\spr_Leaver</sprite>
+      <sprite>sprites\spr_LadderTop</sprite>
+      <sprite>sprites\spr_Ladder</sprite>
+      <sprite>sprites\spr_Door</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -136,6 +190,7 @@
     <background>background\bg_MainMenu</background>
     <background>background\tile_outdoor</background>
     <background>background\tile_woodenConstruct</background>
+    <background>background\tile_indoor</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -168,11 +223,13 @@
             <scripts name="PickUps">
               <script>scripts\scr_HeroActionItemPickUpArmor.gml</script>
               <script>scripts\scr_HeroActionItemPickUpWeapon.gml</script>
+              <script>scripts\scr_HeroActionItemPickUpDist.gml</script>
             </scripts>
           </scripts>
           <scripts name="States">
             <script>scripts\scr_HeroStateClimb.gml</script>
             <script>scripts\scr_HeroStateMove.gml</script>
+            <script>scripts\scr_HeroStateShoot.gml</script>
           </scripts>
           <script>scripts\scr_HeroDeath.gml</script>
           <scripts name="Calcs">
@@ -300,8 +357,21 @@
           <script>scripts\scr_TreasureClassDrop.gml</script>
           <script>scripts\scr_TreasureClassGenerateItem.gml</script>
         </scripts>
+        <scripts name="Dist">
+          <script>scripts\scr_ItemDistSet.gml</script>
+          <script>scripts\scr_ItemDistGetBase.gml</script>
+          <script>scripts\scr_ItemDistGenerateBase.gml</script>
+          <scripts name="Naming">
+            <script>scripts\scr_ItemDistGetName.gml</script>
+            <script>scripts\scr_ItemBowNames.gml</script>
+            <script>scripts\scr_ItemGunNames.gml</script>
+          </scripts>
+          <script>scripts\scr_ItemDistCheckAmmo.gml</script>
+          <script>scripts\scr_ItemDistGetSpriteForHero.gml</script>
+        </scripts>
       </scripts>
     </scripts>
+    <script>scripts\scr_HeroPrepareProjectile.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
@@ -312,6 +382,7 @@
       <object>objects\obj_Item</object>
       <object>objects\obj_Armor</object>
       <object>objects\obj_Weapon</object>
+      <object>objects\obj_Dist</object>
       <objects name="Pickable">
         <object>objects\obj_Mixture</object>
         <object>objects\obj_Ammo</object>
@@ -355,6 +426,11 @@
       <object>objects\obj_Damage</object>
       <object>objects\obj_Spikes</object>
       <object>objects\obj_DR</object>
+      <objects name="Projectiles">
+        <object>objects\obj_Projectile</object>
+        <object>objects\obj_Bullet</object>
+        <object>objects\obj_Arrow</object>
+      </objects>
     </objects>
     <object>objects\obj_Equip</object>
     <object>objects\obj_Box</object>
@@ -365,7 +441,7 @@
     <room>rooms\room_Test</room>
     <room>rooms\room_Menu</room>
   </rooms>
-  <constants number="27">
+  <constants number="30">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
@@ -374,6 +450,7 @@
     <constant name="ITEM_GOLD">5</constant>
     <constant name="ITEM_KEY">3</constant>
     <constant name="ITEM_NONE">0</constant>
+    <constant name="ITEM_DIST">8</constant>
     <constant name="ITEM_QUEST">4</constant>
     <constant name="ITEM_AMMO">6</constant>
     <constant name="ITEM_MIXTURE">7</constant>
@@ -390,9 +467,11 @@
     <constant name="PAGE_ATRYB">1</constant>
     <constant name="PAGE_STAT">2</constant>
     <constant name="PAGE_EKWIP">3</constant>
-    <constant name="WPN_NONE">0</constant>
-    <constant name="WPN_MELEE">1</constant>
-    <constant name="WPN_DIST">2</constant>
+    <constant name="WPN_MELEE">0</constant>
+    <constant name="WPN_DIST">1</constant>
+    <constant name="SHOOT_TARGET">1</constant>
+    <constant name="SHOOT_SHOT">2</constant>
+    <constant name="SHOOT_RELOAD">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
