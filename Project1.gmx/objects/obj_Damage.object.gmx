@@ -28,6 +28,7 @@
             <string>alarm[0]=1; //niszczenie po czasie
 speedBonus = 1; // modyfikator do fizycznych obrazen wynikajacy z predkosci poruszania
 dmg = noone; // referencja na obiekt obj_DR aktora tworzacego obj_Damage;
+owner = 0; // wlasciciel zadawanych obrazen (HERO/ENEMY/ENVIRONMENT)
 </string>
           </argument>
         </arguments>

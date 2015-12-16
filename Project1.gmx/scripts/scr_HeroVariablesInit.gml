@@ -34,9 +34,6 @@ sprite_hand = spr_HeroHandStand; //sprite reki
 hand_image_speed = 0;            //szybkosc wyswietlania ruchu reki (uzywane podczas ataku)
 hand_index = 0;                  //index sprite'a reki
 
-///GADANIE///
-talk = v_HeroUnarmed0;
-
 //STATYSTKI//
 
 //doswiadczenie

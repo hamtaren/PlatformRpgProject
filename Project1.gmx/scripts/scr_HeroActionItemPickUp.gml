@@ -9,9 +9,7 @@ if (instance_exists(item))
         case ITEM_WEAPON: scr_HeroActionItemPickUpWeapon(item); break;
         case ITEM_ARMOR: scr_HeroActionItemPickUpArmor(item); break;
         case ITEM_DIST: scr_HeroActionItemPickUpDist(item); break;
-        case ITEM_KEY: break;
         case ITEM_QUEST: break;
-        case ITEM_GOLD: break;
         default: break;
     }
 }

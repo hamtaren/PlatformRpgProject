@@ -38,6 +38,9 @@ hp = 0;
 staminaMax = 0;
 stamina = 0;
 
+hspd = 0;
+vspd = 0;
+
 </string>
           </argument>
         </arguments>
@@ -61,6 +64,7 @@ stamina = 0;
           <argument>
             <kind>1</kind>
             <string>with(dmgObject)instance_destroy();
+with(resObject)instance_destroy();
 </string>
           </argument>
         </arguments>

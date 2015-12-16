@@ -43,6 +43,10 @@
       </sounds>
     </sounds>
     <sound>sound\m_music</sound>
+    <sound>sound\s_heroHit</sound>
+    <sound>sound\s_keyPickUp</sound>
+    <sound>sound\s_keyUnlock</sound>
+    <sound>sound\s_doorKnob</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Actors">
@@ -102,6 +106,11 @@
           <sprite>sprites\spr_HeroHandStand</sprite>
           <sprite>sprites\spr_HeroHandAttackSmash</sprite>
         </sprites>
+      </sprites>
+      <sprites name="Enemies">
+        <sprite>sprites\spr_SmallBat</sprite>
+        <sprite>sprites\spr_BigBat</sprite>
+        <sprite>sprites\spr_Bat</sprite>
       </sprites>
     </sprites>
     <sprites name="Icons">
@@ -170,6 +179,7 @@
     </sprites>
     <sprite>sprites\spr_null</sprite>
     <sprite>sprites\spr_Slash01</sprite>
+    <sprite>sprites\spr_DamageBite</sprite>
     <sprite>sprites\spr_SpikesUp</sprite>
     <sprites name="Projectiles">
       <sprite>sprites\spr_Arrow</sprite>
@@ -182,6 +192,7 @@
       <sprite>sprites\spr_Ladder</sprite>
       <sprite>sprites\spr_Door</sprite>
     </sprites>
+    <sprite>sprites\spr_Keys</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -237,10 +248,7 @@
             <script>scripts\scr_RESCalc.gml</script>
             <script>scripts\scr_HeroAnimatorHandSpriteCalc.gml</script>
           </scripts>
-          <scripts name="Talking">
-            <script>scripts\scr_HeroTalk.gml</script>
-            <script>scripts\scr_HeroTalkForce.gml</script>
-          </scripts>
+          <script>scripts\scr_HeroPrepareProjectile.gml</script>
         </scripts>
         <script>scripts\scr_ActorTakeDamage.gml</script>
         <script>scripts\scr_ActorCreateDamage.gml</script>
@@ -318,6 +326,7 @@
         </scripts>
         <script>scripts\scr_GameController.gml</script>
         <script>scripts\scr_Ini.gml</script>
+        <script>scripts\scr_CreatePopUp.gml</script>
       </scripts>
       <scripts name="Interface">
         <script>scripts\scr_InterfaceVariablesInit.gml</script>
@@ -371,7 +380,6 @@
         </scripts>
       </scripts>
     </scripts>
-    <script>scripts\scr_HeroPrepareProjectile.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
@@ -400,10 +408,19 @@
     </objects>
     <objects name="Actors">
       <object>objects\obj_Actor</object>
+      <object>objects\obj_Enemy</object>
       <object>objects\obj_Npc</object>
       <object>objects\obj_Hero</object>
       <object>objects\obj_Elder</object>
       <object>objects\obj_Dummy</object>
+      <objects name="Enemies">
+        <objects name="Bats">
+          <object>objects\obj_EnemyBat</object>
+          <object>objects\obj_SmallBat</object>
+          <object>objects\obj_Bat</object>
+          <object>objects\obj_BigBat</object>
+        </objects>
+      </objects>
     </objects>
     <objects name="Interactionable">
       <object>objects\obj_Door</object>
@@ -422,6 +439,7 @@
     </objects>
     <objects name="Damage">
       <object>objects\obj_DamageSlash</object>
+      <object>objects\obj_DamageBite</object>
       <object>objects\obj_DmgFigure</object>
       <object>objects\obj_Damage</object>
       <object>objects\obj_Spikes</object>
@@ -435,13 +453,14 @@
     <object>objects\obj_Equip</object>
     <object>objects\obj_Box</object>
     <object>objects\obj_TreasureClass</object>
+    <object>objects\obj_Key</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>
     <room>rooms\room_Test</room>
     <room>rooms\room_Menu</room>
   </rooms>
-  <constants number="30">
+  <constants number="32">
     <constant name="DEBUG_ERROR">-102</constant>
     <constant name="DEBUG_INFO">-100</constant>
     <constant name="DEBUG_SUCCESS">-103</constant>
@@ -472,6 +491,8 @@
     <constant name="SHOOT_TARGET">1</constant>
     <constant name="SHOOT_SHOT">2</constant>
     <constant name="SHOOT_RELOAD">3</constant>
+    <constant name="OWN_HERO">1</constant>
+    <constant name="OWN_ENEMY">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

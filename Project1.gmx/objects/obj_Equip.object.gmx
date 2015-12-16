@@ -42,10 +42,13 @@ distance[1] = noone;
 //SLOTY ZBROI           (REF NA OBIEKTY)
 armor[0] = noone;
 armor[1] = noone;
-
 //AMUNICJA I STRZALY
 ammo = 1000;
 arrows = 1000;
+//KLUCZE
+key[0] = false; //brazowy klucz
+key[1] = false; //srebrny klucz
+key[2] = false; //zloty klucz
 
 //MIKSTURY
 brews = 3;

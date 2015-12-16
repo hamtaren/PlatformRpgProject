@@ -6,18 +6,6 @@ if (type == ITEM_NONE)
 instance_destroy(); exit;
 }
 
-if (type == ITEM_GOLD)
-{
-
-    var gold = 1+irandom(2);    
-    gold += round(random_range( level*sqrt(level),(random(4)+1) * (level*sqrt(level)) ));
-    //TODO: tworzenie obj_Gold
-    //var objGold = instance_create(x,y,obj_Gold);
-    //objGold.gold = gold;
-        show_message("GOLD: " +string(gold));
-    instance_destroy(); exit;
-}
-
 if (type = ITEM_MIXTURE)
 {
     //50% szans ze wypadnie kazda z mikstur

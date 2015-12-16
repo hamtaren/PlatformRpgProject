@@ -47,7 +47,6 @@ switch(_sprIndex)
     case 11: _pierce = 0.75; _slash = 0.75; _blunt = 0.75; _fire = 0.75; _cold = 0.75; _electro = 0.75; _weight=15; _hpReg=0; _stamReg=0; _hpMax=0; _stamMax=0; break;    
 }
 
-//TODO: zrobic modyfikatory do generowanego obiektu: http://diablo2.diablowiki.net/Item_Generation_Tutorial
 if (rest!=0)
 {
     _pierce += rest*choose(0.01, 0.02, 0.03, 0.04, 0.05, 0.75, 0.1)*choose(-1,1,0,0,0);

@@ -149,6 +149,69 @@ if (keyboard_check_pressed(KEY_MENU))
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_Key">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///PODNOSZENIE KLUCZA
+objEq.key[other.image_index]=true;
+with(other)instance_destroy();
+sound_play(s_keyPickUp);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Damage">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (!dead)
+{
+    if (other.owner == OWN_ENEMY)
+    {        
+        var dmgTaken = scr_ActorTakeDamage(other);
+        hp-=dmgTaken;
+                
+        if (dmgTaken&gt;0)
+        {
+            scr_ParticlesBloodCreate(round(dmgTaken));
+            if (!sound_isplaying(s_heroHit))
+                sound_play(s_heroHit);
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>

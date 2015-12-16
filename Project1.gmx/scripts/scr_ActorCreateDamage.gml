@@ -25,3 +25,8 @@ refDmg.dmg = dmgObject;
 //Bonusowe obrazenia od szybkosci
 refDmg.speedBonus = 1 + (abs(hspd)*0.05 + abs(vspd)*0.01);
 
+//Kto jest wlascicielem obrazen
+if (id = obj_Hero.id)
+    refDmg.owner = OWN_HERO;
+else
+    refDmg.owner = OWN_ENEMY;

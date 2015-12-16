@@ -52,9 +52,14 @@ if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
     draw_sprite(spr_InterfaceSecondaryButtons,menuPress,guiW-40,0);
     draw_sprite(spr_InterfaceSecondaryButtons,swapPress,guiW*0.5 - 40 -25,guiH-40);
     draw_sprite(spr_InterfaceSecondaryButtons,brewPress,guiW*0.5 - 20,guiH-40);
-    draw_sprite(spr_InterfaceSecondaryButtons,mixturePress,guiW*0.5 + 25,guiH-40);
+    draw_sprite(spr_InterfaceSecondaryButtons,mixturePress,guiW*0.5 + 25,guiH-40);    
     
-
+    //KLUCZE
+    for (var i = 0; i<3; i++)
+    {
+        if (_eq.key[i])
+            draw_sprite_ext(spr_Keys,i,48,64+i*32,2,2,0,c_white,1);
+    }
     
     //NAPISY PRZEDSTAWIAJACE ILE POSIADAMY AMUNICJI, BREW I MIXTURE
     draw_set_font(font_debug);
@@ -186,6 +191,9 @@ else
 //PRZYCISK KARTY POSTACI
 var characterPress = keyboard_check(KEY_CHARACTER) + 0;
 draw_sprite(spr_InterfaceSecondaryButtons,characterPress,0,0);
+
+
+
 
 //HEALTH, STAMINA i EXP BARY
 //super kolor z tylu baru

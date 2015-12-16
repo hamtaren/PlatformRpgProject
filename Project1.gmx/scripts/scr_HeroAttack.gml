@@ -17,12 +17,6 @@ if (keyboard_check_pressed(KEY_ATTACK))
                 }
             }
         }
-        else
-        {
-            //Marudzenie
-            var _talk = choose(v_HeroUnarmed0, v_HeroUnarmed1, v_HeroUnarmed2, v_HeroUnarmed3);
-            scr_HeroTalk(_talk); 
-        }
     }
     else if (objEq.weaponType == WPN_DIST)    //BRON DO STRZELANIA
     {
@@ -55,12 +49,6 @@ if (keyboard_check_pressed(KEY_ATTACK))
                     }
                 }
             }
-        }
-        else
-        {
-            //Marudzenie
-            var _talk = choose(v_HeroUnarmed0, v_HeroUnarmed1, v_HeroUnarmed2, v_HeroUnarmed3);
-            scr_HeroTalk(_talk); 
-        }
+        }    
     }
 }

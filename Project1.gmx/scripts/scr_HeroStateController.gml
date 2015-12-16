@@ -30,7 +30,8 @@ if (keyboard_check_pressed(KEY_SWAP))
     {
         if ((state = STATE_SHOOT && shootingSequence==SHOOT_TARGET) || state !=STATE_SHOOT)
         {
-            scr_HeroChageState(STATE_MOVE);                    
+            if (state!=STATE_MOVE)
+                scr_HeroChageState(STATE_MOVE);                    
             objEq.weaponType =! objEq.weaponType;
         }        
     }

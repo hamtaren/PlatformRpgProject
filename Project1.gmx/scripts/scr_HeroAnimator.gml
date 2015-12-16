@@ -10,10 +10,10 @@ if (attacking && state!=STATE_SHOOT)
     else                  //distance
         selWpn = objEq.distance[objEq.dSel];
     
-    sprite_hand = scr_HeroAnimatorHandSpriteCalc(selWpn);    
-    hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand));
+    sprite_hand = scr_HeroAnimatorHandSpriteCalc(selWpn);       //okresla jaki bedzie obrazek reki w ktorej moze byc bron    
+    hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand)); //szybkosc tego obrazka
     
-    hand_index+=hand_image_speed;
+    hand_index+=hand_image_speed; //animacja reki w ktorej moze byc bron
 
     
     if (!objEq.weaponType) // dla meleesow
@@ -23,6 +23,7 @@ if (attacking && state!=STATE_SHOOT)
             if (!attackCreated)
             {
                 attackCreated = true;
+                //todo: dzwiek ataku (swist)
                 scr_ActorCreateDamage(5,0,obj_DamageSlash);
             }
         }
@@ -45,7 +46,7 @@ if (attacking && state!=STATE_SHOOT)
                 
                 shootingDir = 2;
                 scr_ActorCreateDamage(10,-14,bullet);
-                sound_play(s_doorBash);
+                //todo: dzwiek strzalu
             }
         }
         
@@ -130,27 +131,29 @@ else if (state == STATE_CLIMB)
         image_speed = 0;        
     }
 }
-else if (state == STATE_SHOOT)
+else if (state == STATE_SHOOT) //Strzelanie z broni dwurecznej
 {
     var selWpn;
     selWpn = objEq.distance[objEq.dSel];
     if (instance_exists(selWpn))
     {
+        //Sprite rak i broni
         sprite_hand = scr_ItemDistGetSpriteForHero(selWpn,false);
-        
+        //zmiana sprita bohatera
         sprite_index = spr_HeroShoot;
-        if (shootingSequence == SHOOT_TARGET)
+        if (shootingSequence == SHOOT_TARGET) //podczas celowania nie ma animacji
         {
             hand_image_speed = 0;
-            hand_index = shootingDir;
+            hand_index = shootingDir; // obrazek reprezentuje kierunek w ktorym celuje bohater
         }
-        else if (shootingSequence == SHOOT_RELOAD)
+        else if (shootingSequence == SHOOT_RELOAD) //animacja ladowania
         {
             sprite_hand = scr_ItemDistGetSpriteForHero(selWpn,true);
             hand_image_speed = scr_AttackSpeedToHandImageSpeed(attackSpeed,sprite_get_number(sprite_hand));
             
             hand_index+=hand_image_speed;
             
+            //koniec ladowania
             if (round(hand_index) >= sprite_get_number(sprite_hand))        
                 attacking = false;                  
         }

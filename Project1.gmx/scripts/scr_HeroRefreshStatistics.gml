@@ -16,7 +16,6 @@ if (ep >= epMax)
 }
 
 ////AKTUALIZOWANIE OBRAZEN////
-    //todo: pobierac to z aktualnie wybranej broni!
     var wpnPierce = 0, wpnSlash = 0, wpnBlunt = 0, wpnFire = 0, wpnCold = 0, wpnElectro = 0, wpnDmgTrue = 0;
     var wpnAttackSpeed = 1, wpnWeight = 0;
     

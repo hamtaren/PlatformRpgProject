@@ -4,8 +4,7 @@ image_speed=0
 opened = false;     //czy drzwi maja otwarte drzwi ;p
 opening = false;    //czy sa otwierane/zamykane
 
-keyClosed = false;  //czy sa zamkniete na klucz
-keyId = 0;          //id klucza ktory otwiera drzwi
+key = -1; //-1 : nie trzeba klucza, 0 : brązowy, 1 : sreb, 2 : złoty, 3 : dźwignia 
 
 barricaded = false; //czy zabarykadowane
 
