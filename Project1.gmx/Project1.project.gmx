@@ -24,29 +24,31 @@
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
-    <sound>sound\s_doorBash</sound>
-    <sound>sound\s_doorClose</sound>
-    <sound>sound\s_doorOpen</sound>
-    <sound>sound\s_drinkPotion</sound>
-    <sound>sound\s_eqArm</sound>
-    <sound>sound\s_eqDist</sound>
-    <sound>sound\s_eqMelee</sound>
-    <sound>sound\s_itemPickup</sound>
-    <sound>sound\s_menuMove</sound>
-    <sound>sound\s_menuSelect</sound>
-    <sounds name="Voices">
-      <sounds name="Hero">
-        <sound>sound\v_HeroUnarmed0</sound>
-        <sound>sound\v_HeroUnarmed1</sound>
-        <sound>sound\v_HeroUnarmed2</sound>
-        <sound>sound\v_HeroUnarmed3</sound>
-      </sounds>
+    <sounds name="Music">
+      <sound>sound\m_music</sound>
     </sounds>
-    <sound>sound\m_music</sound>
-    <sound>sound\s_heroHit</sound>
-    <sound>sound\s_keyPickUp</sound>
-    <sound>sound\s_keyUnlock</sound>
-    <sound>sound\s_doorKnob</sound>
+    <sounds name="Door">
+      <sound>sound\s_doorOpen</sound>
+      <sound>sound\s_keyUnlock</sound>
+      <sound>sound\s_keyPickUp</sound>
+      <sound>sound\s_doorKnob</sound>
+      <sound>sound\s_doorClose</sound>
+      <sound>sound\s_doorBash</sound>
+    </sounds>
+    <sounds name="Eq">
+      <sound>sound\s_eqDist</sound>
+      <sound>sound\s_eqMelee</sound>
+      <sound>sound\s_eqArm</sound>
+      <sound>sound\s_itemPickup</sound>
+      <sound>sound\s_drinkPotion</sound>
+    </sounds>
+    <sounds name="Menu">
+      <sound>sound\s_menuSelect</sound>
+      <sound>sound\s_menuMove</sound>
+    </sounds>
+    <sounds name="Actors">
+      <sound>sound\s_heroHit</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="Actors">
@@ -116,6 +118,7 @@
     <sprites name="Icons">
       <sprite>sprites\spr_ParentMark</sprite>
       <sprite>sprites\spr_DebugController</sprite>
+      <sprite>sprites\spr_Trigger</sprite>
       <sprite>sprites\spr_GameController</sprite>
       <sprite>sprites\spr_Ini</sprite>
       <sprite>sprites\spr_Camera</sprite>
@@ -168,6 +171,7 @@
           <sprite>sprites\spr_EqItemsBow</sprite>
         </sprites>
       </sprites>
+      <sprite>sprites\spr_Keys</sprite>
     </sprites>
     <sprites name="MainMenu">
       <sprite>sprites\spr_MenuBelka</sprite>
@@ -176,11 +180,8 @@
     <sprites name="Solids">
       <sprite>sprites\spr_Solid</sprite>
       <sprite>sprites\spr_SlideableSolid</sprite>
+      <sprite>sprites\spr_TriggerableSolid</sprite>
     </sprites>
-    <sprite>sprites\spr_null</sprite>
-    <sprite>sprites\spr_Slash01</sprite>
-    <sprite>sprites\spr_DamageBite</sprite>
-    <sprite>sprites\spr_SpikesUp</sprite>
     <sprites name="Projectiles">
       <sprite>sprites\spr_Arrow</sprite>
       <sprite>sprites\spr_Bullet</sprite>
@@ -192,7 +193,10 @@
       <sprite>sprites\spr_Ladder</sprite>
       <sprite>sprites\spr_Door</sprite>
     </sprites>
-    <sprite>sprites\spr_Keys</sprite>
+    <sprite>sprites\spr_Slash01</sprite>
+    <sprite>sprites\spr_DamageBite</sprite>
+    <sprite>sprites\spr_SpikesUp</sprite>
+    <sprite>sprites\spr_null</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\tile_ground</background>
@@ -279,8 +283,6 @@
           <script>scripts\scr_DoorBash.gml</script>
         </scripts>
         <scripts name="Leavers">
-          <script>scripts\scr_LeaverDoorAction.gml</script>
-          <script>scripts\scr_LeaverDoorVariablesInit.gml</script>
           <script>scripts\scr_LeaverParentVariableInit.gml</script>
           <script>scripts\scr_LeaverParentMechanics.gml</script>
         </scripts>
@@ -379,6 +381,10 @@
           <script>scripts\scr_ItemDistGetSpriteForHero.gml</script>
         </scripts>
       </scripts>
+      <scripts name="Triggers">
+        <script>scripts\scr_TriggerCreateDoor.gml</script>
+        <script>scripts\scr_TriggerCreateSolid.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -428,14 +434,12 @@
         <object>objects\obj_LeaderTop</object>
         <object>objects\obj_Leader</object>
       </objects>
-      <objects name="Leavers">
-        <object>objects\obj_LeaverDoor</object>
-        <object>objects\obj_Leaver</object>
-      </objects>
+      <object>objects\obj_Leaver</object>
     </objects>
     <objects name="Solids">
       <object>objects\obj_Solid</object>
       <object>objects\obj_SlideableSolid</object>
+      <object>objects\obj_TriggerableSolid</object>
     </objects>
     <objects name="Damage">
       <object>objects\obj_DamageSlash</object>
@@ -454,6 +458,11 @@
     <object>objects\obj_Box</object>
     <object>objects\obj_TreasureClass</object>
     <object>objects\obj_Key</object>
+    <objects name="Triggers">
+      <object>objects\obj_Trigger</object>
+      <object>objects\obj_TriggerSolid</object>
+      <object>objects\obj_TriggerDoor</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_Init</room>

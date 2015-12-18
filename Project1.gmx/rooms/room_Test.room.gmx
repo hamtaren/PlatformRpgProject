@@ -156,11 +156,13 @@
     <instance objName="obj_Key" x="1120" y="352" name="inst_E6DE4F25" locked="0" code="image_index = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1072" y="352" name="inst_5B2CE15C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1168" y="352" name="inst_462888A0" locked="0" code="image_index = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Door" x="720" y="384" name="inst_1B15B917" locked="0" code="key = 3;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Door" x="720" y="384" name="inst_1B15B917" locked="0" code="key = 3;&#xA;&#xA;scr_TriggerCreateDoor(1);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="768" y="384" name="inst_599950C8" locked="0" code="key = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Door" x="816" y="384" name="inst_C7D6F58B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="704" y="320" name="inst_5F877402" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="752" y="320" name="inst_E28732FA" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Leaver" x="864" y="448" name="inst_5B013B4D" locked="0" code="trigId = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_TriggerableSolid" x="992" y="320" name="inst_D76C3253" locked="0" code="var trig = instance_create(x,y,obj_TriggerSolid);&#xA;&#xA;trig.solidId = id;&#xA;trig.trigId = 1;&#xA;" scaleX="1" scaleY="1.5" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tile_outdoor" x="1024" y="320" w="64" h="64" xo="128" yo="0" id="10001167" name="inst_9CB23545" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

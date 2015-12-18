@@ -44,9 +44,9 @@ if (!door.barricaded && !door.bashed)
     {
         //Komunikaty o tym jak otworzyc drzwi
         sound_play(s_doorKnob);
-        if (door.key == 3)        
+        if (door.key == 3 && !door.opened)        
             scr_CreatePopUp("Drzwi otwiera zewnętrzny mechanizm");        
-        else
+        else if (door.key !=3)
         {
             var color = "";
             switch(door.key)

@@ -33,3 +33,17 @@ if (!turned)
 else
     image_speed=0;
 
+//TRIGGEROWANIE
+if (trigger)
+{
+    trigger = false;
+    
+    with(obj_Trigger)
+    {
+        if (other.trigId == trigId)
+        {
+            trigger = true;
+        }
+    }
+}    
+

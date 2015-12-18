@@ -7,6 +7,7 @@ if (leaver!=noone)
     {
         leaver.turnOn = !leaver.turnOn; //zmiana
         leaver.turned = false;          //poniewaz zmienilismy to dzwignia nie jest jeszcze przeciagnieta na miejsce docelowe
+        leaver.trigger = true;
     }
 }
 else
