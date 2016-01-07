@@ -40,8 +40,14 @@ staminaMax = 0;
 stamina = 0;
 */
 
+mvSpeed = 0; //szybkosc poruszania sie
+hspd = 0;
+vspd = 0;
+
 expirience = 0;// ile dostaniemy expa za przeciwnika
 
+atSpeed = 0; //predkosc ataku
+attacking = false; //czy atakuje
 </string>
           </argument>
         </arguments>
@@ -65,7 +71,7 @@ expirience = 0;// ile dostaniemy expa za przeciwnika
           <argument>
             <kind>1</kind>
             <string>event_inherited();
-obj_Hero.ep += expirience;
+//obj_Hero.ep += expirience;
 </string>
           </argument>
         </arguments>
@@ -88,8 +94,13 @@ obj_Hero.ep += expirience;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (hp&lt;=0)
+            <string>if (hp&lt;=0 &amp;&amp; !dead)
+{
+    obj_Hero.ep += expirience;
     dead = true;
+    event_user(0);
+    event_user(12);
+}
 
 hp = min(hpMax,hp);
 </string>
@@ -114,7 +125,8 @@ hp = min(hpMax,hp);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!dead)
+            <string>
+if (!dead)
 {
     if (other.owner == OWN_HERO)
     {
@@ -123,10 +135,13 @@ hp = min(hpMax,hp);
         
         if (dmgTaken&gt;0)
         {
-            scr_ParticlesBloodCreate(5);            
+            scr_ParticlesBloodCreate(5);      
+            event_user(6);      
         }
+    
+        with(other)instance_destroy();
     }
-    with(other)instance_destroy();    
+        
 }
 </string>
           </argument>

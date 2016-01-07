@@ -22,4 +22,15 @@ KEY_MIXTURE = (ord('T'));
 //STWORZENIE CZASTECZEK
 scr_ParticlesInit();
 
-room_goto_next();
+Loaded = true;
+
+if (room == room_Loader)
+{
+    scr_LoadRoom();
+    Loaded = false;
+}
+else //normalna gra
+    room_goto_next();
+    
+globalvar SOUND_ON;
+SOUND_ON = true;

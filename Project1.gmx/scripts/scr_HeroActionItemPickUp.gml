@@ -1,6 +1,5 @@
 ///scr_HeroActionItemPickUp(item)
 //podnoszenie przedmiotow
-//TODO: akcja podnoszenia przedmiotow dla kazdego z typow
 var item = argument0;
 if (instance_exists(item))
 {

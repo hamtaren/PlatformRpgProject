@@ -2,7 +2,7 @@
 //podnoszenie zbroi
 var item = argument0;
 
-    sound_play(s_eqArm);
+    scr_sound_play(s_eqArm);
     
     if (objEq.armor[0]==noone)
         objEq.armor[0] = item.id;    

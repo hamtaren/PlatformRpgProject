@@ -2,7 +2,7 @@
 //podnoszenie broni dystansowej
 var item = argument0;
 
-    sound_play(s_eqDist);
+    scr_sound_play(s_eqDist);
     
     if (objEq.distance[0]==noone)
         objEq.distance[0] = item.id;    

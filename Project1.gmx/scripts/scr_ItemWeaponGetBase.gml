@@ -12,7 +12,7 @@ if (argument0 == spr_FloorItemsSword)
         case 3: var val; val[0] = 8; val[1] = 2; val[2] =  0; val[3] = 1; val[4] = 1.5; return val[argument2];
         case 4: var val; val[0] = 0; val[1] = 10; val[2] = 0; val[3] = 2; val[4] = 1.2; return val[argument2];
         case 5: var val; val[0] = 0; val[1] = 20; val[2] = 0; val[3] = 5; val[4] = 0.75; return val[argument2];
-        case 6: var val; val[0] = 0; val[1] = 50; val[2] = 0; val[3] = 7; val[4] = 0.75; return val[argument2];
+        case 6: var val; val[0] = 0; val[1] = 25; val[2] = 0; val[3] = 7; val[4] = 0.75; return val[argument2];
     }
 }
 else if (argument0 == spr_FloorItemsAxe)
@@ -24,7 +24,7 @@ else if (argument0 == spr_FloorItemsAxe)
         case 2: var val; val[0] = 0; val[1] = 5; val[2] = 5; val[3] = 5; val[4] = 0.8; return val[argument2];
         case 3: var val; val[0] = 8; val[1] = 15; val[2] = 0; val[3] = 5; val[4] = 0.5; return val[argument2];
         case 4: var val; val[0] = 0; val[1] = 20; val[2] = 10; val[3] = 10; val[4] = 0.3; return val[argument2];
-        case 5: var val; val[0] = 0; val[1] = 50; val[2] = 20; val[3] = 15; val[4] = 0.25; return val[argument2];
+        case 5: var val; val[0] = 0; val[1] = 25; val[2] = 20; val[3] = 15; val[4] = 0.25; return val[argument2];
     }
 }
 else if (argument0 == spr_FloorItemsHammer)
@@ -37,7 +37,7 @@ else if (argument0 == spr_FloorItemsHammer)
         case 3: var val; val[0] = 5; val[1] = 0; val[2] = 10; val[3] = 8; val[4] = 0.6; return val[argument2];
         case 4: var val; val[0] = 10; val[1] =0; val[2] = 15; val[3] = 10; val[4] = 0.5; return val[argument2];
         case 5: var val; val[0] = 0; val[1] = 0; val[2] = 25; val[3] = 15; val[4] = 0.3; return val[argument2];
-        case 6: var val; val[0] = 0; val[1] = 0; val[2] = 60; val[3] = 25; val[4] = 0.25; return val[argument2];
+        case 6: var val; val[0] = 0; val[1] = 0; val[2] = 30; val[3] = 25; val[4] = 0.25; return val[argument2];
     }
 }
 else if (argument0 == spr_FloorItemsStick)
@@ -49,6 +49,6 @@ else if (argument0 == spr_FloorItemsStick)
         case 2: var val; val[0] = 5; val[1] = 0; val[2] = 0; val[3] = 2; val[4] = 1; return val[argument2];
         case 3: var val; val[0] = 10; val[1] = 0; val[2] = 0; val[3] = 2; val[4] = 1.25; return val[argument2];
         case 4: var val; val[0] = 20; val[1] = 0; val[2] = 0; val[3] = 5; val[4] = 1.25; return val[argument2];
-        case 5: var val; val[0] = 60; val[1] = 0; val[2] = 0; val[3] = 7; val[4] = 0.5; return val[argument2];
+        case 5: var val; val[0] = 30; val[1] = 0; val[2] = 0; val[3] = 7; val[4] = 0.5; return val[argument2];
     }
 }

@@ -1,4 +1,4 @@
-///scr_MainMenuDraw()
+///MainMenuDraw()
 
 //wybieranie opcji
 if (!chosen)
@@ -40,7 +40,7 @@ if (!chosen)
             else if (dy <288)
                 go="UP";
         }
-        //OPTIONS
+        ////EXIT
         else if (menuSelected = 2) 
         {
             if (dy>331 && dy < 373)
@@ -55,6 +55,7 @@ if (!chosen)
                 go="UP";                
         }
         //EXIT
+        /*
         else if (menuSelected = 3) 
         {
             if (dy>374 && dy < 418)
@@ -66,6 +67,7 @@ if (!chosen)
             else if (dy <374)
                 go="UP";                
         }
+        */
     }
     
     //wybor gora/dol opcji
@@ -77,7 +79,7 @@ if (!chosen)
     }
     else if (go == "DOWN")
     {
-        menuSelected = min(3,menuSelected+1);
+        menuSelected = min(2,menuSelected+1);
         sound_play(s_menuMove);
         go = "";
     }
@@ -105,10 +107,9 @@ if (yBelka>room_height)
     {
         switch(menuSelected)
         {
-            case 0: room_goto(room_Init); break;    //new game
-            case 1: room_restart(); break;          //continue
-            case 2: room_restart(); break;          //opcje
-            case 3: game_end(); break;              //exit
+            case 0: room_goto(room_Intro); break;   //new game
+            case 1: sound_stop_all(); room_goto(room_Loader);  break;  //continue
+            case 2: game_end(); break;              //exit
         }            
     }
     

@@ -32,8 +32,7 @@ image_speed=0.5;
 //USTALAMY ODPORNOSCI I OBRAZENIA
 scr_DRSet(resObject,1,1,1,2,1,1,1);
 scr_DRSet(dmgObject,1,1,0,0,0,0,0);
-//SZYBKOSC PORUSZANIA SIE
-mvSpeed = 2;
+
 //SZYBKOSC ATAKU
 atSpeed = 0.75;
 //CZY MOZE ATAKOWAC
@@ -91,7 +90,8 @@ hpMax = 5;
             <string>event_inherited();
 if (!collision_line(x,y,obj_Hero.x,obj_Hero.y-12,obj_Solid,1,1))
 {
-    mp_potential_step(obj_Hero.x+random(4)-random(4),obj_Hero.y-12-random(8),mvSpeed,0);
+    if (distance_to_object(obj_Hero) &lt; 350)
+        mp_potential_step(obj_Hero.x+random(4)-random(4),obj_Hero.y-12-random(8),mvSpeed,0);
 }
 else
 {
@@ -105,10 +105,15 @@ if (distance_to_object(obj_Hero) &lt;= 1)
         attacking = true;
         alarm[0] = scr_AttackSpeedToFrames(atSpeed);
         scr_ActorCreateDamage(obj_Hero.x - x, obj_Hero.y - y,obj_DamageBite);
+        sound_play(sound_attack);
     }
 }
 
-if (dead) instance_destroy();
+if (dead)
+{
+    sound_play(sound_dead);
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

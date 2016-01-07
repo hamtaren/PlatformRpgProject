@@ -31,7 +31,7 @@
     <yoffset>0</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="tile_LadderWooden" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
+    <background visible="-1" foreground="0" name="bg_SkyCrimson" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -57,8 +57,8 @@
     <instance objName="obj_Solid" x="1312" y="320" name="inst_48E14FF9" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="-32" y="0" name="inst_E7FF9A93" locked="0" code="" scaleX="1" scaleY="11" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="-64" y="352" name="inst_F7F9E3DC" locked="0" code="" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Hero" x="944" y="432" name="inst_C522E91F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Camera" x="912" y="384" name="inst_208421F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Hero" x="752" y="128" name="inst_C522E91F" locked="0" code="&#xA;//scr_ItemWeaponGenerateBase(spr_FloorItemsSword,sprite_get_number(spr_FloorItemsSword)-1);&#xA;//scr_ItemWeaponGenerateBase(spr_FloorItemsAxe,sprite_get_number(spr_FloorItemsAxe)-1);&#xA;scr_ItemWeaponGenerateBase(spr_FloorItemsHammer,sprite_get_number(spr_FloorItemsHammer)-1);&#xA;scr_ItemWeaponGenerateBase(spr_FloorItemsStick,sprite_get_number(spr_FloorItemsStick)-1);&#xA;&#xA;scr_ItemArmorGetBase(sprite_get_number(spr_FloorItemsArmor)-1);&#xA;&#xA;scr_ItemArmorGetBase(sprite_get_number(spr_FloorItemsArmor)-2);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Camera" x="736" y="80" name="inst_208421F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="736" y="384" name="inst_2C088426" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="768" y="384" name="inst_E6CD8BD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Solid" x="736" y="416" name="inst_12F496B7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -114,45 +114,18 @@
     <instance objName="obj_Leader" x="176" y="224" name="inst_CE252B9E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="176" y="256" name="inst_3021FE98" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="176" y="288" name="inst_1A04A7AD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Elder" x="400" y="320" name="inst_5BE7BB9C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Ammo" x="464" y="320" name="inst_DFAE8E8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Ammo" x="512" y="320" name="inst_88EE31EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Ammo" x="480" y="320" name="inst_63954903" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Arrows" x="432" y="320" name="inst_56B51476" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Arrows" x="416" y="320" name="inst_C38D25D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Box" x="400" y="96" name="inst_FC0EFCF5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Box" x="400" y="64" name="inst_E3E87C7E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Box" x="336" y="96" name="inst_778560C2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Box" x="400" y="32" name="inst_CC7E3D2F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_SlideableSolid" x="288" y="192" name="inst_E16748D1" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_SlideableSolid" x="288" y="320" name="inst_24E8775F" locked="0" code="" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="obj_LeaderTop" x="240" y="352" name="inst_068C10E7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="240" y="384" name="inst_F8B8F9DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="240" y="416" name="inst_A059CDDF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leader" x="240" y="448" name="inst_495FF701" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Mixture" x="272" y="160" name="inst_2B02A61E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Mixture" x="272" y="192" name="inst_E20F706D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Mixture" x="288" y="160" name="inst_1F1878CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Mixture" x="288" y="192" name="inst_F10E1CB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Brew" x="304" y="160" name="inst_BB32B2ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Brew" x="304" y="192" name="inst_0C59621D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Brew" x="320" y="160" name="inst_53144BE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Brew" x="320" y="192" name="inst_1089CB3C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Weapon" x="768" y="160" name="inst_0BCD457A" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 0; _slash = 0; _blunt = 10;&#xA;var _fire = 5; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 10; _attackSpeed = 0.5;&#xA;var _sprite_index = spr_FloorItemsHammer; _sprInd = 5;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_EnemyBat" x="464" y="240" name="inst_AEDB91E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="688" y="432" name="inst_D85B24D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="64" y="368" name="inst_24985A39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="32" y="400" name="inst_7D422D93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="16" y="336" name="inst_4ED3CFA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bat" x="32" y="368" name="inst_234C1860" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bat" x="224" y="32" name="inst_C9AAE071" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_Bat" x="288" y="64" name="inst_633E444E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_BigBat" x="240" y="64" name="inst_E0410124" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="128" y="224" name="inst_082F2703" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="192" y="64" name="inst_B9A211B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="256" y="32" name="inst_9855DCA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="336" y="32" name="inst_D40DA57A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_SmallBat" x="368" y="64" name="inst_086C233C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Weapon" x="848" y="96" name="inst_0BCD457A" locked="0" code="var wpn = id;&#xA;&#xA;var _pierce = 0; _slash = 0; _blunt = 10;&#xA;var _fire = 5; _cold = 0; _electro = 0; _dmgTrue = 0;&#xA;var _weight = 10; _attackSpeed = 0.5;&#xA;var _sprite_index = spr_FloorItemsHammer; _sprInd = 5;&#xA;var _name = scr_ItemWeaponGetName(_sprite_index,_sprInd);&#xA;&#xA;scr_ItemWeaponSet(wpn,_name,_pierce,_slash,_blunt,_fire,_cold,_electro,_dmgTrue,_weight,_attackSpeed,_sprite_index,_sprInd);&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1120" y="352" name="inst_E6DE4F25" locked="0" code="image_index = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1072" y="352" name="inst_5B2CE15C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Key" x="1168" y="352" name="inst_462888A0" locked="0" code="image_index = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -163,6 +136,13 @@
     <instance objName="obj_Solid" x="752" y="320" name="inst_E28732FA" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="obj_Leaver" x="864" y="448" name="inst_5B013B4D" locked="0" code="trigId = 1;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_TriggerableSolid" x="992" y="320" name="inst_D76C3253" locked="0" code="var trig = instance_create(x,y,obj_TriggerSolid);&#xA;&#xA;trig.solidId = id;&#xA;trig.trigId = 1;&#xA;" scaleX="1" scaleY="1.5" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dummy" x="816" y="160" name="inst_264217C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Dummy" x="704" y="160" name="inst_88A5B65B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_SmallBat" x="928" y="176" name="inst_AE7BFEE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Bee" x="560" y="160" name="inst_A4DF1280" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Wolf" x="784" y="288" name="inst_8A15EBA5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_FireFox" x="288" y="448" name="inst_235C8725" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_UnarmedGoblin" x="240" y="96" name="inst_8AC277F5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="tile_outdoor" x="1024" y="320" w="64" h="64" xo="128" yo="0" id="10001167" name="inst_9CB23545" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
@@ -174,7 +154,6 @@
     <tile bgName="tile_outdoor" x="1120" y="384" w="64" h="32" xo="128" yo="0" id="10001173" name="inst_1945EE65" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_outdoor" x="1184" y="384" w="64" h="32" xo="128" yo="0" id="10001174" name="inst_6A94C64B" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_outdoor" x="1248" y="384" w="64" h="32" xo="128" yo="0" id="10001175" name="inst_A0BBAC0A" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
-    <tile bgName="tile_outdoor" x="1056" y="384" w="64" h="32" xo="128" yo="32" id="10001176" name="inst_20C3733D" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_outdoor" x="1184" y="384" w="64" h="32" xo="128" yo="32" id="10001177" name="inst_181DE0A0" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_outdoor" x="1088" y="352" w="32" h="32" xo="192" yo="0" id="10001178" name="inst_E67B8E39" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
     <tile bgName="tile_outdoor" x="1248" y="384" w="32" h="32" xo="192" yo="0" id="10001179" name="inst_F37354A2" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

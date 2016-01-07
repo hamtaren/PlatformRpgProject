@@ -39,10 +39,13 @@ atSpeed = 0.75;
 //CZY MOZE ATAKOWAC
 attacking = false;
 //ILOSC DOSWIADCZENIA
-expirience = 5;
+expirience = 25;
 //ZYCIE
 hp = 3;
 hpMax = 3;
+
+sound_attack = choose(s_BatAttack1,s_BatAttack2);
+sound_dead = choose(s_BatDead1,s_BatDead2);
 </string>
           </argument>
         </arguments>

@@ -2,7 +2,7 @@
 //podnoszenie broni
 var item = argument0;
 
-    sound_play(s_eqArm);
+    scr_sound_play(s_eqArm);
     
     if (objEq.melee[0]==noone)
         objEq.melee[0] = item.id;    

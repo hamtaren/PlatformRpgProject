@@ -28,6 +28,45 @@
             <string>//Obiekt po ktorym dziedziczyc beda przedmioty
 type = ITEM_NONE; //typ przedmiotu
 image_speed = 0;
+gravity = 0.25;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (place_meeting_solid(x,y+vspeed))
+{
+    gravity = 0;
+    speed = 0;
+}
+else
+{
+    gravity = 0.25;
+}
+
+if (x&lt;0 &amp;&amp; y&lt;0)
+{
+    x = -20;
+    y = -20;
+    gravity = 0;
+}
 </string>
           </argument>
         </arguments>

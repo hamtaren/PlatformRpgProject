@@ -8,7 +8,7 @@ if (!door.barricaded && !door.bashed)
     {
         if (door.key != -1)
         {
-            sound_play(s_keyUnlock);
+            scr_sound_play(s_keyUnlock);
             objEq.key[door.key] = false;
             door.key = -1;
         }
@@ -20,7 +20,7 @@ if (!door.barricaded && !door.bashed)
             {
                 stamina-=stamBashDoor;
                 scr_DoorBash(door);
-                sound_play(s_doorBash);
+                scr_sound_play(s_doorBash);
             }
         }   
         //owieranie drzwi
@@ -43,7 +43,7 @@ if (!door.barricaded && !door.bashed)
     else
     {
         //Komunikaty o tym jak otworzyc drzwi
-        sound_play(s_doorKnob);
+        scr_sound_play(s_doorKnob);
         if (door.key == 3 && !door.opened)        
             scr_CreatePopUp("Drzwi otwiera zewnętrzny mechanizm");        
         else if (door.key !=3)

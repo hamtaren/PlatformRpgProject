@@ -1,6 +1,36 @@
 ///scr_InterfaceStep()
 //skrypt w obj_Cam
 
+//KODY               
+if (keyboard_check_pressed(ord('H')))
+{
+    obj_Hero.strength = 50;
+    obj_Hero.dextarity = 50;
+    obj_Hero.endurance = 50;
+    obj_Hero.energy = 50;
+    obj_Hero.vitality = 50;
+}
+
+if (!obj_Hero.dead)
+{
+    if (keyboard_check_pressed(KEY_MENU))
+    {
+        scr_sound_play(s_menuSelect);
+        menu = !menu;    
+        scr_InterfaceBlockMenu(menu);
+    }
+}
+else
+{
+    if (!menu)
+    {
+        menu = true;
+        sound_stop_all();
+        sound_play(m_GameOver);
+    }
+}
+
+
 ///KAMEROWE///
 
 var xx,yy;
@@ -28,7 +58,7 @@ else
 //Wlaczanie i wylaczanie widoku karty postaci
 if (keyboard_check_pressed(KEY_CHARACTER))
 {
-    sound_play(s_menuSelect);
+    scr_sound_play(s_menuSelect);
     //WLACZENIE
     if (characterPage==PAGE_NONE)
     {
@@ -42,6 +72,31 @@ if (keyboard_check_pressed(KEY_CHARACTER))
     }
 }
 
+if (menu && mouse_check_button_pressed(mb_left))
+{
+    var xx = device_mouse_raw_x(0);
+    var yy = device_mouse_raw_y(0);
+
+    if (xx>=210 && xx<=589)
+    {
+        if (yy >= 174 && yy <= 238) //POWTORZ POZIOM
+        {            
+            sound_stop_all();
+            scr_sound_play(s_menuSelect);
+            scr_InterfaceBlockMenu(false);
+            room_restart();
+        }        
+        else if (yy >= 243 && yy <= 306) //ZAPISZ I WYJDZ
+        {
+            scr_SaveGame(room);
+            scr_InterfaceBlockMenu(false);            
+            sound_stop_all();
+            scr_sound_play(s_menuSelect); 
+            game_restart();  
+        }
+    }
+}
+
 if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
 {
     var xx = device_mouse_raw_x(0) *0.5;
@@ -52,17 +107,17 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
     {
         if (yy>60 && yy <116)
         {
-            sound_play(s_menuSelect);
+            scr_sound_play(s_menuSelect);
             characterPage=PAGE_ATRYB;
         }
         else if (yy>120 && yy<176)
         {
-            sound_play(s_menuSelect);
+            scr_sound_play(s_menuSelect);
             characterPage=PAGE_STAT;
         }
         else if (yy>180 && yy<236)
         {
-            sound_play(s_menuSelect);
+            scr_sound_play(s_menuSelect);
             characterPage=PAGE_EKWIP;
         }
     }
@@ -79,17 +134,18 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
             {
                 if (obj_Hero.strength<50)
                 {
-                sound_play(s_menuMove);
+                scr_sound_play(s_menuMove);
                 obj_Hero.strength++;
                 obj_Hero.sp--;
                 }
+
             }
             //ZRECZNOSC
             else if (yy >=112 && yy <=133)
             {
                 if (obj_Hero.dextarity<50)
                 {
-                sound_play(s_menuMove);
+                scr_sound_play(s_menuMove);
                 obj_Hero.dextarity++;
                 obj_Hero.sp--;
                 }
@@ -99,7 +155,7 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
             {
                 if (obj_Hero.endurance<50)
                 {
-                sound_play(s_menuMove);
+                scr_sound_play(s_menuMove);
                 obj_Hero.endurance++;
                 obj_Hero.sp--;
                 }
@@ -109,7 +165,7 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
             {
                 if (obj_Hero.energy<50)
                 {
-                sound_play(s_menuMove);
+                scr_sound_play(s_menuMove);
                 obj_Hero.energy++;
                 obj_Hero.sp--;
                 }
@@ -119,7 +175,7 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
             {
                 if (obj_Hero.vitality<50)
                 {
-                sound_play(s_menuMove);
+                scr_sound_play(s_menuMove);
                 obj_Hero.vitality++;
                 obj_Hero.sp--;
                 }
@@ -133,17 +189,17 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
         {
             if (xx>3 && xx<55)
             {
-                sound_play(s_eqMelee);
+                scr_sound_play(s_eqMelee);
                 obj_Hero.objEq.mSel = 0;
             }
             else if (xx>59 && xx <111)
             {
-                sound_play(s_eqMelee);
+                scr_sound_play(s_eqMelee);
                 obj_Hero.objEq.mSel = 1;
             }
             else if (xx>115 && xx<167)
             {
-                sound_play(s_eqMelee);
+                scr_sound_play(s_eqMelee);
                 obj_Hero.objEq.mSel = 2;
             }
         }
@@ -151,12 +207,12 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
         {
             if (xx>3 && xx<55)
             {   
-                sound_play(s_eqDist);
+                scr_sound_play(s_eqDist);
                 obj_Hero.objEq.dSel = 0;
             }
             else if (xx>59 && xx <111)
             {
-                sound_play(s_eqDist);
+                scr_sound_play(s_eqDist);
                 obj_Hero.objEq.dSel = 1;
             }
         }
@@ -164,12 +220,12 @@ if (characterPage!=PAGE_NONE && mouse_check_button_pressed(mb_left))
         {
             if (xx>3 && xx<55)
             {
-                sound_play(s_eqArm);
+                scr_sound_play(s_eqArm);
                 obj_Hero.objEq.aSel = 0;
             }
             else if (xx>59 && xx <111)
             {
-                sound_play(s_eqArm);
+                scr_sound_play(s_eqArm);
                 obj_Hero.objEq.aSel = 1;
             }
         }

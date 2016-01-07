@@ -55,7 +55,7 @@ arrows = 2 + irandom(5);
 if (eq.arrows&lt;999)
 {
     eq.arrows+=arrows;
-    sound_play(s_itemPickup);
+    scr_sound_play(s_itemPickup);
     instance_destroy();
 }
 </string>

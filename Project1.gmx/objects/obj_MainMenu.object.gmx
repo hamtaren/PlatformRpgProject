@@ -65,7 +65,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>sound_loop(m_music);
+            <string>sound_loop(m_Menu);
 </string>
           </argument>
         </arguments>

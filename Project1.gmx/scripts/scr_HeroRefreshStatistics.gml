@@ -1,6 +1,11 @@
 ///scr_HeroRefreshStatistics()
 //Aktualizowanie statystyk na podstawie posiadanych broni, dobytego doswiadczenia itp
 
+if (hp<=0)
+{
+    dead = true;
+}
+
 //Zdobywanie nastepnego poziomu
 if (ep >= epMax)
 {
@@ -9,7 +14,10 @@ if (ep >= epMax)
         sp+=5;
         level++;
         ep -=epMax;
-        epMax *=2;
+        epMax *=1.10;
+        epMax=round(epMax);
+        sound_play(s_LevelUp);
+        scr_ParticlesBlingsCreate(15);
     }
     else    
         ep = epMax;    
@@ -89,7 +97,7 @@ if (ep >= epMax)
     {
         var arm = objEq.armor[objEq.aSel];
         //odpornosci
-        amrPierce = arm.pierce;
+        armPierce = arm.pierce;
         armSlash = arm.slash;
         armBlunt = arm.blunt;
         armFire = arm.fire;

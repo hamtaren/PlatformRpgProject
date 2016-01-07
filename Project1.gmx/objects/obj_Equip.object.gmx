@@ -43,16 +43,16 @@ distance[1] = noone;
 armor[0] = noone;
 armor[1] = noone;
 //AMUNICJA I STRZALY
-ammo = 1000;
-arrows = 1000;
+ammo = 0;
+arrows = 0;
 //KLUCZE
 key[0] = false; //brazowy klucz
 key[1] = false; //srebrny klucz
 key[2] = false; //zloty klucz
 
 //MIKSTURY
-brews = 3;
-mixtures = 3;
+brews = 1;
+mixtures = 1;
 
 </string>
           </argument>

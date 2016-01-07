@@ -11,9 +11,9 @@ if (keyboard_check_pressed(KEY_ATTACK))
             {
                 if (!attacking)
                 {
-                attacking=true;
-                stamina -= stamAttack;
-                hand_index = 0;        
+                    attacking=true;
+                    stamina -= stamAttack;
+                    hand_index = 0;        
                 }
             }
         }

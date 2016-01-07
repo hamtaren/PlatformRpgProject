@@ -25,7 +25,15 @@
   <NewExtensions/>
   <sounds name="sound">
     <sounds name="Music">
-      <sound>sound\m_music</sound>
+      <sound>sound\m_Menu</sound>
+      <sound>sound\m_Intro</sound>
+      <sound>sound\m_Outro</sound>
+      <sound>sound\m_Stage0</sound>
+      <sound>sound\m_Stage1</sound>
+      <sound>sound\m_Stage2</sound>
+      <sound>sound\m_Stage3</sound>
+      <sound>sound\m_Boss</sound>
+      <sound>sound\m_GameOver</sound>
     </sounds>
     <sounds name="Door">
       <sound>sound\s_doorOpen</sound>
@@ -34,6 +42,8 @@
       <sound>sound\s_doorKnob</sound>
       <sound>sound\s_doorClose</sound>
       <sound>sound\s_doorBash</sound>
+      <sound>sound\s_Lever</sound>
+      <sound>sound\s_TriggerSolid</sound>
     </sounds>
     <sounds name="Eq">
       <sound>sound\s_eqDist</sound>
@@ -46,13 +56,62 @@
       <sound>sound\s_menuSelect</sound>
       <sound>sound\s_menuMove</sound>
     </sounds>
-    <sounds name="Actors">
+    <sounds name="Hero">
+      <sound>sound\s_heroAttack1</sound>
+      <sound>sound\s_heroAttack2</sound>
       <sound>sound\s_heroHit</sound>
+      <sound>sound\s_LevelUp</sound>
+      <sound>sound\s_Bow</sound>
     </sounds>
+    <sounds name="Enemies">
+      <sound>sound\s_beeAttack</sound>
+      <sounds name="Crimson">
+        <sound>sound\s_CrimAttack1</sound>
+        <sound>sound\s_CrimAttack2</sound>
+        <sound>sound\s_CrimDead</sound>
+        <sound>sound\s_CrimHit1</sound>
+        <sound>sound\s_CrimHit2</sound>
+        <sound>sound\s_CrimJump1</sound>
+        <sound>sound\s_CrimJump2</sound>
+      </sounds>
+      <sounds name="Troll">
+        <sound>sound\s_TrollAttack1</sound>
+        <sound>sound\s_TrollAttack2</sound>
+        <sound>sound\s_TrollDead</sound>
+        <sound>sound\s_TrollHit1</sound>
+        <sound>sound\s_TrollHit2</sound>
+      </sounds>
+      <sounds name="Bats">
+        <sound>sound\s_BatAttack1</sound>
+        <sound>sound\s_BatAttack2</sound>
+        <sound>sound\s_BatDead1</sound>
+        <sound>sound\s_BatDead2</sound>
+      </sounds>
+      <sounds name="Goblins">
+        <sound>sound\s_GoblinAttack1</sound>
+        <sound>sound\s_GoblinAttack2</sound>
+        <sound>sound\s_GoblinDead1</sound>
+        <sound>sound\s_GoblinDead2</sound>
+        <sound>sound\s_GoblinHit1</sound>
+        <sound>sound\s_GoblinHit2</sound>
+      </sounds>
+      <sounds name="Wolf">
+        <sound>sound\s_FireFoxAttack1</sound>
+        <sound>sound\s_FireFoxAttack2</sound>
+        <sound>sound\s_WolfAttack1</sound>
+        <sound>sound\s_WolfAttack2</sound>
+        <sound>sound\s_WolfDead1</sound>
+        <sound>sound\s_WolfDead2</sound>
+        <sound>sound\s_WolfHit1</sound>
+        <sound>sound\s_WolfHit2</sound>
+      </sounds>
+    </sounds>
+    <sound>sound\s_blank</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="Actors">
       <sprite>sprites\spr_elderWalk</sprite>
+      <sprite>sprites\spr_Bandit</sprite>
       <sprite>sprites\spr_Dummy</sprite>
       <sprites name="HeroSprites">
         <sprite>sprites\spr_HeroMask</sprite>
@@ -110,9 +169,75 @@
         </sprites>
       </sprites>
       <sprites name="Enemies">
-        <sprite>sprites\spr_SmallBat</sprite>
-        <sprite>sprites\spr_BigBat</sprite>
-        <sprite>sprites\spr_Bat</sprite>
+        <sprites name="Bats">
+          <sprite>sprites\spr_Bat</sprite>
+          <sprite>sprites\spr_BigBat</sprite>
+          <sprite>sprites\spr_SmallBat</sprite>
+        </sprites>
+        <sprites name="Goo">
+          <sprite>sprites\spr_GooDeath</sprite>
+          <sprite>sprites\spr_GooWalk</sprite>
+        </sprites>
+        <sprites name="Stingers">
+          <sprite>sprites\spr_Cher</sprite>
+          <sprite>sprites\spr_Bee</sprite>
+        </sprites>
+        <sprites name="Wolfs">
+          <sprite>sprites\spr_WolfAttack</sprite>
+          <sprite>sprites\spr_FireFoxAttack</sprite>
+          <sprite>sprites\spr_WolfWalk</sprite>
+          <sprite>sprites\spr_FireFoxWalk</sprite>
+          <sprite>sprites\spr_WolfDead</sprite>
+          <sprite>sprites\spr_FireFoxDead</sprite>
+        </sprites>
+        <sprite>sprites\spr_Rat</sprite>
+        <sprite>sprites\spr_RatDead</sprite>
+      </sprites>
+      <sprites name="Goblins">
+        <sprites name="Unarmed">
+          <sprite>sprites\spr_UnarmedDead</sprite>
+          <sprite>sprites\spr_UnarmedFistAttack</sprite>
+          <sprite>sprites\spr_UnarmedDaggerAttack</sprite>
+          <sprite>sprites\spr_UnarmedMaczugaAttack</sprite>
+          <sprite>sprites\spr_UnarmedAxeAttack</sprite>
+          <sprite>sprites\spr_UnarmedProcaAttack</sprite>
+          <sprite>sprites\spr_UnarmedKuszaAttack</sprite>
+          <sprite>sprites\spr_UnarmedWalk</sprite>
+        </sprites>
+        <sprites name="Plate">
+          <sprite>sprites\spr_PlateDead</sprite>
+          <sprite>sprites\spr_PlateFistAttack</sprite>
+          <sprite>sprites\spr_PlateDaggerAttack</sprite>
+          <sprite>sprites\spr_PlateMaczugaAttack</sprite>
+          <sprite>sprites\spr_PlateAxeAttack</sprite>
+          <sprite>sprites\spr_PlateProcaAttack</sprite>
+          <sprite>sprites\spr_PlateKuszaAttack</sprite>
+          <sprite>sprites\spr_PlateWalk</sprite>
+        </sprites>
+        <sprites name="Leather">
+          <sprite>sprites\spr_LeatherDead</sprite>
+          <sprite>sprites\spr_LeatherFistAttack</sprite>
+          <sprite>sprites\spr_LeatherDaggerAttack</sprite>
+          <sprite>sprites\spr_LeatherMaczugaAttack</sprite>
+          <sprite>sprites\spr_LeatherAxeAttack</sprite>
+          <sprite>sprites\spr_LeatherProcaAttack</sprite>
+          <sprite>sprites\spr_LeatherKuszaAttack</sprite>
+          <sprite>sprites\spr_LeatherWalk</sprite>
+        </sprites>
+      </sprites>
+      <sprites name="Crimson">
+        <sprite>sprites\spr_CrimsonStand</sprite>
+        <sprite>sprites\spr_CrimsonMask</sprite>
+        <sprite>sprites\spr_CrimsonRun</sprite>
+        <sprite>sprites\spr_CrimsonJumpAttack</sprite>
+        <sprite>sprites\spr_CrimsonHandAttack</sprite>
+      </sprites>
+      <sprites name="Troll">
+        <sprite>sprites\spr_TrollStand</sprite>
+        <sprite>sprites\spr_TrollMask</sprite>
+        <sprite>sprites\spr_TrollWalk</sprite>
+        <sprite>sprites\spr_TrollClubAttack</sprite>
+        <sprite>sprites\spr_TrollJumpAttack</sprite>
       </sprites>
     </sprites>
     <sprites name="Icons">
@@ -185,6 +310,7 @@
     <sprites name="Projectiles">
       <sprite>sprites\spr_Arrow</sprite>
       <sprite>sprites\spr_Bullet</sprite>
+      <sprite>sprites\spr_GooProjectile</sprite>
     </sprites>
     <sprites name="Interactionable">
       <sprite>sprites\spr_Box</sprite>
@@ -194,18 +320,45 @@
       <sprite>sprites\spr_Door</sprite>
     </sprites>
     <sprite>sprites\spr_Slash01</sprite>
+    <sprite>sprites\spr_Slam</sprite>
+    <sprite>sprites\spr_SlamEffect</sprite>
     <sprite>sprites\spr_DamageBite</sprite>
-    <sprite>sprites\spr_SpikesUp</sprite>
     <sprite>sprites\spr_null</sprite>
+    <sprites name="Scenes">
+      <sprite>sprites\spr_SceneSpriteCrimsonBody</sprite>
+      <sprite>sprites\spr_SceneSpriteCrimsonHead</sprite>
+      <sprite>sprites\spr_SceneSpriteHammer</sprite>
+      <sprite>sprites\spr_SceneSpriteAxe</sprite>
+      <sprite>sprites\spr_SceneSpriteSword</sprite>
+      <sprite>sprites\spr_SceneSpriteSpear</sprite>
+      <sprite>sprites\spr_SceneSpriteLand</sprite>
+      <sprite>sprites\spr_SceneSpriteHero</sprite>
+      <sprite>sprites\spr_SceneSpriteCrimsonDead</sprite>
+      <sprite>sprites\spr_SceneSpriteWeapons</sprite>
+      <sprite>sprites\spr_SceneSpriteVillage</sprite>
+    </sprites>
+    <sprite>sprites\spr_miniMenu</sprite>
+    <sprites name="Spikes">
+      <sprite>sprites\spr_SpikesRight</sprite>
+      <sprite>sprites\spr_SpikesDown</sprite>
+      <sprite>sprites\spr_SpikesLeft</sprite>
+      <sprite>sprites\spr_SpikesUp</sprite>
+    </sprites>
+    <sprite>sprites\spr_HpBars</sprite>
+    <sprite>sprites\spr_GameOver</sprite>
+    <sprite>sprites\spr_IntroOutro</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\tile_ground</background>
-    <background>background\background1</background>
-    <background>background\tile_LadderWooden</background>
+    <background>background\tile_forest</background>
+    <background>background\bg_introOutro</background>
+    <background>background\bg_SkyBlue</background>
+    <background>background\bg_SkyOrange</background>
+    <background>background\bg_SkyCrimson</background>
     <background>background\bg_MainMenu</background>
     <background>background\tile_outdoor</background>
     <background>background\tile_woodenConstruct</background>
     <background>background\tile_indoor</background>
+    <background>background\tile_rockConstruct</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -257,6 +410,13 @@
         <script>scripts\scr_ActorTakeDamage.gml</script>
         <script>scripts\scr_ActorCreateDamage.gml</script>
         <script>scripts\scr_ActorDamageFigureCreate.gml</script>
+        <scripts name="Enemies">
+          <script>scripts\scr_EnemyGravity.gml</script>
+          <scripts name="Footman">
+            <script>scripts\scr_FootmanStep.gml</script>
+            <script>scripts\scr_ArcherStep.gml</script>
+          </scripts>
+        </scripts>
       </scripts>
       <scripts name="MainMenu">
         <script>scripts\scr_MainMenuVariablesInit.gml</script>
@@ -272,6 +432,10 @@
           <scripts name="Blood">
             <script>scripts\scr_ParticlesBloodInit.gml</script>
             <script>scripts\scr_ParticlesBloodCreate.gml</script>
+          </scripts>
+          <scripts name="Blings">
+            <script>scripts\scr_ParticlesBlingsInit.gml</script>
+            <script>scripts\scr_ParticlesBlingsCreate.gml</script>
           </scripts>
         </scripts>
       </scripts>
@@ -329,12 +493,17 @@
         <script>scripts\scr_GameController.gml</script>
         <script>scripts\scr_Ini.gml</script>
         <script>scripts\scr_CreatePopUp.gml</script>
+        <scripts name="SceneController">
+          <script>scripts\scr_SceneControllerInit.gml</script>
+          <script>scripts\scr_SceneControllerStep.gml</script>
+        </scripts>
       </scripts>
       <scripts name="Interface">
         <script>scripts\scr_InterfaceVariablesInit.gml</script>
         <script>scripts\scr_InterfaceStep.gml</script>
         <script>scripts\scr_InterfaceDraw.gml</script>
         <script>scripts\scr_InterfaceBlock.gml</script>
+        <script>scripts\scr_InterfaceBlockMenu.gml</script>
         <script>scripts\scr_InterfaceResPercent.gml</script>
       </scripts>
       <scripts name="DmgObject">
@@ -385,11 +554,33 @@
         <script>scripts\scr_TriggerCreateDoor.gml</script>
         <script>scripts\scr_TriggerCreateSolid.gml</script>
       </scripts>
+      <scripts name="SavingLoading">
+        <scripts name="Save">
+          <script>scripts\scr_SaveGame.gml</script>
+          <script>scripts\scr_SaveHero.gml</script>
+          <script>scripts\scr_SaveEqMelee.gml</script>
+          <script>scripts\scr_SaveEqArmor.gml</script>
+          <script>scripts\scr_SaveEqDist.gml</script>
+          <script>scripts\scr_SaveEq.gml</script>
+        </scripts>
+        <scripts name="Load">
+          <script>scripts\scr_LoadGame.gml</script>
+          <script>scripts\scr_LoadHero.gml</script>
+          <script>scripts\scr_LoadEqMelee.gml</script>
+          <script>scripts\scr_LoadEqArmor.gml</script>
+          <script>scripts\scr_LoadEqDist.gml</script>
+          <script>scripts\scr_LoadEq.gml</script>
+          <script>scripts\scr_LoadRoom.gml</script>
+        </scripts>
+      </scripts>
     </scripts>
+    <script>scripts\scr_sound_play.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_debug</font>
     <font>fonts\font_damage</font>
+    <font>fonts\f_IntroOutro</font>
+    <font>fonts\font_damage2</font>
   </fonts>
   <objects name="objects">
     <objects name="Items">
@@ -414,17 +605,69 @@
     </objects>
     <objects name="Actors">
       <object>objects\obj_Actor</object>
-      <object>objects\obj_Enemy</object>
       <object>objects\obj_Npc</object>
       <object>objects\obj_Hero</object>
       <object>objects\obj_Elder</object>
       <object>objects\obj_Dummy</object>
       <objects name="Enemies">
+        <object>objects\obj_EnemeyArcher</object>
+        <object>objects\obj_EnemyBandit</object>
         <objects name="Bats">
           <object>objects\obj_EnemyBat</object>
           <object>objects\obj_SmallBat</object>
           <object>objects\obj_Bat</object>
           <object>objects\obj_BigBat</object>
+        </objects>
+        <objects name="Pars">
+          <object>objects\obj_Enemy</object>
+          <object>objects\obj_Archer</object>
+          <object>objects\obj_Footman</object>
+          <object>objects\obj_GoblinF</object>
+          <object>objects\obj_GoblinA</object>
+        </objects>
+        <objects name="Goo">
+          <object>objects\obj_GooProjectile</object>
+          <object>objects\obj_Goo</object>
+        </objects>
+        <objects name="Stingers">
+          <object>objects\obj_Bee</object>
+          <object>objects\obj_Cher</object>
+        </objects>
+        <objects name="Wolfs">
+          <object>objects\obj_Wolf</object>
+          <object>objects\obj_FireFox</object>
+        </objects>
+        <objects name="Goblins">
+          <objects name="Unarmed">
+            <object>objects\obj_UnarmedGoblin</object>
+            <object>objects\obj_UnarmedGoblinDagger</object>
+            <object>objects\obj_UnarmedGoblinMaczuga</object>
+            <object>objects\obj_UnarmedGoblinAxe</object>
+            <object>objects\obj_UnarmedGoblinProca</object>
+            <object>objects\obj_UnarmedGoblinKusza</object>
+          </objects>
+          <objects name="Leather">
+            <object>objects\obj_LeatherGoblin</object>
+            <object>objects\obj_LeatherGoblinDagger</object>
+            <object>objects\obj_LeatherGoblinMaczuga</object>
+            <object>objects\obj_LeatherGoblinAxe</object>
+            <object>objects\obj_LeatherGoblinProca</object>
+            <object>objects\obj_LeatherGoblinKusza</object>
+          </objects>
+          <objects name="Plate">
+            <object>objects\obj_PlateGoblin</object>
+            <object>objects\obj_PlateGoblinDagger</object>
+            <object>objects\obj_PlateGoblinMaczuga</object>
+            <object>objects\obj_PlateGoblinAxe</object>
+            <object>objects\obj_PlateGoblinProca</object>
+            <object>objects\obj_PlateGoblinKusza</object>
+          </objects>
+        </objects>
+        <object>objects\obj_Rat</object>
+        <objects name="Bosses">
+          <object>objects\obj_Boss</object>
+          <object>objects\obj_Troll</object>
+          <object>objects\obj_Crimson</object>
         </objects>
       </objects>
     </objects>
@@ -443,15 +686,22 @@
     </objects>
     <objects name="Damage">
       <object>objects\obj_DamageSlash</object>
+      <object>objects\obj_DamageSlam</object>
       <object>objects\obj_DamageBite</object>
       <object>objects\obj_DmgFigure</object>
       <object>objects\obj_Damage</object>
-      <object>objects\obj_Spikes</object>
       <object>objects\obj_DR</object>
       <objects name="Projectiles">
         <object>objects\obj_Projectile</object>
         <object>objects\obj_Bullet</object>
         <object>objects\obj_Arrow</object>
+      </objects>
+      <objects name="Spikes">
+        <object>objects\obj_Spikes</object>
+        <object>objects\obj_SpikesRight</object>
+        <object>objects\obj_SpikesDown</object>
+        <object>objects\obj_SpikesLeft</object>
+        <object>objects\obj_SpikesUp</object>
       </objects>
     </objects>
     <object>objects\obj_Equip</object>
@@ -463,11 +713,52 @@
       <object>objects\obj_TriggerSolid</object>
       <object>objects\obj_TriggerDoor</object>
     </objects>
+    <objects name="Scene">
+      <object>objects\obj_SceneController</object>
+      <objects name="Intro">
+        <object>objects\obj_Scene5Sprite1</object>
+        <object>objects\obj_Scene4Sprite1</object>
+        <object>objects\obj_Scene3Sprite4</object>
+        <object>objects\obj_Scene3Sprite3</object>
+        <object>objects\obj_Scene3Sprite2</object>
+        <object>objects\obj_Scene3Sprite1</object>
+        <object>objects\obj_Scene2Sprite1</object>
+        <object>objects\obj_Scene1Sprite1</object>
+      </objects>
+      <objects name="Outro">
+        <object>objects\obj_Scene6Sprite1</object>
+        <object>objects\obj_Scene7Sprite1</object>
+        <object>objects\obj_Scene8Sprite1</object>
+      </objects>
+    </objects>
+    <objects name="TutorialPopups">
+      <object>objects\obj_Tutorial1</object>
+      <object>objects\obj_Tutorial11</object>
+      <object>objects\obj_Tutorial4</object>
+      <object>objects\obj_Tutorial10</object>
+      <object>objects\obj_Tutorial8</object>
+      <object>objects\obj_Tutorial12</object>
+      <object>objects\obj_Tutorial9</object>
+      <object>objects\obj_Tutorial7</object>
+      <object>objects\obj_Tutorial6</object>
+      <object>objects\obj_Tutorial5</object>
+      <object>objects\obj_Tutorial3</object>
+      <object>objects\obj_Tutorial2</object>
+    </objects>
+    <object>objects\obj_SlamEffect</object>
+    <object>objects\obj_CrimsonGearCreator</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room_Init</room>
-    <room>rooms\room_Test</room>
     <room>rooms\room_Menu</room>
+    <room>rooms\room_Intro</room>
+    <room>rooms\room_Init</room>
+    <room>rooms\room_Trening</room>
+    <room>rooms\room_Stage1</room>
+    <room>rooms\room_Stage2</room>
+    <room>rooms\room_Stage3</room>
+    <room>rooms\room_Test</room>
+    <room>rooms\room_Outro</room>
+    <room>rooms\room_Loader</room>
   </rooms>
   <constants number="32">
     <constant name="DEBUG_ERROR">-102</constant>

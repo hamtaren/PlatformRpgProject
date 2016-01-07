@@ -5,7 +5,7 @@ moveSpeed = 5;      //maksymalna predkosc poruszania sie w poziomie
 maxVspd = 12;       //maksymalna szybkosc pionowa
 moveFriction = 0.5; //tarcie powierzchni
 moveAcc = 0.2;      //przyspieszenie poruszania sie w poziomie
-jumpPower = -8;     //sila skoku
+jumpPower = -8.5;     //sila skoku
 cspd = 4;           //szybkosc wspinaczki, wchodzenia po linie/drabinie
 
 deathFall = false;  //czy upadek jest smiertelny
@@ -38,9 +38,9 @@ hand_index = 0;                  //index sprite'a reki
 
 //doswiadczenie
 level = 1;
-epMax = 100;
+epMax = 50;
 ep = 0; ///experience points
-sp = 1000; //skill points
+sp = 0; //skill points
 
 //statystyki do rozdawania skill points
 strength = 1;

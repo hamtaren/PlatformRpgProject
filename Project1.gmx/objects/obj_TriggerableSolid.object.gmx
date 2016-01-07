@@ -55,6 +55,7 @@ image_speed = 0;
     {
         image_speed = 0;
         image_index = -1;
+        sound_play(s_TriggerSolid);
     }
 }
 else if (image_speed &lt; 0)
@@ -63,6 +64,7 @@ else if (image_speed &lt; 0)
     {
         image_index = 0;
         image_speed = 0;
+        sound_play(s_TriggerSolid);
     }
 }
 </string>

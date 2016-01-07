@@ -40,7 +40,7 @@ if (trigger)
     
     with(obj_Trigger)
     {
-        if (other.trigId == trigId)
+        if (id.trigId == other.trigId)
         {
             trigger = true;
         }

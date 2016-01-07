@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>target = obj_Hero; //co jest w centrum uwagi kamery
 slight = 10;       //gladkosc z jaka kamera podchodzi do celu
-
+menu = false;       //mini menu
 scr_InterfaceVariablesInit();
 </string>
           </argument>

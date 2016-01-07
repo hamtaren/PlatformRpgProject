@@ -1,5 +1,7 @@
 ///scr_GameController()
 
+
+
 //TWORZENIE DEBUGERA
 if (os_type!= os_android)
     if (!instance_exists(obj_DebugController))

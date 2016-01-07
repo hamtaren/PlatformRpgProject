@@ -33,7 +33,7 @@ else if (shootingSequence == SHOOT_SHOT)
         attacking = true;
         hand_index = 0;
         shootingSequence = SHOOT_RELOAD;
-        sound_play(s_doorBash);
+        scr_sound_play(s_Bow); //todo: zmienic dzwiek strzalu
         
         //Tworzenie pocisku        
         var xx,yy,bullet;
@@ -55,7 +55,6 @@ else if (shootingSequence == SHOOT_SHOT)
     }
     else
     {
-        show_message("BRAK AMUNICJI");
         shootingSequence = SHOOT_TARGET;
     }
 }

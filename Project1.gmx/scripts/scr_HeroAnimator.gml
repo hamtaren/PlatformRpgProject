@@ -23,7 +23,7 @@ if (attacking && state!=STATE_SHOOT)
             if (!attackCreated)
             {
                 attackCreated = true;
-                //todo: dzwiek ataku (swist)
+                scr_sound_play(choose(s_heroAttack1,s_heroAttack2));
                 scr_ActorCreateDamage(5,0,obj_DamageSlash);
             }
         }
@@ -46,7 +46,7 @@ if (attacking && state!=STATE_SHOOT)
                 
                 shootingDir = 2;
                 scr_ActorCreateDamage(10,-14,bullet);
-                //todo: dzwiek strzalu
+                scr_sound_play(s_Bow);
             }
         }
         

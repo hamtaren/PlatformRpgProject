@@ -55,7 +55,7 @@ ammo = 2 + irandom(5);
 if (eq.ammo&lt;999)
 {
     eq.ammo+=ammo;
-    sound_play(s_itemPickup);
+    scr_sound_play(s_itemPickup);
     instance_destroy();
 }
 </string>

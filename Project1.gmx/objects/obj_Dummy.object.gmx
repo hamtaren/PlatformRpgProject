@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>event_inherited();
 image_speed=0;
-Hp=10;
-
+Hp=2;
+ep = 12;
 scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,0.5);
 </string>
           </argument>
@@ -54,11 +54,9 @@ scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,0.5);
             <kind>1</kind>
             <string>if (Hp&lt;=0 &amp;&amp; dead = false)
 {
-    obj_Hero.ep+=10;
+    obj_Hero.ep+=ep;
     dead = true;
-    image_index = 1;
-    
-    scr_TreasureClassVariablesSet(irandom(3)+1,1,1,1,1,1,1,0);
+    image_index = 1;        
 }
 </string>
           </argument>
@@ -91,7 +89,7 @@ scr_DRSet(resObject,0.75,0.75,0.75,2,0.25,0.5,0.5);
     if (dmgTaken&gt;0)
     {
         scr_ParticlesBloodCreate(5);
-        sound_play(s_doorBash);    
+        scr_sound_play(s_doorBash);    
     }
     
     with(other) instance_destroy();

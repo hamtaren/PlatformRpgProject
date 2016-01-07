@@ -102,7 +102,50 @@ if (type = ITEM_DIST)
     var _sprite_index = choose(spr_FloorItemsGun,spr_FloorItemsBow);
     var _sprIndex = irandom(sprite_get_number(_sprite_index)-1);
     
+    //losowanie klasy broni poprzez podobrazki
+    if (level == 1)    
+        _sprIndex = choose(0,0,0,0,1,1,1,2,2,3);    
+    else if (level == 2)    
+        _sprIndex = choose(0,0,1,1,1,2,2,2,2,3,3,3,3,4);    
+    else if (level == 3)    
+        _sprIndex = choose(0,0,1,1,2,2,3,3,4);    
+    else if (level >= 4)        
+        _sprIndex = irandom(sprite_get_number(_sprite_index)-1);
+    
+    
+    //Generowanie broni z bazowymi wartosciami
     var dist = scr_ItemDistGenerateBase(_sprite_index, _sprIndex);
+
+    //Na poziomie trzecim generuje zwyklaka
+    if (level == 3) 
+    {
+        instance_destroy(); exit;
+    }
+    
+    //Okreslamy maksymalny dodatek do wartosci
+    var phyMax = 5*(level-2) * -(phyElemRatio-0.5);
+    var elemMax = 5*(level-2) * (phyElemRatio+0.5);    
+
+    //losujemy wartosc
+    var _pierce = irandom(phyMax);
+    var _blunt = irandom(phyMax);
+    
+    //myk, zeby np wlocznia nie zadawala obuchowych obrazen
+    if (dist.pierce==0) 
+        _pierce = 0;
+    if (dist.blunt==0) 
+        _blunt = 0;
+    
+    //losujemy wartosc
+    var _fire = irandom(elemMax);
+    var _cold = irandom(elemMax);
+    var _electro = irandom(elemMax);
+    //////
+    
+    //Okreslamy zmiane szybkosci
+    var _aSpeed = (level-3) * 0.25;
+    
+    scr_ItemDistSet(dist,dist.name, max(0,dist.pierce + _pierce), max(0,dist.blunt + _blunt), max(0,_fire), max(0,_cold), max(0,_electro), 0, dist.ohth, dist.ammo, dist.attackSpeed + _aSpeed,_sprite_index,_sprIndex);
     
     instance_destroy(); exit;
 }

@@ -139,10 +139,36 @@ objEq.melee[0] = wpn;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///todo: usunac
-if (keyboard_check_pressed(KEY_MENU))
+            <string>///MUZYKA
+if (!dead)
 {
-    game_restart();
+    if (room == room_Trening)
+    {
+        if (!sound_isplaying(m_Stage0))
+            scr_sound_play(m_Stage0);
+    }
+    
+    else if (room == room_Stage1)
+    {
+        if (instance_exists(obj_Boss))    
+            if (!obj_Boss.encounter)
+                if (!sound_isplaying(m_Stage1))
+                    sound_loop(m_Stage1);        
+    }
+    
+    else if (room == room_Stage2)
+    {
+        if (!sound_isplaying(m_Stage2))
+            scr_sound_play(m_Stage2);    
+    }
+    else if (room == room_Stage3)
+    {
+    
+        if (instance_exists(obj_Boss))    
+            if (!obj_Boss.encounter)
+                if (!sound_isplaying(m_Stage3))
+                    sound_loop(m_Stage3);      
+    }
 }
 </string>
           </argument>
@@ -169,7 +195,7 @@ if (keyboard_check_pressed(KEY_MENU))
             <string>///PODNOSZENIE KLUCZA
 objEq.key[other.image_index]=true;
 with(other)instance_destroy();
-sound_play(s_keyPickUp);
+scr_sound_play(s_keyPickUp);
 </string>
           </argument>
         </arguments>
@@ -195,7 +221,8 @@ sound_play(s_keyPickUp);
             <string>if (!dead)
 {
     if (other.owner == OWN_ENEMY)
-    {        
+    {      
+  
         var dmgTaken = scr_ActorTakeDamage(other);
         hp-=dmgTaken;
                 
@@ -203,9 +230,47 @@ sound_play(s_keyPickUp);
         {
             scr_ParticlesBloodCreate(round(dmgTaken));
             if (!sound_isplaying(s_heroHit))
-                sound_play(s_heroHit);
+                scr_sound_play(s_heroHit);
         }
+        with(other)instance_destroy();
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>rm = noone;
+
+if (room==room_Trening)
+    rm = room_Stage1;
+else if (room == room_Stage1)
+    rm = room_Stage2;
+else if (room == room_Stage2)
+    rm = room_Stage3;
+    
+if (rm!=noone)
+{
+    sound_stop_all();    
+    scr_SaveGame(rm);
+    room_goto(rm);
 }
 </string>
           </argument>

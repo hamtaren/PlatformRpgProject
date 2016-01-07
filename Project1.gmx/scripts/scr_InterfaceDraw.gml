@@ -3,7 +3,7 @@ var _eq = obj_Hero.objEq;
 if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
 {    
     //Wyswietlanie przyciskow tylko na androidzie
-    if (os_type == os_android)
+    if (os_type == os_android && !obj_Hero.dead)
     {            
         //STRZAŁKI
         var rightPress = keyboard_check(KEY_RIGHT) + 0;
@@ -29,45 +29,62 @@ if (characterPage == PAGE_NONE) //NIE WYSWIETLA KARTY POSTACI
         draw_sprite(spr_InterfaceButtons,jumpPress,guiW-(40*2),guiH - (40)); 
     }    
     
-    //SECONDARY BUTTONS    
-    var swapPos = _eq.weaponType;
-    
-    var menuPress = keyboard_check(KEY_MENU) + 2;
-    var swapPress = keyboard_check(KEY_SWAP) + 4 + 7*swapPos;
-    var brewPress = keyboard_check(KEY_BREW) + 6;
-    var mixturePress = keyboard_check(KEY_MIXTURE) + 8;
-    
-    //POBIERANIE ILOSCI BREWS I MIXTURES
-    var brewCount = _eq.brews;   
-    var mixtureCount = _eq.mixtures;
-    
-    //Pusta flacha brew
-    if (brewCount==0)
-        brewPress = 10;
-    //Pusta flacha mixture
-    if (mixtureCount==0)
-        mixturePress=10;        
-
-    //RYSWOWANIE PRZYCISKOW
-    draw_sprite(spr_InterfaceSecondaryButtons,menuPress,guiW-40,0);
-    draw_sprite(spr_InterfaceSecondaryButtons,swapPress,guiW*0.5 - 40 -25,guiH-40);
-    draw_sprite(spr_InterfaceSecondaryButtons,brewPress,guiW*0.5 - 20,guiH-40);
-    draw_sprite(spr_InterfaceSecondaryButtons,mixturePress,guiW*0.5 + 25,guiH-40);    
-    
-    //KLUCZE
-    for (var i = 0; i<3; i++)
+    if (!obj_Hero.dead)
     {
-        if (_eq.key[i])
-            draw_sprite_ext(spr_Keys,i,48,64+i*32,2,2,0,c_white,1);
+        //SECONDARY BUTTONS    
+        var swapPos = _eq.weaponType;
+        
+        var menuPress = keyboard_check(KEY_MENU) + 2;
+        var swapPress = keyboard_check(KEY_SWAP) + 4 + 7*swapPos;
+        var brewPress = keyboard_check(KEY_BREW) + 6;
+        var mixturePress = keyboard_check(KEY_MIXTURE) + 8;
+        
+        //POBIERANIE ILOSCI BREWS I MIXTURES
+        var brewCount = _eq.brews;   
+        var mixtureCount = _eq.mixtures;
+        
+        //Pusta flacha brew
+        if (brewCount==0)
+            brewPress = 10;
+        //Pusta flacha mixture
+        if (mixtureCount==0)
+            mixturePress=10;        
+    
+        //RYSWOWANIE PRZYCISKOW
+        draw_sprite(spr_InterfaceSecondaryButtons,menuPress,guiW-40,0);
+        draw_sprite(spr_InterfaceSecondaryButtons,swapPress,guiW*0.5 - 40 -25,guiH-40);
+        draw_sprite(spr_InterfaceSecondaryButtons,brewPress,guiW*0.5 - 20,guiH-40);
+        draw_sprite(spr_InterfaceSecondaryButtons,mixturePress,guiW*0.5 + 25,guiH-40);    
+        
+        //KLUCZE
+        for (var i = 0; i<3; i++)
+        {
+            if (_eq.key[i])
+                draw_sprite_ext(spr_Keys,i,48,64+i*32,2,2,0,c_white,1);
+        }
+        
+        //NAPISY PRZEDSTAWIAJACE ILE POSIADAMY AMUNICJI, BREW I MIXTURE
+        draw_set_font(font_debug);
+        draw_set_halign(fa_center);
+        if (_eq.weaponType == WPN_DIST)
+            draw_text_bordered(guiW*0.5 - 40 - 25, guiH-13,string(_eq.ammo) + " | " + string(_eq.arrows));
+        draw_text_bordered(guiW*0.5 +10,guiH-15,string(brewCount));
+        draw_text_bordered(guiW*0.5 +45 +10,guiH-15,string(mixtureCount));
     }
     
-    //NAPISY PRZEDSTAWIAJACE ILE POSIADAMY AMUNICJI, BREW I MIXTURE
-    draw_set_font(font_debug);
-    draw_set_halign(fa_center);
-    if (_eq.weaponType == WPN_DIST)
-        draw_text_bordered(guiW*0.5 - 40 - 25, guiH-13,string(_eq.ammo) + " | " + string(_eq.arrows));
-    draw_text_bordered(guiW*0.5 +10,guiH-15,string(brewCount));
-    draw_text_bordered(guiW*0.5 +45 +10,guiH-15,string(mixtureCount));
+    //MINI MENU
+    if (menu)
+    {
+        if (obj_Hero.dead)
+        {
+            //draw_rectangle_color(0,0,800,480,c_black,c_black,c_black,c_black,0);
+            draw_sprite(spr_IntroOutro,0,0,0);
+            draw_sprite(spr_SceneSpriteCrimsonHead,0,200,140);
+            draw_sprite(spr_GameOver,0,0,0);
+        }
+        draw_sprite(spr_miniMenu,0,200,120);
+        
+    }
 }
 else
 {
@@ -188,55 +205,74 @@ else
     }   
 }
 
-//PRZYCISK KARTY POSTACI
-var characterPress = keyboard_check(KEY_CHARACTER) + 0;
-draw_sprite(spr_InterfaceSecondaryButtons,characterPress,0,0);
-
-
-
-
-//HEALTH, STAMINA i EXP BARY
-//super kolor z tylu baru
-draw_set_color(make_colour_rgb(89,54,45));
-//pomocnicze
-var yy = 2;
-var hh = 12;
-//rysowanie background dla baru
-draw_rectangle(52,yy,190,hh,0)
-draw_rectangle(52,yy+16,190,hh+16,0)
-draw_rectangle(52,yy+32,190,hh+32,0)
-//rysowanie wypelnienia dla baru
-var xHp, xStamina, xEp; //Dlugosci wypelnien
-var len = 138; //Dlugosc calego wypelniacza
-
-//obliczanie dlugosci poszczegolnych wypelnien
-xHp = (obj_Hero.hp / obj_Hero.hpMax)*len;
-xStamina = (obj_Hero.stamina / obj_Hero.staminaMax)*len;
-xEp = (obj_Hero.ep / obj_Hero.epMax)*len;
-
-draw_set_alpha(0.75);
-//Health bar
-draw_set_color(c_red);
-if (xHp>0)
-    draw_rectangle(52,yy,52+xHp,hh,0)
-//Stamina bar
-draw_set_color(c_yellow);
-if (xStamina>0)
-    draw_rectangle(52,yy+16,52+xStamina,hh+16,0)
-//Expirence bar
-draw_set_color(c_white);
-if (xEp>0)
-    draw_rectangle(52,yy+32,52+xEp,hh+32,0)
+if (!obj_Hero.dead)
+{
+    //PRZYCISK KARTY POSTACI
+    var characterPress = keyboard_check(KEY_CHARACTER) + 0;
+    draw_sprite(spr_InterfaceSecondaryButtons,characterPress,0,0);            
     
-//rysowanie baru
-draw_set_alpha(1);
-draw_sprite(spr_InterfaceBar,0,45,0);
-draw_sprite(spr_InterfaceBar,0,45,16);
-draw_sprite(spr_InterfaceBar,0,45,32);
-
-draw_set_color(c_black);
-
-
-//testowe
-
+    //HEALTH, STAMINA i EXP BARY
+    //super kolor z tylu baru
+    draw_set_color(make_colour_rgb(89,54,45));
+    //pomocnicze
+    var yy = 2;
+    var hh = 12;
+    //rysowanie background dla baru
+    draw_rectangle(52,yy,190,hh,0)
+    draw_rectangle(52,yy+16,190,hh+16,0)
+    draw_rectangle(52,yy+32,190,hh+32,0)
+    //rysowanie wypelnienia dla baru
+    var xHp, xStamina, xEp; //Dlugosci wypelnien
+    var len = 138; //Dlugosc calego wypelniacza
+    
+    //obliczanie dlugosci poszczegolnych wypelnien
+    xHp = (obj_Hero.hp / obj_Hero.hpMax)*len;
+    xStamina = (obj_Hero.stamina / obj_Hero.staminaMax)*len;
+    xEp = (obj_Hero.ep / obj_Hero.epMax)*len;
+    
+    draw_set_alpha(0.75);
+    //Health bar
+    draw_set_color(c_red);
+    if (xHp>0)
+        draw_rectangle(52,yy,52+xHp,hh,0)
+    //Stamina bar
+    draw_set_color(c_yellow);
+    if (xStamina>0)
+        draw_rectangle(52,yy+16,52+xStamina,hh+16,0)
+    //Expirence bar
+    draw_set_color(c_white);
+    if (xEp>0)
+        draw_rectangle(52,yy+32,52+xEp,hh+32,0)
+        
+    //rysowanie baru
+    draw_set_alpha(1);
+    draw_sprite(spr_InterfaceBar,0,45,0);
+    draw_sprite(spr_InterfaceBar,0,45,16);
+    draw_sprite(spr_InterfaceBar,0,45,32);
+    
+    draw_set_color(c_black);
+    
+    
+    //Boss
+    if (characterPage == PAGE_NONE)
+    {
+        if (instance_exists(obj_Boss))
+        {
+            if (obj_Boss.encounter)
+            {        
+                var index = 1;
+                if (instance_exists(obj_Troll))
+                    index = 0;
+                    
+                var xxx = 202;
+                draw_sprite(spr_HpBars,index,xxx,0);
+                
+                var len = 132;
+                var xHp = (obj_Boss.hp / obj_Boss.hpMax)*len;
+                
+                draw_rectangle_colour(xxx+10,36,xxx+10 + xHp, 41,c_red,c_red,c_red,c_red,0);
+            }    
+        }
+    }
+}
 

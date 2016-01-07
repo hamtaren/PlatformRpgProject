@@ -22,11 +22,11 @@ var _fire = 0, _cold = 0, _electro = 0, _dmgTrue = 0;
 if (_sprIndex = sprite_get_number(_sprite_index)-1)
 {
     if (_sprite_index == spr_FloorItemsHammer || _sprite_index == spr_FloorItemsAxe )
-        _dmgTrue = 100;
+        _dmgTrue = 50;
     else if (_sprite_index == spr_FloorItemsSword)
-        _dmgTrue = 33;
+        _dmgTrue = 18;
     else if (_sprite_index == spr_FloorItemsStick)
-        _dmgTrue = 50;    
+        _dmgTrue = 25;    
 }
 
 //ustawienie wszystkich rzeczy
